@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odyssey Plan Builder — PSBF Portfolio</title>
+    <link rel="stylesheet" href="odyssey-plan-builder.css">
+</head>
+<body>
+
+<!-- TOP NAV -->
+<div class="top-nav">
+    <div>
+        <h1>Odyssey Plan Builder</h1>
+        <div class="subtitle">UMET9U-30-1 Professional Skills for Banking and Finance</div>
+    </div>
+    <div class="nav-actions">
+        <button class="btn btn-secondary" onclick="saveDraft()">Save Draft</button>
+        <button class="btn btn-secondary" onclick="loadDraft()">Load Draft</button>
+        <button class="btn btn-primary" onclick="openExportModal()">Download</button>
+    </div>
+</div>
+
+<!-- PLAN TABS -->
+<div class="plan-tabs">
+    <div class="plan-tab active-a" id="tab-a" onclick="switchPlan('a')">Odyssey Plan A</div>
+    <div class="plan-tab" id="tab-b" onclick="switchPlan('b')">Odyssey Plan B</div>
+</div>
+
+<div class="main-container">
+
+<!-- ==================== PLAN A ==================== -->
+<div class="plan-section plan-section-a active" id="plan-a">
+    <div class="odyssey-plan">
+        <div class="plan-header">
+            <span>Odyssey Plan A: your current/default path</span>
+            <div class="six-word-banner">
+                <div class="six-word-label">6-Word Title</div>
+                <span id="header-title-a" style="font-style:italic;">"Your six-word title here"</span>
+            </div>
+        </div>
+
+        <div class="col-header">My Assessment of Where I am Now</div>
+        <div class="col-header">Stage 1: What Do I Need to Do Next?</div>
+        <div class="col-header">Stage 2: Where Do I Need to Be at Graduation?</div>
+        <div class="col-header">Stage 3: What is My 5-Year Destination?</div>
+
+        <!-- Column 1 -->
+        <div class="col-content">
+            <input class="font-big-input" placeholder="e.g. Year 1 Student" data-field="a-col1-title">
+            <input class="font-medium-input" placeholder="e.g. BSc Banking & Finance, NEU-UWE" data-field="a-col1-subtitle">
+            <h4>Current Capabilities</h4>
+            <div id="a-col1-capabilities" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. PEST/SWOT/Porter's analysis"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Excel basics"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Academic writing in English"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add capability</button>
+
+            <h4>Interests &amp; Values</h4>
+            <div id="a-col1-values" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Top values: Family, Contribution, Stability"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Workview: work = contributing to..."></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add value/interest</button>
+
+            <h4>Gaps to Address</h4>
+            <div id="a-col1-gaps" class="item-list">
+                <div class="editable-item"><span class="bullet" style="color:#dc2626;">&#9651;</span><textarea rows="1" class="gap" placeholder="e.g. No internship experience yet"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet" style="color:#dc2626;">&#9651;</span><textarea rows="1" class="gap" placeholder="e.g. Limited financial modelling skills"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9651;', true)">+ Add gap</button>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-content">
+            <input class="font-big-input" placeholder="e.g. Build Foundations" data-field="a-col2-title">
+            <input class="font-medium-input" placeholder="e.g. Year 2 actions (2026-2027)" data-field="a-col2-subtitle">
+            <h4>Concrete Actions</h4>
+            <div id="a-col2-actions" class="item-list">
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. Apply for summer internship..."></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. Begin CFA Level 1 preparation"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. Complete financial modelling course"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#10003;', false, '#22c55e')">+ Add action</button>
+
+            <h4>Skill Development</h4>
+            <div id="a-col2-skills" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Excel: move from Practice to Competence"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add skill</button>
+
+            <h4>Feedback Loop</h4>
+            <div id="a-col2-feedback" class="item-list">
+                <div class="editable-item"><span class="bullet">&#8634;</span><textarea rows="1" placeholder="e.g. Monthly: review internship progress"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#8634;')">+ Add feedback loop</button>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="col-content">
+            <input class="font-big-input" placeholder="e.g. Graduate Ready" data-field="a-col3-title">
+            <input class="font-medium-input" placeholder="e.g. Graduation (2028-2029)" data-field="a-col3-subtitle">
+            <h4>Target Position at Graduation</h4>
+            <div id="a-col3-target" class="item-list">
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. Graduate with 2:1 or above"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. CFA Level 1 passed"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#10003;', false, '#22c55e')">+ Add target</button>
+
+            <h4>Applications &amp; Transition</h4>
+            <div id="a-col3-apps" class="item-list">
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. Apply to graduate programmes..."></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#10003;', false, '#22c55e')">+ Add item</button>
+
+            <h4>Network Built</h4>
+            <div id="a-col3-network" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. 5+ professional contacts in banking"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add item</button>
+
+            <h4>Feedback Loop</h4>
+            <div id="a-col3-feedback" class="item-list">
+                <div class="editable-item"><span class="bullet">&#8634;</span><textarea rows="1" placeholder="e.g. Informational interviews with 3 professionals"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#8634;')">+ Add feedback loop</button>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="col-content">
+            <input class="font-big-input" placeholder="e.g. Corporate Banking Associate" data-field="a-col4-title">
+            <input class="font-medium-input" placeholder="e.g. 5-year destination (2031)" data-field="a-col4-subtitle">
+            <h4>Role Description</h4>
+            <div id="a-col4-role" class="item-list">
+                <div class="editable-item"><span class="bullet">&#11088;</span><textarea rows="1" placeholder="e.g. Associate-level position at an international bank"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Specialising in corporate lending"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add description</button>
+
+            <h4>Professional Standing</h4>
+            <div id="a-col4-standing" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. CFA Level 2 passed"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. 3+ years experience"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add item</button>
+
+            <h4>Life Alignment</h4>
+            <div id="a-col4-life" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9878;</span><textarea rows="1" placeholder="e.g. Stable hours allowing time for family"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9878;')">+ Add item</button>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="plan-footer">
+            <div class="footer-embedded">
+                <h4>Embedded Evidence (double-click to open)</h4>
+                <div id="a-files-list"></div>
+                <div class="upload-zone" onclick="this.querySelector('input').click()">
+                    <input type="file" multiple onchange="handleFileUpload(this, 'a')">
+                    Click or drag files here to embed evidence
+                </div>
+            </div>
+
+            <div class="footer-dashboard">
+                <div class="dashboard-grid">
+                    <div class="gauge-box">
+                        <div class="gauge-label">Resources needed for plan</div>
+                        <div class="gauge-boxes" data-gauge="a-resources"></div>
+                        <input class="gauge-note-input" placeholder="e.g. Need to fund CFA; no network yet" data-field="a-resources-note">
+                    </div>
+                    <div class="gauge-box">
+                        <div class="gauge-label">Confidence (in plan)</div>
+                        <div class="gauge-boxes" data-gauge="a-confidence"></div>
+                        <input class="gauge-note-input" placeholder="e.g. Competitive field; grades need improving" data-field="a-confidence-note">
+                    </div>
+                    <div class="gauge-box">
+                        <div class="gauge-label">Do you like the plan?</div>
+                        <div class="gauge-boxes" data-gauge="a-like"></div>
+                        <input class="gauge-note-input" placeholder="e.g. Genuinely excited about impact" data-field="a-like-note">
+                    </div>
+                    <div class="gauge-box">
+                        <div class="gauge-label">Coherence (of plan)</div>
+                        <div class="gauge-boxes" data-gauge="a-coherence"></div>
+                        <input class="gauge-note-input" placeholder="e.g. Aligns with family, contribution values" data-field="a-coherence-note">
+                    </div>
+                </div>
+                <div class="gauge-instruction">click boxes to fill gauge</div>
+            </div>
+
+            <div class="footer-title-questions">
+                <div class="six-word-box">
+                    <div class="label">6 Word Title for Plan</div>
+                    <input class="six-word-title-input" placeholder="e.g. Building Vietnam Future Through Global Finance" data-field="a-six-word" id="six-word-input-a">
+                </div>
+                <div class="questions-box">
+                    <div class="label">Questions/issues that this plan addresses:</div>
+                    <input class="question-input" placeholder="1. How might I..." data-field="a-q1">
+                    <input class="question-input" placeholder="2. How might I..." data-field="a-q2">
+                    <input class="question-input" placeholder="3. How might I..." data-field="a-q3">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="student-info-bar">
+        <input placeholder="Your Name | Student ID | UMET9U-30-1 | Plan A" data-field="a-student-info">
+    </div>
+</div>
+
+<!-- ==================== PLAN B ==================== -->
+<div class="plan-section plan-section-b" id="plan-b">
+    <div class="odyssey-plan">
+        <div class="plan-header">
+            <span>Odyssey Plan B: your best alternative path</span>
+            <div class="six-word-banner">
+                <div class="six-word-label">6-Word Title</div>
+                <span id="header-title-b" style="font-style:italic;">"Your six-word title here"</span>
+            </div>
+        </div>
+
+        <div class="col-header">My Assessment of Where I am Now</div>
+        <div class="col-header">Stage 1: What Do I Need to Do Next?</div>
+        <div class="col-header">Stage 2: Where Do I Need to Be at Graduation?</div>
+        <div class="col-header">Stage 3: What is My 5-Year Destination?</div>
+
+        <!-- Column 1 -->
+        <div class="col-content">
+            <input class="font-big-input" placeholder="e.g. Year 1 Student" data-field="b-col1-title">
+            <input class="font-medium-input" placeholder="e.g. BSc Banking & Finance, NEU-UWE" data-field="b-col1-subtitle">
+            <h4>Current Capabilities</h4>
+            <div id="b-col1-capabilities" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Business analysis frameworks"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Basic Python"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add capability</button>
+
+            <h4>Interests &amp; Values</h4>
+            <div id="b-col1-values" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Curious about technology + finance intersection"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add value/interest</button>
+
+            <h4>Gaps to Address</h4>
+            <div id="b-col1-gaps" class="item-list">
+                <div class="editable-item"><span class="bullet" style="color:#dc2626;">&#9651;</span><textarea rows="1" class="gap" placeholder="e.g. No coding portfolio"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet" style="color:#dc2626;">&#9651;</span><textarea rows="1" class="gap" placeholder="e.g. No startup experience"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9651;', true)">+ Add gap</button>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-content">
+            <input class="font-big-input" placeholder="e.g. Tech + Finance Fusion" data-field="b-col2-title">
+            <input class="font-medium-input" placeholder="e.g. Year 2 actions (2026-2027)" data-field="b-col2-subtitle">
+            <h4>Concrete Actions</h4>
+            <div id="b-col2-actions" class="item-list">
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. Complete Python for Finance courses"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. Apply for FinTech internship"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#10003;', false, '#22c55e')">+ Add action</button>
+
+            <h4>Skill Development</h4>
+            <div id="b-col2-skills" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Python: Exposure to Practice"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add skill</button>
+
+            <h4>Feedback Loop</h4>
+            <div id="b-col2-feedback" class="item-list">
+                <div class="editable-item"><span class="bullet">&#8634;</span><textarea rows="1" placeholder="e.g. Monthly: review coding progress"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#8634;')">+ Add feedback loop</button>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="col-content">
+            <input class="font-big-input" placeholder="e.g. FinTech Professional" data-field="b-col3-title">
+            <input class="font-medium-input" placeholder="e.g. Graduation (2028-2029)" data-field="b-col3-subtitle">
+            <h4>Target Position at Graduation</h4>
+            <div id="b-col3-target" class="item-list">
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. Graduate with 2:1 or above"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. Portfolio of finance-tech projects"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#10003;', false, '#22c55e')">+ Add target</button>
+
+            <h4>Applications &amp; Transition</h4>
+            <div id="b-col3-apps" class="item-list">
+                <div class="editable-item"><span class="bullet" style="color:#22c55e;">&#10003;</span><textarea rows="1" placeholder="e.g. Product analyst role at FinTech"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#10003;', false, '#22c55e')">+ Add item</button>
+
+            <h4>Startup Preparation</h4>
+            <div id="b-col3-startup" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Identified market gap in Vietnamese SME lending"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add item</button>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="col-content">
+            <input class="font-big-input" placeholder="e.g. FinTech Co-Founder" data-field="b-col4-title">
+            <input class="font-medium-input" placeholder="e.g. 5-year destination (2031)" data-field="b-col4-subtitle">
+            <h4>Role Description</h4>
+            <div id="b-col4-role" class="item-list">
+                <div class="editable-item"><span class="bullet">&#11088;</span><textarea rows="1" placeholder="e.g. Co-found a FinTech startup"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. Bridging banks and underserved SMEs"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add description</button>
+
+            <h4>Professional Standing</h4>
+            <div id="b-col4-standing" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9679;</span><textarea rows="1" placeholder="e.g. 3+ years FinTech experience"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9679;')">+ Add item</button>
+
+            <h4>Life Alignment</h4>
+            <div id="b-col4-life" class="item-list">
+                <div class="editable-item"><span class="bullet">&#9878;</span><textarea rows="1" placeholder="e.g. Higher risk but higher autonomy"></textarea><button class="remove-item-btn" onclick="removeItem(this)">&times;</button></div>
+            </div>
+            <button class="add-item-btn" onclick="addItem(this, '&#9878;')">+ Add item</button>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="plan-footer">
+            <div class="footer-embedded">
+                <h4>Embedded Evidence (double-click to open)</h4>
+                <div id="b-files-list"></div>
+                <div class="upload-zone" onclick="this.querySelector('input').click()">
+                    <input type="file" multiple onchange="handleFileUpload(this, 'b')">
+                    Click or drag files here to embed evidence
+                </div>
+            </div>
+
+            <div class="footer-dashboard">
+                <div class="dashboard-grid">
+                    <div class="gauge-box">
+                        <div class="gauge-label">Resources needed for plan</div>
+                        <div class="gauge-boxes" data-gauge="b-resources"></div>
+                        <input class="gauge-note-input" placeholder="e.g. Need coding skills, savings" data-field="b-resources-note">
+                    </div>
+                    <div class="gauge-box">
+                        <div class="gauge-label">Confidence (in plan)</div>
+                        <div class="gauge-boxes" data-gauge="b-confidence"></div>
+                        <input class="gauge-note-input" placeholder="e.g. Startups are uncertain" data-field="b-confidence-note">
+                    </div>
+                    <div class="gauge-box">
+                        <div class="gauge-label">Do you like the plan?</div>
+                        <div class="gauge-boxes" data-gauge="b-like"></div>
+                        <input class="gauge-note-input" placeholder="e.g. Autonomy and impact exciting" data-field="b-like-note">
+                    </div>
+                    <div class="gauge-box">
+                        <div class="gauge-label">Coherence (of plan)</div>
+                        <div class="gauge-boxes" data-gauge="b-coherence"></div>
+                        <input class="gauge-note-input" placeholder="e.g. Aligns with contribution value" data-field="b-coherence-note">
+                    </div>
+                </div>
+                <div class="gauge-instruction">click boxes to fill gauge</div>
+            </div>
+
+            <div class="footer-title-questions">
+                <div class="six-word-box">
+                    <div class="label">6 Word Title for Plan</div>
+                    <input class="six-word-title-input" placeholder="e.g. Creating Technology Solutions Vietnamese Banking" data-field="b-six-word" id="six-word-input-b">
+                </div>
+                <div class="questions-box">
+                    <div class="label">Questions/issues that this plan addresses:</div>
+                    <input class="question-input" placeholder="1. How might I..." data-field="b-q1">
+                    <input class="question-input" placeholder="2. How might I..." data-field="b-q2">
+                    <input class="question-input" placeholder="3. How might I..." data-field="b-q3">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="student-info-bar">
+        <input placeholder="Your Name | Student ID | UMET9U-30-1 | Plan B" data-field="b-student-info">
+    </div>
+</div>
+
+</div><!-- end main-container -->
+
+<!-- EXPORT MODAL -->
+<div class="modal-overlay" id="export-modal">
+    <div class="modal">
+        <h2>Download Your Odyssey Plans</h2>
+        <p>Choose a format. Both plans (A &amp; B) will be included.</p>
+        <div class="export-options">
+            <div class="export-option" onclick="exportAsPptx()">
+                <div class="icon">&#128218;</div>
+                <div class="info">
+                    <h3>PowerPoint (.pptx)</h3>
+                    <span>Formatted as 2-slide presentation matching the UWE template</span>
+                </div>
+            </div>
+            <div class="export-option" onclick="exportAsWord()">
+                <div class="icon">&#128196;</div>
+                <div class="info">
+                    <h3>Word (.docx)</h3>
+                    <span>Structured document with all plan details</span>
+                </div>
+            </div>
+            <div class="export-option" onclick="exportAsHTML()">
+                <div class="icon">&#127760;</div>
+                <div class="info">
+                    <h3>HTML (Print-Ready)</h3>
+                    <span>Clean printable version of both plans</span>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close" onclick="closeExportModal()">Cancel</button>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
+<script src="odyssey-plan-builder.js"></script>
+
+</body>
+</html>
