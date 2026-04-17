@@ -76,17 +76,17 @@ const formulaData = {
             { name: "wD", formula: "wD = Debt / (Debt + Equity)", description: "Tính Debt bằng cách lấy số lượng Bonds nhân với giá của Bonds" },
             { name: "wE", formula: "wE = Equity / (Debt + Equity)", description: "Tính Equity bằng cách lấy số lượng Shares nhân với giá của Shares" },
             { name: "Theoretical Ex-Rights Price (TERP)", formula: "TERP = ((Number of old shares x Old price) + (Number of new shares x New price)) / Number of Old Shares + Number of New Shares", description: "Number of Old/New Shares có thể hiểu là cứ mỗi N Old Shares thì sẽ mua được 1 New Share" },
-            { name: "Value of Rights per New Share (VRNS)", formula: "VRNS = TERP - Issue Price", description: "none" }
-            { name: "Value of Rights per Existing Share (VRES)", formula: "VRES = Old Price - TERP", description: "none" }
-            { name: "New shares (nếu chưa cung cấp)", formula: "New shares = Existing Shares / Rights ratio", description: "none" }
-            { name: "Capital Raised", formula: "Capital Raised = New shares x ($10 x (1 - Discount))", description: "none" }
+            { name: "Value of Rights per New Share (VRNS)", formula: "VRNS = TERP - Issue Price", description: "none" },
+            { name: "Value of Rights per Existing Share (VRES)", formula: "VRES = Old Price - TERP", description: "none" },
+            { name: "New shares (nếu chưa cung cấp)", formula: "New shares = Existing Shares / Rights ratio", description: "none" },
+            { name: "Capital Raised", formula: "Capital Raised = New shares x ($10 x (1 - Discount))", description: "none" },
             { name: "Cost of Preference Shares", formula: "Cost of Preference Shares = Preference Dividend / Current Preference Share Price", description: "Required return on preference shares" },
             { name: "Unlevered Beta (Asset Beta)", formula: "Unlevered Beta = Levered Beta / [1 + (1 - Tax Rate) × (Debt/Equity)]", description: "Beta without leverage effect (pure business risk)" },
             { name: "Levered Beta (Equity Beta)", formula: "Levered Beta = Unlevered Beta × [1 + (1 - Tax Rate) × (Debt/Equity)]", description: "Beta including leverage effect" },
             { name: "Modigliani-Miller Proposition I (No Tax)", formula: "Value of Levered Firm = Value of Unlevered Firm", description: "Firm value is independent of capital structure without taxes" },
             { name: "Modigliani-Miller Proposition II (No Tax)", formula: "Cost of Equity = Cost of Assets + (Cost of Assets - Cost of Debt) × (Debt/Equity)", description: "Cost of equity rises linearly with leverage" },
             { name: "Modigliani-Miller Proposition I (With Tax)", formula: "Value of Levered Firm = Value of Unlevered Firm + (Tax Rate × Debt)", description: "Firm value increases by present value of tax shield" },
-            { name: "Market Value of Equity", formula: "Market Value of Equity = Total Firm Value - Market Value of Debt", description: "Residual value belonging to shareholders" },
+            { name: "Market Value of Equity", formula: "Market Value of Equity = Total Firm Value - Market Value of Debt", description: "Residual value belonging to shareholders" }
     
         ]
     },
