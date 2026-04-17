@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFDM Mock Test 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'EB Garamond', 'Times New Roman', serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #fafafa;
+            color: #222;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            margin: 5px 0;
+            font-size: 1.4em;
+        }
+        .header p {
+            margin: 3px 0;
+        }
+        .exam-info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exam-info ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions {
+            background: #e8f4e8;
+            padding: 15px;
+            border-left: 4px solid #2a7a2a;
+            margin-bottom: 30px;
+        }
+        .section-header {
+            background: #333;
+            color: white;
+            padding: 10px 15px;
+            margin: 30px 0 20px 0;
+            font-weight: bold;
+        }
+        .question {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .question h3 {
+            margin-top: 0;
+            color: #1a1a6c;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th {
+            background: #e0e0e0;
+        }
+        .marks {
+            color: #666;
+            font-style: italic;
+            text-align: right;
+            margin-top: 10px;
+        }
+        .total-marks {
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: right;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+        }
+        .answer {
+            background: #fff8dc;
+            border: 2px solid #daa520;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .answer h4 {
+            margin-top: 0;
+            color: #8b4513;
+        }
+        .answer.show {
+            display: block;
+        }
+        .formula {
+            background: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: 'Cambria Math', 'Times New Roman', serif;
+            border-left: 3px solid #666;
+        }
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .controls button {
+            background: #1a1a6c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        .controls button:hover {
+            background: #2a2a8c;
+        }
+        .pv-table {
+            font-size: 0.85em;
+        }
+        .pv-table th, .pv-table td {
+            padding: 4px 6px;
+        }
+        .formula-sheet {
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 30px;
+        }
+        .formula-sheet h3 {
+            margin-top: 0;
+        }
+        @media print {
+            .controls {
+                display: none;
+            }
+            .answer {
+                display: block !important;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    <button onclick="toggleAnswers()">Show/Hide All Answers</button>
+</div>
+
+<div class="header">
+    <p>College of Business and Law</p>
+    <p>Bristol Business School</p>
+    <p>Academic year: 2025/26</p>
+    <h1>ACCOUNTING AND FINANCE FOR DECISION MAKING</h1>
+    <p>Module Code: UMET9G-30-1</p>
+    <p><strong>MOCK EXAMINATION 3</strong></p>
+</div>
+
+<div class="exam-info">
+    <p><strong>Duration:</strong> 2 Hours</p>
+    <p><strong>Total Marks:</strong> 60</p>
+    <ul>
+        <li>Section A: Answer Question 1 (Compulsory) - 30 marks</li>
+        <li>Section B: Answer ANY TWO questions - 15 marks each</li>
+    </ul>
+    <p><strong>Materials Provided:</strong> Formula Sheet, Present Value Tables</p>
+    <p><strong>Materials Required:</strong> Non-programmable calculator</p>
+</div>
+
+<div class="instructions">
+    <strong>Instructions to Students:</strong>
+    <ul>
+        <li>Include module name, number, and your student number on your answer sheet</li>
+        <li>Indicate clearly which questions you are answering</li>
+        <li>Avoid bullet points - write short essay-like answers</li>
+        <li>Present all workings where applicable</li>
+    </ul>
+</div>
+
+<!-- SECTION A -->
+<div class="section-header">SECTION A - COMPULSORY QUESTION (30 Marks)</div>
+
+<div class="question">
+    <h3>Question 1</h3>
+
+    <p>GreenTech Energy Ltd is evaluating two mutually exclusive renewable energy projects: <strong>SolarMax</strong> and <strong>WindPower</strong>. The company has a capital budget of £4 million. The management provides the following data:</p>
+
+    <table>
+        <tr>
+            <th></th>
+            <th>Project SolarMax</th>
+            <th>Project WindPower</th>
+        </tr>
+        <tr>
+            <td>Initial Investment</td>
+            <td>£3,600,000</td>
+            <td>£3,200,000</td>
+        </tr>
+        <tr>
+            <td>Project Duration</td>
+            <td>5 years</td>
+            <td>5 years</td>
+        </tr>
+        <tr>
+            <td>Scrap Value</td>
+            <td>£400,000</td>
+            <td>£320,000</td>
+        </tr>
+        <tr>
+            <td>Depreciation Method</td>
+            <td>Straight Line</td>
+            <td>Straight Line</td>
+        </tr>
+    </table>
+
+    <p><strong>Annual Cash Flows:</strong></p>
+    <table>
+        <tr>
+            <th>Year</th>
+            <th>SolarMax (£)</th>
+            <th>WindPower (£)</th>
+        </tr>
+        <tr><td>1</td><td>650,000</td><td>950,000</td></tr>
+        <tr><td>2</td><td>1,100,000</td><td>1,000,000</td></tr>
+        <tr><td>3</td><td>1,250,000</td><td>900,000</td></tr>
+        <tr><td>4</td><td>850,000</td><td>850,000</td></tr>
+        <tr><td>5</td><td>750,000</td><td>700,000</td></tr>
+    </table>
+
+    <p>The company uses a discount rate of 12% for NPV calculations and has a payback period benchmark of 3 years.</p>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the <strong>Payback Period</strong> for both projects and advise management on which project to accept based on this criterion. <span class="marks">(6 Marks)</span></li>
+        <li>Calculate the <strong>Net Present Value (NPV)</strong> for both projects and recommend which project should be undertaken. <span class="marks">(10 Marks)</span></li>
+        <li>Calculate the <strong>Accounting Rate of Return (ARR)</strong> for both projects using the average investment method. <span class="marks">(6 Marks)</span></li>
+        <li>Critically discuss why investment appraisal methods may give conflicting recommendations and how managers should resolve such conflicts. [Maximum 4 points] <span class="marks">(8 Marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 30 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 1</h4>
+
+        <h4>Part (a) - Payback Period (6 marks)</h4>
+        <p><strong>Project SolarMax:</strong></p>
+        <table>
+            <tr><th>Year</th><th>Cash Flow</th><th>Cumulative CF</th></tr>
+            <tr><td>0</td><td>-3,600,000</td><td>-3,600,000</td></tr>
+            <tr><td>1</td><td>650,000</td><td>-2,950,000</td></tr>
+            <tr><td>2</td><td>1,100,000</td><td>-1,850,000</td></tr>
+            <tr><td>3</td><td>1,250,000</td><td>-600,000</td></tr>
+            <tr><td>4</td><td>850,000</td><td>250,000</td></tr>
+        </table>
+        <p>Payback = 3 + (600,000 / 850,000) = <strong>3.71 years</strong></p>
+
+        <p><strong>Project WindPower:</strong></p>
+        <table>
+            <tr><th>Year</th><th>Cash Flow</th><th>Cumulative CF</th></tr>
+            <tr><td>0</td><td>-3,200,000</td><td>-3,200,000</td></tr>
+            <tr><td>1</td><td>950,000</td><td>-2,250,000</td></tr>
+            <tr><td>2</td><td>1,000,000</td><td>-1,250,000</td></tr>
+            <tr><td>3</td><td>900,000</td><td>-350,000</td></tr>
+            <tr><td>4</td><td>850,000</td><td>500,000</td></tr>
+        </table>
+        <p>Payback = 3 + (350,000 / 850,000) = <strong>3.41 years</strong></p>
+
+        <p><strong>Recommendation:</strong> Neither project meets the 3-year benchmark. However, if management must choose, WindPower has a shorter payback (3.41 vs 3.71 years).</p>
+
+        <h4>Part (b) - Net Present Value (10 marks)</h4>
+        <p><strong>Project SolarMax NPV at 12%:</strong></p>
+        <table>
+            <tr><th>Year</th><th>Cash Flow</th><th>PV Factor @12%</th><th>Present Value</th></tr>
+            <tr><td>0</td><td>-3,600,000</td><td>1.000</td><td>-3,600,000</td></tr>
+            <tr><td>1</td><td>650,000</td><td>0.893</td><td>580,450</td></tr>
+            <tr><td>2</td><td>1,100,000</td><td>0.797</td><td>876,700</td></tr>
+            <tr><td>3</td><td>1,250,000</td><td>0.712</td><td>890,000</td></tr>
+            <tr><td>4</td><td>850,000</td><td>0.636</td><td>540,600</td></tr>
+            <tr><td>5</td><td>750,000 + 400,000</td><td>0.567</td><td>652,050</td></tr>
+            <tr><td colspan="3"><strong>NPV</strong></td><td><strong>£939,800</strong></td></tr>
+        </table>
+
+        <p><strong>Project WindPower NPV at 12%:</strong></p>
+        <table>
+            <tr><th>Year</th><th>Cash Flow</th><th>PV Factor @12%</th><th>Present Value</th></tr>
+            <tr><td>0</td><td>-3,200,000</td><td>1.000</td><td>-3,200,000</td></tr>
+            <tr><td>1</td><td>950,000</td><td>0.893</td><td>848,350</td></tr>
+            <tr><td>2</td><td>1,000,000</td><td>0.797</td><td>797,000</td></tr>
+            <tr><td>3</td><td>900,000</td><td>0.712</td><td>640,800</td></tr>
+            <tr><td>4</td><td>850,000</td><td>0.636</td><td>540,600</td></tr>
+            <tr><td>5</td><td>700,000 + 320,000</td><td>0.567</td><td>578,340</td></tr>
+            <tr><td colspan="3"><strong>NPV</strong></td><td><strong>£1,205,090</strong></td></tr>
+        </table>
+
+        <p><strong>Recommendation:</strong> Both projects have positive NPV. WindPower (£1,205,090) has higher NPV than SolarMax (£939,800). <strong>Accept WindPower.</strong></p>
+
+        <h4>Part (c) - Accounting Rate of Return (6 marks)</h4>
+        <p><strong>Project SolarMax:</strong></p>
+        <div class="formula">
+            Annual Depreciation = (3,600,000 - 400,000) / 5 = £640,000<br>
+            Total Cash Flows = 650,000 + 1,100,000 + 1,250,000 + 850,000 + 750,000 = £4,600,000<br>
+            Total Accounting Profit = 4,600,000 - (5 × 640,000) = £1,400,000<br>
+            Average Annual Profit = 1,400,000 / 5 = £280,000<br>
+            Average Investment = (3,600,000 + 400,000) / 2 = £2,000,000<br>
+            <strong>ARR = 280,000 / 2,000,000 = 14%</strong>
+        </div>
+
+        <p><strong>Project WindPower:</strong></p>
+        <div class="formula">
+            Annual Depreciation = (3,200,000 - 320,000) / 5 = £576,000<br>
+            Total Cash Flows = 950,000 + 1,000,000 + 900,000 + 850,000 + 700,000 = £4,400,000<br>
+            Total Accounting Profit = 4,400,000 - (5 × 576,000) = £1,520,000<br>
+            Average Annual Profit = 1,520,000 / 5 = £304,000<br>
+            Average Investment = (3,200,000 + 320,000) / 2 = £1,760,000<br>
+            <strong>ARR = 304,000 / 1,760,000 = 17.27%</strong>
+        </div>
+
+        <p><strong>WindPower has higher ARR (17.27% vs 14%).</strong></p>
+
+        <h4>Part (d) - Conflicting Recommendations (8 marks)</h4>
+        <p><strong>Why methods may conflict:</strong></p>
+        <ol>
+            <li><strong>Time value of money:</strong> Payback and ARR ignore the time value of money, while NPV incorporates discounting. This can lead to different rankings.</li>
+            <li><strong>Cash flows vs accounting profits:</strong> NPV and Payback use cash flows; ARR uses accounting profits (after depreciation). Different bases produce different results.</li>
+            <li><strong>Project scale:</strong> Smaller projects may have faster payback but lower absolute returns. NPV favours projects that add more value regardless of speed.</li>
+            <li><strong>Cash flow timing:</strong> Payback favours early cash flows; NPV considers the entire project life. A project with slower early returns but higher later returns may rank differently.</li>
+        </ol>
+        <p><strong>Resolution:</strong> NPV should be the primary criterion as it directly measures shareholder wealth creation. Payback can be used as a secondary liquidity/risk measure. ARR should be used cautiously due to its reliance on accounting figures rather than cash flows.</p>
+    </div>
+</div>
+
+<!-- SECTION B -->
+<div class="section-header">SECTION B - ANSWER ANY TWO QUESTIONS (15 Marks Each)</div>
+
+<div class="question">
+    <h3>Question 2 - Time Value of Money & Bonds</h3>
+
+    <p>Atlantic Industries Plc is considering raising capital through a bond issue. The company plans to issue 50,000 bonds, each with a face value of £1,000, a coupon rate of 6% paid annually, and a maturity of 8 years. The current market yield for similar bonds is 7.5%.</p>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the current market price of one bond. <span class="marks">(5 marks)</span></li>
+        <li>Calculate the total amount of capital the company will raise from the bond issue. <span class="marks">(2 marks)</span></li>
+        <li>Explain the relationship between coupon rate, yield to maturity, and bond price. Include in your answer why this bond is trading at a premium or discount. <span class="marks">(4 marks)</span></li>
+        <li>An investor is considering a zero-coupon bond with a face value of £1,000, maturing in 10 years, currently priced at £558. Calculate the yield to maturity of this bond. <span class="marks">(4 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 2</h4>
+
+        <h4>Part (a) - Bond Price (5 marks)</h4>
+        <div class="formula">
+            Annual Coupon = £1,000 × 6% = £60<br><br>
+            Bond Price = PV of coupons + PV of face value<br>
+            = 60 × PVIFA(7.5%, 8) + 1,000 × PVIF(7.5%, 8)<br><br>
+            PVIFA(7.5%, 8) = [1 - (1.075)^-8] / 0.075 = 5.8573<br>
+            PVIF(7.5%, 8) = 1 / (1.075)^8 = 0.5607<br><br>
+            Bond Price = 60 × 5.8573 + 1,000 × 0.5607<br>
+            = 351.44 + 560.70<br>
+            <strong>= £912.14</strong>
+        </div>
+
+        <h4>Part (b) - Total Capital Raised (2 marks)</h4>
+        <div class="formula">
+            Total Capital = 50,000 bonds × £912.14<br>
+            <strong>= £45,607,000</strong>
+        </div>
+
+        <h4>Part (c) - Relationship Explanation (4 marks)</h4>
+        <p>The relationship between coupon rate, YTM, and bond price:</p>
+        <ul>
+            <li>When <strong>coupon rate &gt; YTM</strong>: Bond trades at a <strong>premium</strong> (above face value)</li>
+            <li>When <strong>coupon rate &lt; YTM</strong>: Bond trades at a <strong>discount</strong> (below face value)</li>
+            <li>When <strong>coupon rate = YTM</strong>: Bond trades at <strong>par</strong> (face value)</li>
+        </ul>
+        <p>In this case, the coupon rate (6%) is less than the YTM (7.5%), so the bond trades at a <strong>discount</strong> (£912.14 &lt; £1,000). Investors require higher returns than the coupon provides, so they pay less than face value to achieve the market yield.</p>
+
+        <h4>Part (d) - Zero-Coupon Bond YTM (4 marks)</h4>
+        <div class="formula">
+            For zero-coupon bonds: Price = Face Value / (1 + YTM)^n<br><br>
+            558 = 1,000 / (1 + YTM)^10<br>
+            (1 + YTM)^10 = 1,000 / 558 = 1.7921<br>
+            1 + YTM = (1.7921)^(1/10) = 1.0600<br>
+            <strong>YTM = 6.00%</strong>
+        </div>
+    </div>
+</div>
+
+<div class="question">
+    <h3>Question 3 - Risk, Return & CAPM</h3>
+
+    <p>You are a portfolio manager at Meridian Capital. A client is considering investing in two stocks: TechGrowth Inc. and StableDiv Corp. Historical data shows:</p>
+
+    <table>
+        <tr>
+            <th>Stock</th>
+            <th>Expected Return</th>
+            <th>Standard Deviation</th>
+            <th>Beta</th>
+        </tr>
+        <tr>
+            <td>TechGrowth Inc.</td>
+            <td>18%</td>
+            <td>35%</td>
+            <td>1.6</td>
+        </tr>
+        <tr>
+            <td>StableDiv Corp.</td>
+            <td>10%</td>
+            <td>15%</td>
+            <td>0.7</td>
+        </tr>
+    </table>
+
+    <p>The current risk-free rate is 4% and the expected market return is 11%.</p>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Using the Capital Asset Pricing Model (CAPM), calculate the required return for each stock. <span class="marks">(4 marks)</span></li>
+        <li>Based on your calculations in (a), determine whether each stock is overvalued, undervalued, or fairly valued. Explain your reasoning. <span class="marks">(4 marks)</span></li>
+        <li>Explain the difference between systematic and unsystematic risk. Why is only systematic risk rewarded in the market? <span class="marks">(4 marks)</span></li>
+        <li>Discuss one limitation of using beta as a measure of risk. <span class="marks">(3 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 3</h4>
+
+        <h4>Part (a) - CAPM Required Returns (4 marks)</h4>
+        <div class="formula">
+            CAPM: r = Rf + β(Rm - Rf)<br><br>
+            <strong>TechGrowth Inc.:</strong><br>
+            r = 4% + 1.6 × (11% - 4%)<br>
+            r = 4% + 1.6 × 7%<br>
+            r = 4% + 11.2%<br>
+            <strong>Required Return = 15.2%</strong><br><br>
+            <strong>StableDiv Corp.:</strong><br>
+            r = 4% + 0.7 × (11% - 4%)<br>
+            r = 4% + 0.7 × 7%<br>
+            r = 4% + 4.9%<br>
+            <strong>Required Return = 8.9%</strong>
+        </div>
+
+        <h4>Part (b) - Valuation Analysis (4 marks)</h4>
+        <p><strong>TechGrowth Inc.:</strong></p>
+        <ul>
+            <li>Expected Return: 18%</li>
+            <li>Required Return (CAPM): 15.2%</li>
+            <li>Since Expected &gt; Required, the stock is <strong>UNDERVALUED</strong> (good buy)</li>
+        </ul>
+
+        <p><strong>StableDiv Corp.:</strong></p>
+        <ul>
+            <li>Expected Return: 10%</li>
+            <li>Required Return (CAPM): 8.9%</li>
+            <li>Since Expected &gt; Required, the stock is <strong>UNDERVALUED</strong> (good buy)</li>
+        </ul>
+        <p>Both stocks offer returns above what CAPM suggests is fair compensation for their risk levels, making them attractive investments.</p>
+
+        <h4>Part (c) - Systematic vs Unsystematic Risk (4 marks)</h4>
+        <p><strong>Systematic Risk:</strong> Market-wide risk that affects all securities (e.g., interest rate changes, inflation, recessions, geopolitical events). Cannot be eliminated through diversification. Measured by beta.</p>
+
+        <p><strong>Unsystematic Risk:</strong> Company-specific or industry-specific risk (e.g., management changes, product failures, labor strikes). Can be reduced or eliminated through diversification.</p>
+
+        <p><strong>Why only systematic risk is rewarded:</strong> In efficient markets, investors are assumed to hold diversified portfolios that eliminate unsystematic risk. Since unsystematic risk can be "diversified away" at no cost, the market does not compensate investors for bearing it. Only systematic risk, which cannot be avoided, commands a risk premium.</p>
+
+        <h4>Part (d) - Limitation of Beta (3 marks)</h4>
+        <p><strong>Historical nature:</strong> Beta is calculated using historical data, which assumes past relationships between the stock and market will continue. However, companies change over time (new products, acquisitions, industry shifts), so historical beta may not accurately predict future risk.</p>
+        <p><strong>Alternative answers accepted:</strong> Beta assumes linear relationship; ignores other risk factors; sensitive to measurement period; assumes market portfolio is observable.</p>
+    </div>
+</div>
+
+<div class="question">
+    <h3>Question 4 - Capital Structure & Dividend Policy</h3>
+
+    <p>Phoenix Manufacturing Ltd is reviewing its capital structure and dividend policy. The company currently has:</p>
+    <ul>
+        <li>2 million ordinary shares trading at £12 per share</li>
+        <li>The most recent dividend was £0.80 per share, with expected constant growth of 5% per annum</li>
+        <li>£10 million in corporate bonds with a coupon rate of 8% and current yield of 6%</li>
+        <li>Corporate tax rate: 25%</li>
+    </ul>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the company's Weighted Average Cost of Capital (WACC). <span class="marks">(6 marks)</span></li>
+        <li>Explain the Modigliani and Miller dividend irrelevance theory and state TWO assumptions that must hold for this theory to apply. <span class="marks">(5 marks)</span></li>
+        <li>Discuss TWO reasons why, in practice, dividend policy may matter to shareholders. <span class="marks">(4 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 4</h4>
+
+        <h4>Part (a) - WACC Calculation (6 marks)</h4>
+        <div class="formula">
+            <strong>Step 1: Market Values</strong><br>
+            Market Value of Equity (E) = 2,000,000 × £12 = £24,000,000<br>
+            Market Value of Debt (D) = £10,000,000<br>
+            Total Value (V) = £24,000,000 + £10,000,000 = £34,000,000<br><br>
+
+            <strong>Step 2: Weights</strong><br>
+            Weight of Equity (E/V) = 24,000,000 / 34,000,000 = 0.7059 (70.59%)<br>
+            Weight of Debt (D/V) = 10,000,000 / 34,000,000 = 0.2941 (29.41%)<br><br>
+
+            <strong>Step 3: Cost of Equity (Dividend Growth Model)</strong><br>
+            D1 = D0 × (1 + g) = £0.80 × 1.05 = £0.84<br>
+            Ke = (D1 / P0) + g = (0.84 / 12) + 0.05 = 0.07 + 0.05 = 12%<br><br>
+
+            <strong>Step 4: After-tax Cost of Debt</strong><br>
+            Kd(1-T) = 6% × (1 - 0.25) = 4.5%<br><br>
+
+            <strong>Step 5: WACC</strong><br>
+            WACC = (E/V × Ke) + (D/V × Kd(1-T))<br>
+            WACC = (0.7059 × 12%) + (0.2941 × 4.5%)<br>
+            WACC = 8.47% + 1.32%<br>
+            <strong>WACC = 9.79%</strong>
+        </div>
+
+        <h4>Part (b) - M&M Dividend Irrelevance (5 marks)</h4>
+        <p><strong>Theory:</strong> Modigliani and Miller (1961) argue that in perfect capital markets, dividend policy is irrelevant to firm value. The value of a company depends solely on its investment decisions and earning power, not on how it distributes profits. Shareholders can create "homemade dividends" by selling shares if they want income, or reinvest dividends if they prefer capital gains.</p>
+
+        <p><strong>Key Assumptions (any 2):</strong></p>
+        <ul>
+            <li>No taxes (or equal taxation of dividends and capital gains)</li>
+            <li>No transaction costs</li>
+            <li>No flotation costs for new share issues</li>
+            <li>Perfect capital markets with symmetric information</li>
+            <li>Rational investors</li>
+            <li>No agency costs</li>
+        </ul>
+
+        <h4>Part (c) - Why Dividend Policy Matters (4 marks)</h4>
+        <p><strong>Reason 1 - Signalling Effect:</strong> Dividends convey information about management's confidence in future earnings. A dividend increase signals strong future prospects, while a cut may indicate financial difficulties. Since managers have better information than investors (information asymmetry), dividend changes affect share prices.</p>
+
+        <p><strong>Reason 2 - Tax Clientele Effect:</strong> Different investors have different tax preferences. Some investors (e.g., pension funds, tax-exempt institutions) prefer dividends, while others prefer capital gains due to lower tax rates or deferral. Companies attract investors whose preferences match their dividend policy.</p>
+
+        <p><strong>Alternative answers accepted:</strong> Bird-in-hand theory (certainty of dividends vs uncertain capital gains); agency costs (dividends reduce free cash flow that managers might waste); liquidity preferences.</p>
+    </div>
+</div>
+
+<!-- FORMULA SHEET -->
+<div class="formula-sheet">
+    <h3>FORMULA SHEET</h3>
+
+    <p><strong>Compound Interest:</strong> FV = PV × (1 + r)^n</p>
+    <p><strong>Present Value:</strong> PV = FV / (1 + r)^n</p>
+    <p><strong>Present Value of Annuity:</strong> PVA = PMT × [(1 - (1 + r)^-n) / r]</p>
+    <p><strong>Present Value of Perpetuity:</strong> PV = PMT / r</p>
+    <p><strong>Growing Perpetuity:</strong> PV = D1 / (r - g)</p>
+    <p><strong>Cost of Equity (DGM):</strong> Ke = (D1 / P0) + g</p>
+    <p><strong>CAPM:</strong> r = Rf + β(Rm - Rf)</p>
+    <p><strong>WACC:</strong> WACC = (E/V × Ke) + (D/V × Kd(1-T))</p>
+    <p><strong>Bond Price:</strong> P = Σ[C / (1+r)^t] + [FV / (1+r)^n]</p>
+    <p><strong>ARR:</strong> ARR = Average Annual Profit / Average Investment</p>
+    <p><strong>NPV:</strong> NPV = Σ[CFt / (1+r)^t] - Initial Investment</p>
+    <p><strong>Payback Period:</strong> Years before full recovery + (Unrecovered cost at start of year / Cash flow during year)</p>
+
+    <h4>Present Value Factors Table (Selected Values)</h4>
+    <table class="pv-table">
+        <tr>
+            <th>Year</th><th>7%</th><th>7.5%</th><th>8%</th><th>10%</th><th>12%</th><th>15%</th>
+        </tr>
+        <tr><td>1</td><td>0.935</td><td>0.930</td><td>0.926</td><td>0.909</td><td>0.893</td><td>0.870</td></tr>
+        <tr><td>2</td><td>0.873</td><td>0.865</td><td>0.857</td><td>0.826</td><td>0.797</td><td>0.756</td></tr>
+        <tr><td>3</td><td>0.816</td><td>0.805</td><td>0.794</td><td>0.751</td><td>0.712</td><td>0.658</td></tr>
+        <tr><td>4</td><td>0.763</td><td>0.749</td><td>0.735</td><td>0.683</td><td>0.636</td><td>0.572</td></tr>
+        <tr><td>5</td><td>0.713</td><td>0.697</td><td>0.681</td><td>0.621</td><td>0.567</td><td>0.497</td></tr>
+        <tr><td>6</td><td>0.666</td><td>0.648</td><td>0.630</td><td>0.564</td><td>0.507</td><td>0.432</td></tr>
+        <tr><td>7</td><td>0.623</td><td>0.603</td><td>0.583</td><td>0.513</td><td>0.452</td><td>0.376</td></tr>
+        <tr><td>8</td><td>0.582</td><td>0.561</td><td>0.540</td><td>0.467</td><td>0.404</td><td>0.327</td></tr>
+        <tr><td>9</td><td>0.544</td><td>0.522</td><td>0.500</td><td>0.424</td><td>0.361</td><td>0.284</td></tr>
+        <tr><td>10</td><td>0.508</td><td>0.485</td><td>0.463</td><td>0.386</td><td>0.322</td><td>0.247</td></tr>
+    </table>
+</div>
+
+<div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #333;">
+    <strong>END OF EXAMINATION</strong><br>
+    <em>Total Marks: 60</em>
+</div>
+
+<script>
+    let answersVisible = false;
+
+    function toggleAnswers() {
+        answersVisible = !answersVisible;
+        const answers = document.querySelectorAll('.answer');
+        answers.forEach(answer => {
+            if (answersVisible) {
+                answer.classList.add('show');
+            } else {
+                answer.classList.remove('show');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

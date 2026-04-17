@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFDM Mock Test 5</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'EB Garamond', 'Times New Roman', serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #fafafa;
+            color: #222;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 { margin: 5px 0; font-size: 1.4em; }
+        .header p { margin: 3px 0; }
+        .exam-info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exam-info ul { margin: 10px 0; padding-left: 20px; }
+        .instructions {
+            background: #e8f4e8;
+            padding: 15px;
+            border-left: 4px solid #2a7a2a;
+            margin-bottom: 30px;
+        }
+        .section-header {
+            background: #333;
+            color: white;
+            padding: 10px 15px;
+            margin: 30px 0 20px 0;
+            font-weight: bold;
+        }
+        .question {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .question h3 { margin-top: 0; color: #1a1a6c; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #999; padding: 8px 12px; text-align: center; }
+        th { background: #e0e0e0; }
+        .marks { color: #666; font-style: italic; text-align: right; margin-top: 10px; }
+        .total-marks {
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: right;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+        }
+        .answer {
+            background: #fff8dc;
+            border: 2px solid #daa520;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .answer h4 { margin-top: 0; color: #8b4513; }
+        .answer.show { display: block; }
+        .formula {
+            background: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: 'Cambria Math', 'Times New Roman', serif;
+            border-left: 3px solid #666;
+        }
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .controls button {
+            background: #1a1a6c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        .controls button:hover { background: #2a2a8c; }
+        .pv-table { font-size: 0.85em; }
+        .pv-table th, .pv-table td { padding: 4px 6px; }
+        .formula-sheet {
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 30px;
+        }
+        .formula-sheet h3 { margin-top: 0; }
+        .key-point {
+            background: #e8f4e8;
+            border-left: 4px solid #2a7a2a;
+            padding: 10px 15px;
+            margin: 10px 0;
+        }
+        @media print {
+            .controls { display: none; }
+            .answer { display: block !important; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    <button onclick="toggleAnswers()">Show/Hide All Answers</button>
+</div>
+
+<div class="header">
+    <p>College of Business and Law</p>
+    <p>Bristol Business School</p>
+    <p>Academic year: 2025/26</p>
+    <h1>ACCOUNTING AND FINANCE FOR DECISION MAKING</h1>
+    <p>Module Code: UMET9G-30-1</p>
+    <p><strong>MOCK EXAMINATION 5</strong></p>
+</div>
+
+<div class="exam-info">
+    <p><strong>Duration:</strong> 2 Hours</p>
+    <p><strong>Total Marks:</strong> 60</p>
+    <ul>
+        <li>Section A: Answer Question 1 (Compulsory) - 30 marks</li>
+        <li>Section B: Answer ANY TWO questions - 15 marks each</li>
+    </ul>
+    <p><strong>Materials Provided:</strong> Formula Sheet, Present Value Tables</p>
+    <p><strong>Materials Required:</strong> Non-programmable calculator</p>
+</div>
+
+<div class="instructions">
+    <strong>Instructions to Students:</strong>
+    <ul>
+        <li>Include module name, number, and your student number on your answer sheet</li>
+        <li>Indicate clearly which questions you are answering</li>
+        <li>Avoid bullet points - write short essay-like answers</li>
+        <li>Present all workings where applicable</li>
+    </ul>
+</div>
+
+<!-- SECTION A -->
+<div class="section-header">SECTION A - COMPULSORY QUESTION (30 Marks)</div>
+
+<div class="question">
+    <h3>Question 1</h3>
+
+    <p>Horizon Pharmaceuticals Ltd is evaluating a new drug development project. The project requires an initial investment of £4.5 million and is expected to generate the following cash flows:</p>
+
+    <table>
+        <tr><th>Year</th><th>Cash Flow (£)</th></tr>
+        <tr><td>1</td><td>600,000</td></tr>
+        <tr><td>2</td><td>1,200,000</td></tr>
+        <tr><td>3</td><td>1,500,000</td></tr>
+        <tr><td>4</td><td>1,800,000</td></tr>
+        <tr><td>5</td><td>1,400,000</td></tr>
+    </table>
+
+    <p>The company has a cost of capital of 10% and uses a discounted payback benchmark of 4 years.</p>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the <strong>Net Present Value (NPV)</strong> of the project at 10%. <span class="marks">(6 Marks)</span></li>
+        <li>Calculate the <strong>Internal Rate of Return (IRR)</strong> of the project using linear interpolation. Use 10% and 15% as your trial rates. <span class="marks">(8 Marks)</span></li>
+        <li>Calculate the <strong>Discounted Payback Period</strong> of the project. Should the project be accepted based on this criterion? <span class="marks">(8 Marks)</span></li>
+        <li>Critically discuss TWO limitations of using IRR as an investment appraisal method. <span class="marks">(4 Marks)</span></li>
+        <li>Explain why NPV and IRR may give different rankings for mutually exclusive projects. <span class="marks">(4 Marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 30 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 1</h4>
+
+        <h4>Part (a) - NPV at 10% (6 marks)</h4>
+        <table>
+            <tr><th>Year</th><th>Cash Flow (£)</th><th>PV Factor @10%</th><th>Present Value (£)</th></tr>
+            <tr><td>0</td><td>-4,500,000</td><td>1.000</td><td>-4,500,000</td></tr>
+            <tr><td>1</td><td>600,000</td><td>0.909</td><td>545,400</td></tr>
+            <tr><td>2</td><td>1,200,000</td><td>0.826</td><td>991,200</td></tr>
+            <tr><td>3</td><td>1,500,000</td><td>0.751</td><td>1,126,500</td></tr>
+            <tr><td>4</td><td>1,800,000</td><td>0.683</td><td>1,229,400</td></tr>
+            <tr><td>5</td><td>1,400,000</td><td>0.621</td><td>869,400</td></tr>
+            <tr><td colspan="3"><strong>NPV</strong></td><td><strong>£261,900</strong></td></tr>
+        </table>
+
+        <h4>Part (b) - IRR Calculation (8 marks)</h4>
+        <div class="formula">
+            <strong>NPV at 10% = £261,900</strong> (calculated above, positive)<br><br>
+
+            <strong>NPV at 15%:</strong>
+        </div>
+        <table>
+            <tr><th>Year</th><th>Cash Flow (£)</th><th>PV Factor @15%</th><th>Present Value (£)</th></tr>
+            <tr><td>0</td><td>-4,500,000</td><td>1.000</td><td>-4,500,000</td></tr>
+            <tr><td>1</td><td>600,000</td><td>0.870</td><td>522,000</td></tr>
+            <tr><td>2</td><td>1,200,000</td><td>0.756</td><td>907,200</td></tr>
+            <tr><td>3</td><td>1,500,000</td><td>0.658</td><td>987,000</td></tr>
+            <tr><td>4</td><td>1,800,000</td><td>0.572</td><td>1,029,600</td></tr>
+            <tr><td>5</td><td>1,400,000</td><td>0.497</td><td>695,800</td></tr>
+            <tr><td colspan="3"><strong>NPV at 15%</strong></td><td><strong>-£358,400</strong></td></tr>
+        </table>
+
+        <div class="formula">
+            <strong>Linear Interpolation:</strong><br>
+            IRR = Lower Rate + [NPV at Lower Rate / (NPV at Lower - NPV at Higher)] × (Higher Rate - Lower Rate)<br><br>
+
+            IRR = 10% + [261,900 / (261,900 - (-358,400))] × (15% - 10%)<br>
+            IRR = 10% + [261,900 / 620,300] × 5%<br>
+            IRR = 10% + 0.4222 × 5%<br>
+            IRR = 10% + 2.11%<br>
+            <strong>IRR = 12.11%</strong>
+        </div>
+        <div class="key-point">
+            Since IRR (12.11%) > Cost of Capital (10%), the project is acceptable.
+        </div>
+
+        <h4>Part (c) - Discounted Payback Period (8 marks)</h4>
+        <table>
+            <tr><th>Year</th><th>Cash Flow (£)</th><th>PV Factor @10%</th><th>Discounted CF (£)</th><th>Cumulative DCF (£)</th></tr>
+            <tr><td>0</td><td>-4,500,000</td><td>1.000</td><td>-4,500,000</td><td>-4,500,000</td></tr>
+            <tr><td>1</td><td>600,000</td><td>0.909</td><td>545,400</td><td>-3,954,600</td></tr>
+            <tr><td>2</td><td>1,200,000</td><td>0.826</td><td>991,200</td><td>-2,963,400</td></tr>
+            <tr><td>3</td><td>1,500,000</td><td>0.751</td><td>1,126,500</td><td>-1,836,900</td></tr>
+            <tr><td>4</td><td>1,800,000</td><td>0.683</td><td>1,229,400</td><td>-607,500</td></tr>
+            <tr><td>5</td><td>1,400,000</td><td>0.621</td><td>869,400</td><td>+261,900</td></tr>
+        </table>
+
+        <div class="formula">
+            Discounted Payback = 4 + (607,500 / 869,400)<br>
+            Discounted Payback = 4 + 0.70<br>
+            <strong>Discounted Payback = 4.70 years</strong>
+        </div>
+        <div class="key-point">
+            <strong>Decision:</strong> The discounted payback (4.70 years) exceeds the benchmark (4 years). Based on this criterion alone, the project would be <strong>REJECTED</strong>. However, since NPV is positive, the project should still be considered.
+        </div>
+
+        <h4>Part (d) - Limitations of IRR (4 marks)</h4>
+        <p><strong>Limitation 1 - Reinvestment Rate Assumption:</strong></p>
+        <p>IRR assumes that all intermediate cash flows are reinvested at the IRR itself. This is often unrealistic, especially for projects with very high IRRs. NPV more realistically assumes reinvestment at the cost of capital.</p>
+
+        <p><strong>Limitation 2 - Multiple IRRs:</strong></p>
+        <p>Projects with non-conventional cash flows (multiple sign changes) can have multiple IRRs or no real IRR, making interpretation difficult or impossible. This occurs when cash flows switch between positive and negative multiple times during the project life.</p>
+
+        <p><em>Other valid limitations: Does not consider project scale; may conflict with NPV for mutually exclusive projects; assumes flat yield curve.</em></p>
+
+        <h4>Part (e) - NPV vs IRR Ranking Conflicts (4 marks)</h4>
+        <p>NPV and IRR may give different rankings for mutually exclusive projects due to:</p>
+
+        <p><strong>1. Scale differences:</strong> A smaller project may have a higher IRR but a lower NPV than a larger project. IRR measures percentage return while NPV measures absolute value creation.</p>
+
+        <p><strong>2. Timing of cash flows:</strong> Projects with early cash flows are favoured by IRR (due to the reinvestment assumption), while NPV evaluates all cash flows at the cost of capital. This can cause different rankings when comparing projects with different cash flow patterns.</p>
+
+        <p><strong>Resolution:</strong> When conflicts occur, NPV should be preferred as it directly measures shareholder wealth creation.</p>
+    </div>
+</div>
+
+<!-- SECTION B -->
+<div class="section-header">SECTION B - ANSWER ANY TWO QUESTIONS (15 Marks Each)</div>
+
+<div class="question">
+    <h3>Question 2 - Bonds and Debt Financing</h3>
+
+    <p>Oceanic Industries Plc has two bonds currently trading in the market:</p>
+
+    <p><strong>Bond A:</strong> 8% annual coupon bond, face value £1,000, 5 years to maturity, currently priced at £1,042.</p>
+
+    <p><strong>Bond B:</strong> 6% semi-annual coupon bond, face value £1,000, 8 years to maturity, currently priced at £925.</p>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>For Bond A, calculate the <strong>current yield</strong> and explain whether the bond is trading at a premium or discount and why. <span class="marks">(3 marks)</span></li>
+        <li>For Bond B, calculate the <strong>bond price</strong> if the yield to maturity is 7% per annum (compounded semi-annually). <span class="marks">(5 marks)</span></li>
+        <li>Explain the relationship between bond prices and interest rates. What happens to bond prices when market interest rates rise? <span class="marks">(3 marks)</span></li>
+        <li>Discuss TWO factors that affect the credit risk of a corporate bond. <span class="marks">(4 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 2</h4>
+
+        <h4>Part (a) - Current Yield and Premium/Discount (3 marks)</h4>
+        <div class="formula">
+            <strong>Current Yield:</strong><br>
+            Current Yield = Annual Coupon / Current Price<br>
+            = (£1,000 × 8%) / £1,042<br>
+            = £80 / £1,042<br>
+            <strong>= 7.68%</strong>
+        </div>
+
+        <p><strong>Premium or Discount:</strong></p>
+        <p>Bond A is trading at a <strong>PREMIUM</strong> (£1,042 > £1,000 face value).</p>
+        <p><strong>Reason:</strong> The coupon rate (8%) is higher than the current market yield (7.68%). Investors are willing to pay more than face value because the bond offers higher coupon payments than currently available market rates. The premium compensates for the higher-than-market interest payments.</p>
+
+        <h4>Part (b) - Semi-Annual Bond Price (5 marks)</h4>
+        <div class="formula">
+            <strong>Adjustments for Semi-Annual:</strong><br>
+            Annual coupon rate = 6%, so semi-annual coupon = 6% / 2 = 3%<br>
+            Semi-annual coupon payment = £1,000 × 3% = <strong>£30</strong><br>
+            Annual YTM = 7%, so semi-annual YTM = 7% / 2 = <strong>3.5%</strong><br>
+            Number of periods = 8 years × 2 = <strong>16 periods</strong><br><br>
+
+            <strong>Bond Price Calculation:</strong><br>
+            P = C × PVIFA(r,n) + FV × PVIF(r,n)<br><br>
+
+            PVIFA(3.5%, 16) = [1 - (1.035)^-16] / 0.035<br>
+            = [1 - 0.5767] / 0.035 = 0.4233 / 0.035 = <strong>12.094</strong><br><br>
+
+            PVIF(3.5%, 16) = 1 / (1.035)^16 = <strong>0.5767</strong><br><br>
+
+            P = 30 × 12.094 + 1,000 × 0.5767<br>
+            P = 362.82 + 576.70<br>
+            <strong>P = £939.52</strong>
+        </div>
+
+        <h4>Part (c) - Bond Prices and Interest Rates (3 marks)</h4>
+        <p>Bond prices and interest rates have an <strong>inverse relationship</strong>:</p>
+        <ul>
+            <li>When market interest rates <strong>RISE</strong>, bond prices <strong>FALL</strong></li>
+            <li>When market interest rates <strong>FALL</strong>, bond prices <strong>RISE</strong></li>
+        </ul>
+        <p><strong>Explanation:</strong> When market rates rise, newly issued bonds offer higher coupon payments. Existing bonds with lower fixed coupons become less attractive, so their prices must fall to offer competitive yields. Conversely, when rates fall, existing bonds with higher fixed coupons become more valuable.</p>
+
+        <h4>Part (d) - Factors Affecting Credit Risk (4 marks)</h4>
+        <p><strong>Factor 1 - Company's Financial Health:</strong></p>
+        <p>The issuing company's profitability, cash flow stability, and debt levels affect its ability to make interest and principal payments. Key metrics include interest coverage ratio, debt-to-equity ratio, and operating cash flows. Companies with weak financials have higher default risk and thus higher credit risk.</p>
+
+        <p><strong>Factor 2 - Industry and Economic Conditions:</strong></p>
+        <p>Companies in cyclical industries (e.g., construction, automotive) face higher credit risk during economic downturns. Recession increases default probability across many sectors. The overall economic environment directly impacts a company's revenue and ability to service debt.</p>
+
+        <p><em>Other valid factors: Company size/diversification; quality of management; existing debt covenants; collateral/security; credit rating history.</em></p>
+    </div>
+</div>
+
+<div class="question">
+    <h3>Question 3 - Efficient Market Hypothesis and Stock Returns</h3>
+
+    <p>You are a newly qualified financial analyst at a wealth management firm. A client has asked for your opinion on whether it is possible to consistently "beat the market" through active stock picking.</p>
+
+    <p>The following data shows monthly returns for two stocks over the past year:</p>
+
+    <table>
+        <tr>
+            <th>Month</th><th>Stock X Return (%)</th><th>Stock Y Return (%)</th>
+        </tr>
+        <tr><td>1</td><td>4</td><td>2</td></tr>
+        <tr><td>2</td><td>-2</td><td>1</td></tr>
+        <tr><td>3</td><td>6</td><td>3</td></tr>
+        <tr><td>4</td><td>-4</td><td>-1</td></tr>
+        <tr><td>5</td><td>8</td><td>4</td></tr>
+        <tr><td>6</td><td>2</td><td>2</td></tr>
+    </table>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the <strong>average return</strong> and <strong>variance</strong> for Stock X. <span class="marks">(4 marks)</span></li>
+        <li>Explain the <strong>three forms of market efficiency</strong> according to the Efficient Market Hypothesis (EMH). <span class="marks">(6 marks)</span></li>
+        <li>Discuss the implications of market efficiency for investors who try to beat the market through <strong>technical analysis</strong> and <strong>fundamental analysis</strong>. <span class="marks">(5 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 3</h4>
+
+        <h4>Part (a) - Average Return and Variance for Stock X (4 marks)</h4>
+        <div class="formula">
+            <strong>Average Return:</strong><br>
+            Mean = Σ Returns / n<br>
+            = (4 + (-2) + 6 + (-4) + 8 + 2) / 6<br>
+            = 14 / 6<br>
+            <strong>Average Return = 2.33%</strong><br><br>
+
+            <strong>Variance (Sample):</strong><br>
+            Variance = Σ(Ri - R̄)² / (n - 1)<br><br>
+
+            Deviations from mean:<br>
+            (4 - 2.33)² = (1.67)² = 2.79<br>
+            (-2 - 2.33)² = (-4.33)² = 18.75<br>
+            (6 - 2.33)² = (3.67)² = 13.47<br>
+            (-4 - 2.33)² = (-6.33)² = 40.07<br>
+            (8 - 2.33)² = (5.67)² = 32.15<br>
+            (2 - 2.33)² = (-0.33)² = 0.11<br><br>
+
+            Sum of squared deviations = 107.34<br>
+            Variance = 107.34 / (6 - 1) = 107.34 / 5<br>
+            <strong>Variance = 21.47 (%)²</strong><br><br>
+
+            <em>Standard Deviation = √21.47 = 4.63%</em>
+        </div>
+
+        <h4>Part (b) - Three Forms of Market Efficiency (6 marks)</h4>
+        <p><strong>1. Weak-Form Efficiency:</strong></p>
+        <p>Share prices reflect all past price and trading volume information. Historical data is already incorporated into current prices. Implication: Technical analysis (studying charts and patterns) cannot consistently generate abnormal returns because past price movements do not predict future movements.</p>
+
+        <p><strong>2. Semi-Strong Form Efficiency:</strong></p>
+        <p>Share prices reflect all publicly available information, including financial statements, news announcements, economic data, and analyst reports. Prices adjust rapidly when new public information is released. Implication: Fundamental analysis cannot consistently beat the market because all public information is already reflected in prices.</p>
+
+        <p><strong>3. Strong-Form Efficiency:</strong></p>
+        <p>Share prices reflect ALL information, both public and private (insider information). Even corporate insiders cannot consistently earn abnormal returns. Implication: No investor can beat the market, even with access to privileged information. This form is generally considered too extreme; insider trading laws exist because insiders can exploit private information.</p>
+
+        <h4>Part (c) - Implications for Active Investors (5 marks)</h4>
+        <p><strong>Implications for Technical Analysis:</strong></p>
+        <p>If markets are at least weak-form efficient, technical analysis is futile. Chart patterns, moving averages, and trading signals based on historical prices cannot predict future returns because all past information is already reflected in current prices. Technical traders would, on average, earn only normal returns minus transaction costs.</p>
+
+        <p><strong>Implications for Fundamental Analysis:</strong></p>
+        <p>If markets are semi-strong form efficient, fundamental analysis (analyzing financial statements, valuation ratios, competitive position) cannot consistently generate abnormal returns. By the time an analyst identifies an "undervalued" stock, the information is likely already priced in. The analyst's research costs would reduce returns below market average.</p>
+
+        <p><strong>Overall Implication:</strong></p>
+        <p>If EMH holds, investors should consider passive investment strategies (index funds) rather than paying high fees for active management. However, markets may not be perfectly efficient - behavioral biases, information processing costs, and market frictions may create opportunities for skilled investors, though these are difficult to exploit consistently after costs.</p>
+    </div>
+</div>
+
+<div class="question">
+    <h3>Question 4 - Dividend Policy and Share Valuation</h3>
+
+    <p>Crystal Technologies Plc is a mature technology company considering changes to its dividend policy. The company currently has:</p>
+    <ul>
+        <li>Net income of £50 million</li>
+        <li>20 million shares outstanding</li>
+        <li>Current share price of £15</li>
+        <li>Current dividend payout ratio of 40%</li>
+    </ul>
+
+    <p>The board is debating whether to increase the payout ratio to 60% or use the extra funds for a share buyback program.</p>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the current <strong>dividend per share (DPS)</strong> and the <strong>dividend yield</strong>. <span class="marks">(3 marks)</span></li>
+        <li>If the company increases the payout ratio to 60%, calculate the <strong>new DPS</strong>. If retained earnings are expected to grow at 8% and the required return is 12%, calculate the <strong>share value</strong> using the dividend growth model. State any assumptions. <span class="marks">(5 marks)</span></li>
+        <li>As an alternative to dividends, explain how a <strong>share buyback</strong> returns value to shareholders. What are TWO advantages of buybacks over dividends? <span class="marks">(4 marks)</span></li>
+        <li>Explain the <strong>signalling effect</strong> of dividend changes and why managers are often reluctant to cut dividends. <span class="marks">(3 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 4</h4>
+
+        <h4>Part (a) - Current DPS and Dividend Yield (3 marks)</h4>
+        <div class="formula">
+            <strong>Earnings Per Share (EPS):</strong><br>
+            EPS = Net Income / Shares Outstanding<br>
+            = £50,000,000 / 20,000,000<br>
+            <strong>= £2.50 per share</strong><br><br>
+
+            <strong>Current Dividend Per Share:</strong><br>
+            DPS = EPS × Payout Ratio<br>
+            = £2.50 × 40%<br>
+            <strong>= £1.00 per share</strong><br><br>
+
+            <strong>Dividend Yield:</strong><br>
+            Dividend Yield = DPS / Share Price<br>
+            = £1.00 / £15.00<br>
+            <strong>= 6.67%</strong>
+        </div>
+
+        <h4>Part (b) - New DPS and Share Valuation (5 marks)</h4>
+        <div class="formula">
+            <strong>New DPS at 60% payout:</strong><br>
+            New DPS = EPS × 60%<br>
+            = £2.50 × 60%<br>
+            <strong>= £1.50 per share</strong><br><br>
+
+            <strong>Gordon Growth Model:</strong><br>
+            P0 = D1 / (r - g)<br><br>
+
+            Where:<br>
+            D0 = £1.50 (new dividend)<br>
+            g = 8% (growth rate)<br>
+            r = 12% (required return)<br><br>
+
+            D1 = D0 × (1 + g) = £1.50 × 1.08 = <strong>£1.62</strong><br><br>
+
+            P0 = £1.62 / (0.12 - 0.08)<br>
+            = £1.62 / 0.04<br>
+            <strong>P0 = £40.50</strong>
+        </div>
+
+        <p><strong>Assumptions:</strong></p>
+        <ul>
+            <li>Dividends grow at a constant rate indefinitely</li>
+            <li>Required return (r) is greater than growth rate (g)</li>
+            <li>The growth rate remains sustainable with the new payout ratio</li>
+        </ul>
+
+        <h4>Part (c) - Share Buybacks (4 marks)</h4>
+        <p><strong>How buybacks return value:</strong></p>
+        <p>In a share buyback, the company uses cash to repurchase its own shares from the market. This reduces the number of shares outstanding, which increases earnings per share (EPS) and often the share price. Shareholders who sell receive cash directly; those who don't sell own a larger percentage of the company.</p>
+
+        <p><strong>Advantage 1 - Tax Efficiency:</strong></p>
+        <p>In many jurisdictions, capital gains (from share price appreciation following buybacks) are taxed at lower rates than dividend income, or can be deferred until shares are sold. This makes buybacks more tax-efficient for shareholders.</p>
+
+        <p><strong>Advantage 2 - Flexibility:</strong></p>
+        <p>Buybacks are not a commitment like dividends. Companies can adjust or suspend buyback programs without the negative signal associated with dividend cuts. This provides flexibility to respond to changing business conditions or investment opportunities.</p>
+
+        <p><em>Other valid advantages: Signal that management believes shares are undervalued; offset dilution from stock options; shareholders can choose whether to participate.</em></p>
+
+        <h4>Part (d) - Signalling Effect and Reluctance to Cut (3 marks)</h4>
+        <p><strong>Signalling Effect:</strong></p>
+        <p>Dividend changes convey information about management's view of the company's future prospects. Managers have superior information (information asymmetry). A dividend increase signals management's confidence in sustainable future earnings. A dividend cut signals potential financial difficulties or reduced future cash flows. Markets typically react positively to increases and negatively to cuts.</p>
+
+        <p><strong>Why managers are reluctant to cut:</strong></p>
+        <p>Managers avoid dividend cuts because they trigger negative market reactions (share price falls), damage the company's reputation for stability, may cause investor exodus (especially income-focused investors), and are seen as an admission of failure. To avoid these consequences, managers tend to "smooth" dividends, only increasing when they are confident the higher level is sustainable, and cutting only as a last resort.</p>
+    </div>
+</div>
+
+<!-- FORMULA SHEET -->
+<div class="formula-sheet">
+    <h3>FORMULA SHEET</h3>
+
+    <p><strong>Compound Interest:</strong> FV = PV × (1 + r)^n</p>
+    <p><strong>Present Value:</strong> PV = FV / (1 + r)^n</p>
+    <p><strong>PV of Annuity:</strong> PVA = PMT × [1 - (1 + r)^-n] / r</p>
+    <p><strong>FV of Annuity:</strong> FVA = PMT × [(1 + r)^n - 1] / r</p>
+    <p><strong>Perpetuity:</strong> PV = PMT / r</p>
+    <p><strong>Growing Perpetuity:</strong> PV = D1 / (r - g)</p>
+    <p><strong>Cost of Equity (DGM):</strong> Ke = (D1 / P0) + g</p>
+    <p><strong>CAPM:</strong> r = Rf + β(Rm - Rf)</p>
+    <p><strong>WACC:</strong> WACC = (E/V × Ke) + (D/V × Kd(1-T))</p>
+    <p><strong>Bond Price:</strong> P = C × PVIFA(r,n) + FV × PVIF(r,n)</p>
+    <p><strong>Current Yield:</strong> = Annual Coupon / Bond Price</p>
+    <p><strong>IRR (Interpolation):</strong> = r₁ + [NPV₁ / (NPV₁ - NPV₂)] × (r₂ - r₁)</p>
+    <p><strong>Variance:</strong> σ² = Σ(Ri - R̄)² / (n-1)</p>
+    <p><strong>Dividend Yield:</strong> = DPS / Share Price</p>
+    <p><strong>Payout Ratio:</strong> = DPS / EPS</p>
+
+    <h4>Present Value Factors Table</h4>
+    <table class="pv-table">
+        <tr>
+            <th>Year</th><th>5%</th><th>7%</th><th>8%</th><th>10%</th><th>12%</th><th>15%</th>
+        </tr>
+        <tr><td>1</td><td>0.952</td><td>0.935</td><td>0.926</td><td>0.909</td><td>0.893</td><td>0.870</td></tr>
+        <tr><td>2</td><td>0.907</td><td>0.873</td><td>0.857</td><td>0.826</td><td>0.797</td><td>0.756</td></tr>
+        <tr><td>3</td><td>0.864</td><td>0.816</td><td>0.794</td><td>0.751</td><td>0.712</td><td>0.658</td></tr>
+        <tr><td>4</td><td>0.823</td><td>0.763</td><td>0.735</td><td>0.683</td><td>0.636</td><td>0.572</td></tr>
+        <tr><td>5</td><td>0.784</td><td>0.713</td><td>0.681</td><td>0.621</td><td>0.567</td><td>0.497</td></tr>
+        <tr><td>6</td><td>0.746</td><td>0.666</td><td>0.630</td><td>0.564</td><td>0.507</td><td>0.432</td></tr>
+        <tr><td>7</td><td>0.711</td><td>0.623</td><td>0.583</td><td>0.513</td><td>0.452</td><td>0.376</td></tr>
+        <tr><td>8</td><td>0.677</td><td>0.582</td><td>0.540</td><td>0.467</td><td>0.404</td><td>0.327</td></tr>
+        <tr><td>9</td><td>0.645</td><td>0.544</td><td>0.500</td><td>0.424</td><td>0.361</td><td>0.284</td></tr>
+        <tr><td>10</td><td>0.614</td><td>0.508</td><td>0.463</td><td>0.386</td><td>0.322</td><td>0.247</td></tr>
+    </table>
+
+    <h4>PVIFA Table (Present Value Interest Factor of Annuity)</h4>
+    <table class="pv-table">
+        <tr>
+            <th>Years</th><th>3.5%</th><th>5%</th><th>7%</th><th>8%</th><th>10%</th><th>12%</th>
+        </tr>
+        <tr><td>5</td><td>4.515</td><td>4.329</td><td>4.100</td><td>3.993</td><td>3.791</td><td>3.605</td></tr>
+        <tr><td>6</td><td>5.329</td><td>5.076</td><td>4.767</td><td>4.623</td><td>4.355</td><td>4.111</td></tr>
+        <tr><td>8</td><td>6.874</td><td>6.463</td><td>5.971</td><td>5.747</td><td>5.335</td><td>4.968</td></tr>
+        <tr><td>10</td><td>8.317</td><td>7.722</td><td>7.024</td><td>6.710</td><td>6.145</td><td>5.650</td></tr>
+        <tr><td>16</td><td>12.094</td><td>10.838</td><td>9.447</td><td>8.851</td><td>7.824</td><td>6.974</td></tr>
+    </table>
+</div>
+
+<div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #333;">
+    <strong>END OF EXAMINATION</strong><br>
+    <em>Total Marks: 60</em>
+</div>
+
+<script>
+    let answersVisible = false;
+
+    function toggleAnswers() {
+        answersVisible = !answersVisible;
+        const answers = document.querySelectorAll('.answer');
+        answers.forEach(answer => {
+            if (answersVisible) {
+                answer.classList.add('show');
+            } else {
+                answer.classList.remove('show');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

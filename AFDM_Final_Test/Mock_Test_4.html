@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFDM Mock Test 4</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'EB Garamond', 'Times New Roman', serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #fafafa;
+            color: #222;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 { margin: 5px 0; font-size: 1.4em; }
+        .header p { margin: 3px 0; }
+        .exam-info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exam-info ul { margin: 10px 0; padding-left: 20px; }
+        .instructions {
+            background: #e8f4e8;
+            padding: 15px;
+            border-left: 4px solid #2a7a2a;
+            margin-bottom: 30px;
+        }
+        .section-header {
+            background: #333;
+            color: white;
+            padding: 10px 15px;
+            margin: 30px 0 20px 0;
+            font-weight: bold;
+        }
+        .question {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .question h3 { margin-top: 0; color: #1a1a6c; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #999; padding: 8px 12px; text-align: center; }
+        th { background: #e0e0e0; }
+        .marks { color: #666; font-style: italic; text-align: right; margin-top: 10px; }
+        .total-marks {
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: right;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+        }
+        .answer {
+            background: #fff8dc;
+            border: 2px solid #daa520;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .answer h4 { margin-top: 0; color: #8b4513; }
+        .answer.show { display: block; }
+        .formula {
+            background: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: 'Cambria Math', 'Times New Roman', serif;
+            border-left: 3px solid #666;
+        }
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .controls button {
+            background: #1a1a6c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        .controls button:hover { background: #2a2a8c; }
+        .pv-table { font-size: 0.85em; }
+        .pv-table th, .pv-table td { padding: 4px 6px; }
+        .formula-sheet {
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 30px;
+        }
+        .formula-sheet h3 { margin-top: 0; }
+        .key-point {
+            background: #e8f4e8;
+            border-left: 4px solid #2a7a2a;
+            padding: 10px 15px;
+            margin: 10px 0;
+        }
+        @media print {
+            .controls { display: none; }
+            .answer { display: block !important; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    <button onclick="toggleAnswers()">Show/Hide All Answers</button>
+</div>
+
+<div class="header">
+    <p>College of Business and Law</p>
+    <p>Bristol Business School</p>
+    <p>Academic year: 2025/26</p>
+    <h1>ACCOUNTING AND FINANCE FOR DECISION MAKING</h1>
+    <p>Module Code: UMET9G-30-1</p>
+    <p><strong>MOCK EXAMINATION 4</strong></p>
+</div>
+
+<div class="exam-info">
+    <p><strong>Duration:</strong> 2 Hours</p>
+    <p><strong>Total Marks:</strong> 60</p>
+    <ul>
+        <li>Section A: Answer Question 1 (Compulsory) - 30 marks</li>
+        <li>Section B: Answer ANY TWO questions - 15 marks each</li>
+    </ul>
+    <p><strong>Materials Provided:</strong> Formula Sheet, Present Value Tables</p>
+    <p><strong>Materials Required:</strong> Non-programmable calculator</p>
+</div>
+
+<div class="instructions">
+    <strong>Instructions to Students:</strong>
+    <ul>
+        <li>Include module name, number, and your student number on your answer sheet</li>
+        <li>Indicate clearly which questions you are answering</li>
+        <li>Avoid bullet points - write short essay-like answers</li>
+        <li>Present all workings where applicable</li>
+    </ul>
+</div>
+
+<!-- SECTION A -->
+<div class="section-header">SECTION A - COMPULSORY QUESTION (30 Marks)</div>
+
+<div class="question">
+    <h3>Question 1</h3>
+
+    <p>NovaTech Solutions Ltd is a technology company considering financing options for a major expansion. The company currently has the following capital structure:</p>
+
+    <ul>
+        <li>4 million ordinary shares currently trading at £6.50 per share</li>
+        <li>The company just paid a dividend of £0.45 per share, with dividends expected to grow at 6% per annum indefinitely</li>
+        <li>£8 million in 7% coupon bonds (face value £100 each), currently trading at £92, with 6 years to maturity</li>
+        <li>Corporate tax rate: 30%</li>
+    </ul>
+
+    <p>The company is evaluating a new AI software project requiring an initial investment of £5 million. The project is expected to generate the following annual cash flows:</p>
+
+    <table>
+        <tr><th>Year</th><th>Cash Flow (£)</th></tr>
+        <tr><td>1</td><td>800,000</td></tr>
+        <tr><td>2</td><td>1,400,000</td></tr>
+        <tr><td>3</td><td>1,800,000</td></tr>
+        <tr><td>4</td><td>1,600,000</td></tr>
+        <tr><td>5</td><td>1,200,000</td></tr>
+    </table>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the company's <strong>cost of equity</strong> using the Dividend Growth Model. <span class="marks">(4 Marks)</span></li>
+        <li>Calculate the <strong>yield to maturity (YTM)</strong> of the bonds using linear interpolation, and determine the <strong>after-tax cost of debt</strong>. <span class="marks">(6 Marks)</span></li>
+        <li>Calculate the company's <strong>Weighted Average Cost of Capital (WACC)</strong>. <span class="marks">(6 Marks)</span></li>
+        <li>Using the WACC calculated above, determine the <strong>Net Present Value (NPV)</strong> of the AI software project. Should the project be accepted? <span class="marks">(8 Marks)</span></li>
+        <li>Explain TWO advantages and TWO disadvantages of using debt financing compared to equity financing. <span class="marks">(6 Marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 30 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 1</h4>
+
+        <h4>Part (a) - Cost of Equity (4 marks)</h4>
+        <div class="formula">
+            <strong>Dividend Growth Model:</strong> Ke = (D1 / P0) + g<br><br>
+            D0 = £0.45 (dividend just paid)<br>
+            g = 6% = 0.06<br>
+            P0 = £6.50<br><br>
+            D1 = D0 × (1 + g) = £0.45 × 1.06 = <strong>£0.477</strong><br><br>
+            Ke = (0.477 / 6.50) + 0.06<br>
+            Ke = 0.0734 + 0.06<br>
+            <strong>Ke = 13.34%</strong>
+        </div>
+
+        <h4>Part (b) - YTM and After-tax Cost of Debt (6 marks)</h4>
+        <div class="formula">
+            <strong>Given:</strong> Coupon = 7%, Face Value = £100, Price = £92, n = 6 years<br>
+            Annual Coupon = £100 × 7% = £7<br><br>
+
+            Since Price (£92) < Face Value (£100), YTM > Coupon Rate (7%)<br><br>
+
+            <strong>Try r = 8%:</strong><br>
+            PV = 7 × PVIFA(8%,6) + 100 × PVIF(8%,6)<br>
+            PV = 7 × 4.623 + 100 × 0.630 = 32.36 + 63.00 = <strong>£95.36</strong><br><br>
+
+            <strong>Try r = 9%:</strong><br>
+            PV = 7 × PVIFA(9%,6) + 100 × PVIF(9%,6)<br>
+            PV = 7 × 4.486 + 100 × 0.596 = 31.40 + 59.60 = <strong>£91.00</strong><br><br>
+
+            <strong>Linear Interpolation:</strong><br>
+            YTM = 8% + [(95.36 - 92) / (95.36 - 91.00)] × (9% - 8%)<br>
+            YTM = 8% + [3.36 / 4.36] × 1%<br>
+            YTM = 8% + 0.77%<br>
+            <strong>YTM = 8.77%</strong><br><br>
+
+            <strong>After-tax Cost of Debt:</strong><br>
+            Kd(1-T) = 8.77% × (1 - 0.30) = 8.77% × 0.70<br>
+            <strong>Kd(1-T) = 6.14%</strong>
+        </div>
+
+        <h4>Part (c) - WACC Calculation (6 marks)</h4>
+        <div class="formula">
+            <strong>Market Values:</strong><br>
+            Equity (E) = 4,000,000 shares × £6.50 = <strong>£26,000,000</strong><br>
+            Debt (D) = (£8,000,000 / £100) × £92 = 80,000 bonds × £92 = <strong>£7,360,000</strong><br>
+            Total (V) = £26,000,000 + £7,360,000 = <strong>£33,360,000</strong><br><br>
+
+            <strong>Weights:</strong><br>
+            We = 26,000,000 / 33,360,000 = <strong>0.7794 (77.94%)</strong><br>
+            Wd = 7,360,000 / 33,360,000 = <strong>0.2206 (22.06%)</strong><br><br>
+
+            <strong>WACC:</strong><br>
+            WACC = (We × Ke) + (Wd × Kd(1-T))<br>
+            WACC = (0.7794 × 13.34%) + (0.2206 × 6.14%)<br>
+            WACC = 10.40% + 1.35%<br>
+            <strong>WACC = 11.75%</strong>
+        </div>
+
+        <h4>Part (d) - NPV Calculation (8 marks)</h4>
+        <div class="formula">
+            Using WACC = 11.75% ≈ 12% (using table values)
+        </div>
+        <table>
+            <tr><th>Year</th><th>Cash Flow (£)</th><th>PV Factor @12%</th><th>Present Value (£)</th></tr>
+            <tr><td>0</td><td>-5,000,000</td><td>1.000</td><td>-5,000,000</td></tr>
+            <tr><td>1</td><td>800,000</td><td>0.893</td><td>714,400</td></tr>
+            <tr><td>2</td><td>1,400,000</td><td>0.797</td><td>1,115,800</td></tr>
+            <tr><td>3</td><td>1,800,000</td><td>0.712</td><td>1,281,600</td></tr>
+            <tr><td>4</td><td>1,600,000</td><td>0.636</td><td>1,017,600</td></tr>
+            <tr><td>5</td><td>1,200,000</td><td>0.567</td><td>680,400</td></tr>
+            <tr><td colspan="3"><strong>NPV</strong></td><td><strong>£809,800</strong></td></tr>
+        </table>
+        <div class="key-point">
+            <strong>Decision:</strong> NPV is positive (£809,800 > 0). The project adds value to shareholders. <strong>ACCEPT the project.</strong>
+        </div>
+
+        <h4>Part (e) - Debt vs Equity Financing (6 marks)</h4>
+        <p><strong>Advantages of Debt Financing:</strong></p>
+        <ol>
+            <li><strong>Tax Shield:</strong> Interest payments are tax-deductible, reducing the effective cost of debt and the company's tax liability.</li>
+            <li><strong>No Dilution of Ownership:</strong> Debt does not dilute existing shareholders' ownership or voting control, unlike issuing new shares.</li>
+        </ol>
+
+        <p><strong>Disadvantages of Debt Financing:</strong></p>
+        <ol>
+            <li><strong>Fixed Obligations:</strong> Interest and principal must be paid regardless of profitability, increasing financial risk and potential bankruptcy if cash flows are insufficient.</li>
+            <li><strong>Restrictive Covenants:</strong> Lenders often impose restrictions on company activities (dividend payments, additional borrowing, asset sales), limiting managerial flexibility.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- SECTION B -->
+<div class="section-header">SECTION B - ANSWER ANY TWO QUESTIONS (15 Marks Each)</div>
+
+<div class="question">
+    <h3>Question 2 - Time Value of Money</h3>
+
+    <p>You are a financial advisor helping clients with various investment and loan decisions.</p>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Your client wants to save for retirement. They plan to deposit £5,000 at the end of each year for the next 25 years into an account earning 7% per annum. Calculate the <strong>future value</strong> of these savings at retirement. <span class="marks">(4 marks)</span></li>
+
+        <li>Another client has won a lottery prize that offers two payment options:
+            <ul>
+                <li>Option A: £500,000 lump sum today</li>
+                <li>Option B: £60,000 per year for 12 years, starting one year from now</li>
+            </ul>
+            If the discount rate is 8%, which option should the client choose? Show your calculations. <span class="marks">(5 marks)</span></li>
+
+        <li>A business client needs a loan of £200,000 to be repaid over 10 years with equal annual payments at 6% interest. Calculate the <strong>annual payment</strong> required. <span class="marks">(3 marks)</span></li>
+
+        <li>Explain the difference between an <strong>ordinary annuity</strong> and an <strong>annuity due</strong>. How does this affect the present value calculation? <span class="marks">(3 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 2</h4>
+
+        <h4>Part (a) - Future Value of Annuity (4 marks)</h4>
+        <div class="formula">
+            <strong>Future Value of Ordinary Annuity:</strong><br>
+            FVA = PMT × [(1 + r)^n - 1] / r<br><br>
+            PMT = £5,000, r = 7% = 0.07, n = 25 years<br><br>
+            FVA = 5,000 × [(1.07)^25 - 1] / 0.07<br>
+            FVA = 5,000 × [5.4274 - 1] / 0.07<br>
+            FVA = 5,000 × 4.4274 / 0.07<br>
+            FVA = 5,000 × 63.249<br>
+            <strong>FVA = £316,245</strong>
+        </div>
+
+        <h4>Part (b) - Lottery Options Comparison (5 marks)</h4>
+        <div class="formula">
+            <strong>Option A:</strong> PV = £500,000 (already in present value)<br><br>
+
+            <strong>Option B:</strong> Present Value of Ordinary Annuity<br>
+            PVA = PMT × [1 - (1 + r)^-n] / r<br>
+            PVA = 60,000 × [1 - (1.08)^-12] / 0.08<br>
+            PVA = 60,000 × [1 - 0.3971] / 0.08<br>
+            PVA = 60,000 × 0.6029 / 0.08<br>
+            PVA = 60,000 × 7.536<br>
+            <strong>PVA = £452,160</strong>
+        </div>
+        <div class="key-point">
+            <strong>Decision:</strong> Option A (£500,000) > Option B (£452,160). <strong>Choose Option A</strong> - the lump sum is worth more in present value terms.
+        </div>
+
+        <h4>Part (c) - Loan Payment Calculation (3 marks)</h4>
+        <div class="formula">
+            <strong>Annuity Payment Formula:</strong><br>
+            PV = PMT × [1 - (1 + r)^-n] / r<br>
+            Rearranging: PMT = PV × r / [1 - (1 + r)^-n]<br><br>
+
+            PV = £200,000, r = 6% = 0.06, n = 10 years<br><br>
+
+            PMT = 200,000 × 0.06 / [1 - (1.06)^-10]<br>
+            PMT = 12,000 / [1 - 0.5584]<br>
+            PMT = 12,000 / 0.4416<br>
+            <strong>PMT = £27,174 per year</strong>
+        </div>
+
+        <h4>Part (d) - Ordinary Annuity vs Annuity Due (3 marks)</h4>
+        <p><strong>Ordinary Annuity:</strong> Payments occur at the END of each period. Most loans and savings plans use this structure.</p>
+
+        <p><strong>Annuity Due:</strong> Payments occur at the BEGINNING of each period. Rent and insurance premiums typically follow this pattern.</p>
+
+        <p><strong>Effect on Present Value:</strong> An annuity due has a HIGHER present value than an ordinary annuity with the same payments, because each payment is received one period earlier. The relationship is:</p>
+        <div class="formula">
+            PV (Annuity Due) = PV (Ordinary Annuity) × (1 + r)
+        </div>
+    </div>
+</div>
+
+<div class="question">
+    <h3>Question 3 - Portfolio Risk and Return</h3>
+
+    <p>An investor is considering creating a portfolio using two stocks: Alpha Corp and Beta Ltd. The following information is available:</p>
+
+    <table>
+        <tr>
+            <th>Stock</th>
+            <th>Expected Return</th>
+            <th>Standard Deviation</th>
+            <th>Portfolio Weight</th>
+        </tr>
+        <tr>
+            <td>Alpha Corp</td>
+            <td>14%</td>
+            <td>20%</td>
+            <td>60%</td>
+        </tr>
+        <tr>
+            <td>Beta Ltd</td>
+            <td>9%</td>
+            <td>12%</td>
+            <td>40%</td>
+        </tr>
+    </table>
+
+    <p>The correlation coefficient between the two stocks is 0.3.</p>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the <strong>expected return</strong> of the portfolio. <span class="marks">(2 marks)</span></li>
+        <li>Calculate the <strong>standard deviation</strong> of the portfolio. <span class="marks">(5 marks)</span></li>
+        <li>Explain what the correlation coefficient of 0.3 tells us about the relationship between these two stocks and its implications for diversification. <span class="marks">(4 marks)</span></li>
+        <li>If the correlation coefficient were -0.5 instead of 0.3, would the portfolio risk be higher or lower? Explain your reasoning without recalculating. <span class="marks">(4 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 3</h4>
+
+        <h4>Part (a) - Portfolio Expected Return (2 marks)</h4>
+        <div class="formula">
+            E(Rp) = wA × E(RA) + wB × E(RB)<br><br>
+            E(Rp) = (0.60 × 14%) + (0.40 × 9%)<br>
+            E(Rp) = 8.4% + 3.6%<br>
+            <strong>E(Rp) = 12%</strong>
+        </div>
+
+        <h4>Part (b) - Portfolio Standard Deviation (5 marks)</h4>
+        <div class="formula">
+            <strong>Portfolio Variance Formula:</strong><br>
+            σp² = wA²σA² + wB²σB² + 2×wA×wB×σA×σB×ρAB<br><br>
+
+            Where:<br>
+            wA = 0.60, wB = 0.40<br>
+            σA = 20% = 0.20, σB = 12% = 0.12<br>
+            ρAB = 0.3<br><br>
+
+            σp² = (0.60)²(0.20)² + (0.40)²(0.12)² + 2(0.60)(0.40)(0.20)(0.12)(0.3)<br>
+            σp² = (0.36)(0.04) + (0.16)(0.0144) + 2(0.60)(0.40)(0.20)(0.12)(0.3)<br>
+            σp² = 0.0144 + 0.002304 + 0.003456<br>
+            σp² = 0.02016<br><br>
+
+            σp = √0.02016 = 0.1420<br>
+            <strong>Portfolio Standard Deviation = 14.20%</strong>
+        </div>
+        <div class="key-point">
+            Note: The portfolio risk (14.20%) is less than the weighted average of individual risks (0.6×20% + 0.4×12% = 16.8%), demonstrating diversification benefits.
+        </div>
+
+        <h4>Part (c) - Correlation Coefficient Interpretation (4 marks)</h4>
+        <p><strong>What ρ = 0.3 means:</strong></p>
+        <ul>
+            <li>The correlation coefficient of 0.3 indicates a <strong>weak positive relationship</strong> between the returns of Alpha Corp and Beta Ltd.</li>
+            <li>When Alpha's returns increase, Beta's returns tend to increase slightly as well, but the relationship is not strong.</li>
+            <li>The stocks do not move perfectly together (ρ ≠ 1) nor in opposite directions (ρ ≠ -1).</li>
+        </ul>
+
+        <p><strong>Diversification implications:</strong></p>
+        <ul>
+            <li>Since ρ < 1, combining these stocks provides diversification benefits.</li>
+            <li>The portfolio risk is reduced below the weighted average of individual risks.</li>
+            <li>The lower the correlation, the greater the diversification benefit. With ρ = 0.3, moderate diversification is achieved.</li>
+        </ul>
+
+        <h4>Part (d) - Effect of Negative Correlation (4 marks)</h4>
+        <p><strong>If ρ = -0.5:</strong> Portfolio risk would be <strong>LOWER</strong>.</p>
+
+        <p><strong>Reasoning:</strong></p>
+        <ul>
+            <li>A negative correlation means the stocks tend to move in opposite directions - when one rises, the other tends to fall.</li>
+            <li>This provides superior diversification because losses in one stock are partially offset by gains in the other.</li>
+            <li>In the variance formula, the covariance term (2×wA×wB×σA×σB×ρAB) becomes negative when ρ is negative, reducing overall portfolio variance.</li>
+            <li>The more negative the correlation, the greater the risk reduction through diversification.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="question">
+    <h3>Question 4 - Equity Valuation and Rights Issue</h3>
+
+    <p>Stellar Dynamics Plc is a growing technology company with 10 million ordinary shares in issue, currently trading at £8 per share. The company paid a dividend of £0.60 per share last year. Analysts expect dividends to grow at 15% per year for the next 3 years, then stabilize at 4% growth indefinitely.</p>
+
+    <p>To fund expansion, the company is considering a 1-for-4 rights issue at a 20% discount to the current market price.</p>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Using the <strong>two-stage dividend growth model</strong>, calculate the theoretical value of one share if the required return is 12%. <span class="marks">(6 marks)</span></li>
+        <li>Calculate the <strong>theoretical ex-rights price (TERP)</strong> per share after the rights issue. <span class="marks">(4 marks)</span></li>
+        <li>Calculate the <strong>value of one right</strong>. <span class="marks">(2 marks)</span></li>
+        <li>Explain the THREE options available to a shareholder when offered a rights issue. <span class="marks">(3 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 4</h4>
+
+        <h4>Part (a) - Two-Stage Dividend Growth Model (6 marks)</h4>
+        <div class="formula">
+            <strong>Stage 1: High growth period (Years 1-3, g = 15%)</strong><br>
+            D0 = £0.60<br>
+            D1 = 0.60 × 1.15 = £0.69<br>
+            D2 = 0.69 × 1.15 = £0.7935<br>
+            D3 = 0.7935 × 1.15 = £0.9125<br><br>
+
+            <strong>PV of Stage 1 dividends (at r = 12%):</strong><br>
+            PV1 = 0.69 / 1.12 = £0.6161<br>
+            PV2 = 0.7935 / (1.12)² = £0.6325<br>
+            PV3 = 0.9125 / (1.12)³ = £0.6494<br>
+            <strong>Total PV Stage 1 = £1.898</strong><br><br>
+
+            <strong>Stage 2: Constant growth (Year 4 onwards, g = 4%)</strong><br>
+            D4 = D3 × (1 + g) = 0.9125 × 1.04 = £0.949<br><br>
+
+            Terminal Value at end of Year 3 (using Gordon Growth Model):<br>
+            P3 = D4 / (r - g) = 0.949 / (0.12 - 0.04) = 0.949 / 0.08 = <strong>£11.8625</strong><br><br>
+
+            <strong>PV of Terminal Value:</strong><br>
+            PV(P3) = 11.8625 / (1.12)³ = 11.8625 / 1.4049 = <strong>£8.4434</strong><br><br>
+
+            <strong>Total Share Value:</strong><br>
+            P0 = PV Stage 1 + PV Terminal Value<br>
+            P0 = £1.898 + £8.4434<br>
+            <strong>P0 = £10.34</strong>
+        </div>
+
+        <h4>Part (b) - Theoretical Ex-Rights Price (4 marks)</h4>
+        <div class="formula">
+            <strong>Rights Issue Details:</strong><br>
+            1-for-4 rights issue = 1 new share for every 4 existing shares<br>
+            Discount = 20%, so Issue Price = £8 × (1 - 0.20) = <strong>£6.40</strong><br><br>
+
+            <strong>TERP Calculation:</strong><br>
+            TERP = (Value of old shares + Value of new shares) / Total shares<br><br>
+
+            For every 4 old shares + 1 new share:<br>
+            TERP = (4 × £8 + 1 × £6.40) / (4 + 1)<br>
+            TERP = (£32 + £6.40) / 5<br>
+            TERP = £38.40 / 5<br>
+            <strong>TERP = £7.68</strong>
+        </div>
+
+        <h4>Part (c) - Value of One Right (2 marks)</h4>
+        <div class="formula">
+            Value of Right = TERP - Issue Price<br>
+            = £7.68 - £6.40<br>
+            <strong>= £1.28</strong><br><br>
+
+            <em>Alternative: Value per existing share = (Current Price - TERP) = £8 - £7.68 = £0.32</em><br>
+            <em>Since 4 rights needed for 1 new share: 4 × £0.32 = £1.28</em>
+        </div>
+
+        <h4>Part (d) - Shareholder Options (3 marks)</h4>
+        <p><strong>Option 1 - Take up the rights (subscribe):</strong></p>
+        <p>The shareholder pays the issue price to buy the new shares. Their total investment increases, but they maintain their proportional ownership. Wealth is preserved as the discount is captured through the lower purchase price.</p>
+
+        <p><strong>Option 2 - Sell the rights (renounce):</strong></p>
+        <p>The shareholder sells the rights in the market to another investor. They receive cash (the value of the rights) but their ownership percentage decreases. Theoretically, wealth is preserved as the cash received compensates for the dilution.</p>
+
+        <p><strong>Option 3 - Do nothing (let rights lapse):</strong></p>
+        <p>The shareholder ignores the rights offer. Their ownership is diluted AND they receive no compensation. This results in a loss of wealth equal to the value of the rights. This is the worst option and should be avoided.</p>
+    </div>
+</div>
+
+<!-- FORMULA SHEET -->
+<div class="formula-sheet">
+    <h3>FORMULA SHEET</h3>
+
+    <p><strong>Compound Interest:</strong> FV = PV × (1 + r)^n</p>
+    <p><strong>Present Value:</strong> PV = FV / (1 + r)^n</p>
+    <p><strong>PV of Annuity:</strong> PVA = PMT × [1 - (1 + r)^-n] / r</p>
+    <p><strong>FV of Annuity:</strong> FVA = PMT × [(1 + r)^n - 1] / r</p>
+    <p><strong>Perpetuity:</strong> PV = PMT / r</p>
+    <p><strong>Growing Perpetuity:</strong> PV = D1 / (r - g)</p>
+    <p><strong>Cost of Equity (DGM):</strong> Ke = (D1 / P0) + g</p>
+    <p><strong>CAPM:</strong> r = Rf + β(Rm - Rf)</p>
+    <p><strong>WACC:</strong> WACC = (E/V × Ke) + (D/V × Kd(1-T))</p>
+    <p><strong>Bond Price:</strong> P = C × PVIFA(r,n) + FV × PVIF(r,n)</p>
+    <p><strong>Portfolio Return:</strong> E(Rp) = Σ wi × E(Ri)</p>
+    <p><strong>Portfolio Variance (2 assets):</strong> σp² = wA²σA² + wB²σB² + 2wAwBσAσBρAB</p>
+    <p><strong>TERP:</strong> = (N × Cum-rights price + Issue price) / (N + 1)</p>
+
+    <h4>Present Value Factors Table</h4>
+    <table class="pv-table">
+        <tr>
+            <th>Year</th><th>6%</th><th>7%</th><th>8%</th><th>9%</th><th>10%</th><th>12%</th><th>15%</th>
+        </tr>
+        <tr><td>1</td><td>0.943</td><td>0.935</td><td>0.926</td><td>0.917</td><td>0.909</td><td>0.893</td><td>0.870</td></tr>
+        <tr><td>2</td><td>0.890</td><td>0.873</td><td>0.857</td><td>0.842</td><td>0.826</td><td>0.797</td><td>0.756</td></tr>
+        <tr><td>3</td><td>0.840</td><td>0.816</td><td>0.794</td><td>0.772</td><td>0.751</td><td>0.712</td><td>0.658</td></tr>
+        <tr><td>4</td><td>0.792</td><td>0.763</td><td>0.735</td><td>0.708</td><td>0.683</td><td>0.636</td><td>0.572</td></tr>
+        <tr><td>5</td><td>0.747</td><td>0.713</td><td>0.681</td><td>0.650</td><td>0.621</td><td>0.567</td><td>0.497</td></tr>
+        <tr><td>6</td><td>0.705</td><td>0.666</td><td>0.630</td><td>0.596</td><td>0.564</td><td>0.507</td><td>0.432</td></tr>
+        <tr><td>7</td><td>0.665</td><td>0.623</td><td>0.583</td><td>0.547</td><td>0.513</td><td>0.452</td><td>0.376</td></tr>
+        <tr><td>8</td><td>0.627</td><td>0.582</td><td>0.540</td><td>0.502</td><td>0.467</td><td>0.404</td><td>0.327</td></tr>
+        <tr><td>9</td><td>0.592</td><td>0.544</td><td>0.500</td><td>0.460</td><td>0.424</td><td>0.361</td><td>0.284</td></tr>
+        <tr><td>10</td><td>0.558</td><td>0.508</td><td>0.463</td><td>0.422</td><td>0.386</td><td>0.322</td><td>0.247</td></tr>
+    </table>
+
+    <h4>PVIFA Table (Present Value Interest Factor of Annuity)</h4>
+    <table class="pv-table">
+        <tr>
+            <th>Years</th><th>6%</th><th>7%</th><th>8%</th><th>9%</th><th>10%</th><th>12%</th>
+        </tr>
+        <tr><td>5</td><td>4.212</td><td>4.100</td><td>3.993</td><td>3.890</td><td>3.791</td><td>3.605</td></tr>
+        <tr><td>6</td><td>4.917</td><td>4.767</td><td>4.623</td><td>4.486</td><td>4.355</td><td>4.111</td></tr>
+        <tr><td>10</td><td>7.360</td><td>7.024</td><td>6.710</td><td>6.418</td><td>6.145</td><td>5.650</td></tr>
+        <tr><td>12</td><td>8.384</td><td>7.943</td><td>7.536</td><td>7.161</td><td>6.814</td><td>6.194</td></tr>
+        <tr><td>25</td><td>12.783</td><td>11.654</td><td>10.675</td><td>9.823</td><td>9.077</td><td>7.843</td></tr>
+    </table>
+</div>
+
+<div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #333;">
+    <strong>END OF EXAMINATION</strong><br>
+    <em>Total Marks: 60</em>
+</div>
+
+<script>
+    let answersVisible = false;
+
+    function toggleAnswers() {
+        answersVisible = !answersVisible;
+        const answers = document.querySelectorAll('.answer');
+        answers.forEach(answer => {
+            if (answersVisible) {
+                answer.classList.add('show');
+            } else {
+                answer.classList.remove('show');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
