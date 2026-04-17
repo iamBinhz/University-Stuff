@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFDM Formula Summary | Accounting & Finance for Decision Making</title>
+    <link rel="stylesheet" href="formulas.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+</head>
+<body>
+    <header>
+        <h1>AFDM Formula Summary</h1>
+        <p>Accounting & Finance for Decision Making - Complete Formula Reference</p>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-number" id="total-formulas">0</span>
+            <span class="stat-label">Total Formulas</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" id="total-topics">0</span>
+            <span class="stat-label">Topics Covered</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">15</span>
+            <span class="stat-label">Lecture Files</span>
+        </div>
+    </div>
+
+    <nav class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Topics</button>
+        <button class="filter-btn" data-filter="Time Value of Money">Time Value of Money</button>
+        <button class="filter-btn" data-filter="Financial Analysis">Financial Analysis</button>
+        <button class="filter-btn" data-filter="Risk and Return">Risk and Return</button>
+        <button class="filter-btn" data-filter="Investment Decision Criteria">Investment Decisions</button>
+        <button class="filter-btn" data-filter="Capital Structure">Capital Structure</button>
+        <button class="filter-btn" data-filter="Sources of Finance">Sources of Finance</button>
+        <button class="filter-btn" data-filter="Dividend Policy">Dividend Policy</button>
+        <button class="filter-btn" data-filter="Financial Risk Management">Risk Management</button>
+        <button class="filter-btn" data-filter="Mergers and Acquisitions">Mergers and Acquisitions</button>
+    </nav>
+
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="Search formulas by name, expression, or description...">
+    </div>
+
+    <main id="formulas-container">
+        <!-- Formulas will be rendered here by JavaScript -->
+    </main>
+
+    <footer>
+        <p>AFDM Formula Summary | IBD-NEU | Generated on <script>document.write(new Date().toLocaleDateString())</script></p>
+        <p>Total Formulas: <span id="footer-count"></span> across 9 major topics</p>
+    </footer>
+
+    <button id="dark-mode-toggle" class="dark-mode-toggle" title="Toggle Dark Mode">🌙</button>
+    <button id="scroll-top" class="scroll-top" title="Scroll to Top">↑</button>
+
+    <script src="formulas.js"></script>
+    <script>
+        // Update footer count
+        document.addEventListener('DOMContentLoaded', () => {
+            let total = 0;
+            Object.values(formulaData).forEach(d => total += d.formulas.length);
+            document.getElementById('footer-count').textContent = total;
+        });
+    </script>
+</body>
+</html>
