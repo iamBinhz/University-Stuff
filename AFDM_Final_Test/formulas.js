@@ -53,7 +53,7 @@ const formulaData = {
     "Investment Decision Criteria": {
         icon: "💰",
         formulas: [
-            { name: "Net Present Value", formula: "Net Present Value = Total of Vinflows - Initial Investment", description: "PVinflows = PV của các năm theo công thức PV = FV × (1+r)^(-t) / Total PVinflows = Tổng của các năm" },
+            { name: "Net Present Value", formula: "Net Present Value = Total of PVinflows - Initial Investment", description: "PVinflows = PV của các năm theo công thức PV = FV × (1+r)^(-t) / Total PVinflows = Tổng của các năm" },
             { name: "Internal Rate of Return (Interpolation)", formula: "Internal Rate of Return = r₁ + [NPV₁ / (NPV₁ - NPV₂)] × (r₂ - r₁)", description: "Estimate internal rate of return between two discount rates" },
             { name: "Payback Period", formula: "Payback Period = Last Year with negative CCF + (|Last negative CCF| / Following Year's CF)", description: "Time required to recover initial investment" },
             { name: "Discounted Payback Period", formula: "Discounted Payback = Time when Cumulative Discounted Cash Flows ≥ Initial Investment", description: "Payback period using discounted cash flows" },
@@ -69,7 +69,7 @@ const formulaData = {
     "Capital Structure": {
         icon: "🏛️",
         formulas: [
-            { name: "Weighted Average Cost of Capital (WACC)", formula: "WACC = (wE x rE) + (wD x rD)", description: "WACC = (Debt/Debt + Equity) × Cost of Debt + (Equity/Debt + Equity) × Cost of Equity)" },
+            { name: "Weighted Average Cost of Capital (WACC)", formula: "WACC = (wD x rD) + (wE x rE)", description: "WACC = (Debt/Debt + Equity) × Cost of Debt + (Equity/Debt + Equity) × Cost of Equity)" },
             { name: "Cost of Equity (Capital Asset Pricing Model)", formula: "Cost of Equity = Risk-Free Rate + Beta × (Market Return - Risk-Free Rate)", description: "Required return on equity using market risk" },
             { name: "Cost of Equity (Dividend Growth Model)", formula: "Cost of Equity (rE) = (D1 / P0) + g", description: "D1 = D0 x (1 + g)" },
             { name: "Cost of Debt (After-Tax)", formula: "After-Tax Cost of Debt (rD) = Pre-Tax Cost of Debt × (1 - Tax Rate)", description: "Pre-Tax Cost of Debt = (FV/PV)^1/t (FV trên PV tất cả mũ 1 phần t)" },
