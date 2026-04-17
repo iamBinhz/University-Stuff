@@ -35,7 +35,7 @@ const formulaData = {
     "Risk and Return": {
         icon: "📈",
         formulas: [
-            { name: "Expected Return", formula: "Expected Return = Sum of [Probability × Return] for each outcome", description: "Probability-weighted average return" },
+            { name: "Expected Return", formula: "Expected Return = (Close Price - Begin Price + Dividend) / Begin Price", description: "Probability-weighted average return" },
             { name: "Holding Period Return", formula: "Holding Period Return = (Ending Price - Beginning Price + Dividend) / Beginning Price", description: "Total return over holding period" },
             { name: "Variance", formula: "Variance = Sum of [Probability × (Return - Expected Return)²]", description: "Measure of return dispersion" },
             { name: "Standard Deviation", formula: "Standard Deviation = Square Root of Variance", description: "Risk measure (volatility)" },
@@ -53,11 +53,14 @@ const formulaData = {
     "Investment Decision Criteria": {
         icon: "💰",
         formulas: [
-            { name: "Net Present Value", formula: "Net Present Value = Sum of [Cash Flow at time t / (1 + discount rate)^t] - Initial Investment", description: "Sum of discounted cash flows minus initial cost" },
-            { name: "Internal Rate of Return", formula: "Internal Rate of Return: Discount rate where Net Present Value = 0", description: "Discount rate that makes net present value equal to zero" },
+            { name: "Net Present Value", formula: "Net Present Value = Total of Vinflows - Initial Investment", description: "PVinflows = PV của các năm theo công thức PV = FV × (1+r)^(-t) / Total PVinflows = Tổng của các năm" },
             { name: "Internal Rate of Return (Interpolation)", formula: "Internal Rate of Return = r₁ + [NPV₁ / (NPV₁ - NPV₂)] × (r₂ - r₁)", description: "Estimate internal rate of return between two discount rates" },
-            { name: "Payback Period", formula: "Payback Period = Years before full recovery + (Unrecovered cost / Cash flow in recovery year)", description: "Time required to recover initial investment" },
+            { name: "Payback Period", formula: "Payback Period = Last Year with negative CCF + (|Last negative CCF| / Following Year's CF)", description: "Time required to recover initial investment" },
             { name: "Discounted Payback Period", formula: "Discounted Payback = Time when Cumulative Discounted Cash Flows ≥ Initial Investment", description: "Payback period using discounted cash flows" },
+            { name: "Average Investment", formula: "Average Investment = (Initial Investment + Scrap Value) / 2", description: "Dùng để tính ARR" },
+            { name: "Total Depreciation", formula: "Total Depreciation = Depreciation x Number of Years", description: "lol" },
+            { name: "Total Accounting Profit", formula: "Total Accounting Profit = Total CashFlows - Total Depreciation", description: "more specific" },
+            { name: "Average Annual Profit", formula: "Average Annual Profit = Total Accounting Profit / Number of years", description: "none" },
             { name: "Accounting Rate of Return", formula: "Accounting Rate of Return = (Average Annual Accounting Profit / Average Investment) × 100%", description: "Profit-based return measure" },
             { name: "Profitability Index", formula: "Profitability Index = Present Value of Future Cash Flows / Initial Investment", description: "Value created per dollar invested" },
             { name: "Equivalent Annual Annuity", formula: "Equivalent Annual Annuity = Net Present Value × [rate / (1 - (1 + rate)^(-n))]", description: "Compare projects with different useful lives" }
@@ -66,10 +69,17 @@ const formulaData = {
     "Capital Structure": {
         icon: "🏛️",
         formulas: [
-            { name: "Weighted Average Cost of Capital", formula: "Weighted Average Cost of Capital = (Equity/Total Value) × Cost of Equity + (Debt/Total Value) × Cost of Debt × (1 - Tax Rate)", description: "Overall cost of financing from all sources" },
+            { name: "Weighted Average Cost of Capital (WACC)", formula: "WACC = (wE x rE) + (wD x rD)", description: "WACC = (Debt/Debt + Equity) × Cost of Debt + (Equity/Debt + Equity) × Cost of Equity)" },
             { name: "Cost of Equity (Capital Asset Pricing Model)", formula: "Cost of Equity = Risk-Free Rate + Beta × (Market Return - Risk-Free Rate)", description: "Required return on equity using market risk" },
-            { name: "Cost of Equity (Dividend Growth Model)", formula: "Cost of Equity = (Next Year Dividend / Current Share Price) + Dividend Growth Rate", description: "Gordon Growth Model approach for cost of equity" },
-            { name: "Cost of Debt (After-Tax)", formula: "After-Tax Cost of Debt = Pre-Tax Cost of Debt × (1 - Tax Rate)", description: "Interest rate adjusted for tax shield benefit" },
+            { name: "Cost of Equity (Dividend Growth Model)", formula: "Cost of Equity (rE) = (D1 / P0) + g", description: "D1 = D0 x (1 + g)" },
+            { name: "Cost of Debt (After-Tax)", formula: "After-Tax Cost of Debt (rD) = Pre-Tax Cost of Debt × (1 - Tax Rate)", description: "Pre-Tax Cost of Debt = (FV/PV)^1/t (FV trên PV tất cả mũ 1 phần t)" },
+            { name: "wD", formula: "wD = Debt / (Debt + Equity)", description: "Tính Debt bằng cách lấy số lượng Bonds nhân với giá của Bonds" },
+            { name: "wE", formula: "wE = Equity / (Debt + Equity)", description: "Tính Equity bằng cách lấy số lượng Shares nhân với giá của Shares" },
+            { name: "Theoretical Ex-Rights Price (TERP)", formula: "TERP = ((Number of old shares x Old price) + (Number of new shares x New price)) / Number of Old Shares + Number of New Shares", description: "Number of Old/New Shares có thể hiểu là cứ mỗi N Old Shares thì sẽ mua được 1 New Share" },
+            { name: "Value of Rights per New Share (VRNS)", formula: "VRNS = TERP - Issue Price", description: "none" }
+            { name: "Value of Rights per Existing Share (VRES)", formula: "VRES = Old Price - TERP", description: "none" }
+            { name: "New shares (nếu chưa cung cấp)", formula: "New shares = Existing Shares / Rights ratio", description: "none" }
+            { name: "Capital Raised", formula: "Capital Raised = New shares x ($10 x (1 - Discount))", description: "none" }
             { name: "Cost of Preference Shares", formula: "Cost of Preference Shares = Preference Dividend / Current Preference Share Price", description: "Required return on preference shares" },
             { name: "Unlevered Beta (Asset Beta)", formula: "Unlevered Beta = Levered Beta / [1 + (1 - Tax Rate) × (Debt/Equity)]", description: "Beta without leverage effect (pure business risk)" },
             { name: "Levered Beta (Equity Beta)", formula: "Levered Beta = Unlevered Beta × [1 + (1 - Tax Rate) × (Debt/Equity)]", description: "Beta including leverage effect" },
@@ -77,8 +87,7 @@ const formulaData = {
             { name: "Modigliani-Miller Proposition II (No Tax)", formula: "Cost of Equity = Cost of Assets + (Cost of Assets - Cost of Debt) × (Debt/Equity)", description: "Cost of equity rises linearly with leverage" },
             { name: "Modigliani-Miller Proposition I (With Tax)", formula: "Value of Levered Firm = Value of Unlevered Firm + (Tax Rate × Debt)", description: "Firm value increases by present value of tax shield" },
             { name: "Market Value of Equity", formula: "Market Value of Equity = Total Firm Value - Market Value of Debt", description: "Residual value belonging to shareholders" },
-            { name: "Theoretical Ex-Rights Price", formula: "Theoretical Ex-Rights Price = [(Number of Old Shares × Cum-Rights Price) + Issue Price] / (Number of Old Shares + 1)", description: "Expected share price after rights issue" },
-            { name: "Value of Rights", formula: "Value per Right = Theoretical Ex-Rights Price - Issue Price", description: "Intrinsic value of one subscription right" }
+    
         ]
     },
     "Sources of Finance": {
