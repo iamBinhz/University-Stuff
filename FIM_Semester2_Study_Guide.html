@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIM Semester 2 - Study Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'EB Garamond', 'Times New Roman', serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1a365d;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .toc {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .toc h2 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .toc ul {
+            list-style: none;
+            columns: 2;
+        }
+        .toc li {
+            margin: 8px 0;
+        }
+        .toc a {
+            color: #2c5282;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .week-section {
+            margin-bottom: 40px;
+            border-left: 4px solid #2c5282;
+            padding-left: 20px;
+        }
+        .week-header {
+            background: #1a365d;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            margin-left: -24px;
+        }
+        .week-header h2 {
+            font-size: 1.4em;
+            margin: 0;
+        }
+        .week-header .week-num {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        h3 {
+            color: #2c5282;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        th {
+            background: #2c5282;
+            color: #fff;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .formula-box {
+            background: #edf2f7;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .formula-box .formula-name {
+            font-family: 'EB Garamond', serif;
+            font-weight: 600;
+            color: #2c5282;
+            margin-bottom: 5px;
+        }
+        .key-point {
+            background: #fffbeb;
+            border-left: 4px solid #d69e2e;
+            padding: 12px 15px;
+            margin: 15px 0;
+        }
+        .warning {
+            background: #fff5f5;
+            border-left: 4px solid #c53030;
+            padding: 12px 15px;
+            margin: 15px 0;
+        }
+        .mcq-section {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .mcq-section h4 {
+            color: #276749;
+            margin-bottom: 15px;
+        }
+        .mcq-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #9ae6b4;
+        }
+        .mcq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .mcq-q {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .mcq-options {
+            padding-left: 20px;
+        }
+        .mcq-answer {
+            color: #276749;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2c5282;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'EB Garamond', serif;
+            font-size: 1em;
+        }
+        .print-btn:hover {
+            background: #1a365d;
+        }
+        @media print {
+            .print-btn { display: none; }
+            body { background: #fff; }
+            .container { box-shadow: none; }
+        }
+        .collapsed .week-content {
+            display: none;
+        }
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            float: right;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Financial Institutions and Markets</h1>
+        <p class="subtitle">Semester 2 Study Guide - Final Exam Preparation</p>
+
+        <div class="toc">
+            <h2>Contents</h2>
+            <ul>
+                <li><a href="#w1">W1: Alternative Funds</a></li>
+                <li><a href="#w2">W2: Interest Rates</a></li>
+                <li><a href="#w3">W3: Central Banks</a></li>
+                <li><a href="#w4">W4: Risk Management</a></li>
+                <li><a href="#w5">W5: Money Markets</a></li>
+                <li><a href="#w6">W6: Bond Markets</a></li>
+                <li><a href="#w7">W7: Forex Markets Part 1</a></li>
+                <li><a href="#w8">W8: Forex Markets Part 2</a></li>
+                <li><a href="#w9">W9-10: Equity Markets</a></li>
+                <li><a href="#formulas">Key Formulas</a></li>
+                <li><a href="#mcq">Practice MCQs</a></li>
+            </ul>
+        </div>
+
+        <!-- WEEK 1: Alternative Funds -->
+        <section class="week-section" id="w1">
+            <div class="week-header">
+                <span class="week-num">Week 1</span>
+                <h2>Alternative Funds</h2>
+            </div>
+            <div class="week-content">
+                <h3>Types of Alternative Investments</h3>
+                <table>
+                    <tr>
+                        <th>Fund Type</th>
+                        <th>Description</th>
+                        <th>Key Characteristics</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Hedge Funds</strong></td>
+                        <td>Pooled investment funds using diverse strategies</td>
+                        <td>High fees (2% + 20%), accredited investors only, less regulated</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Private Equity</strong></td>
+                        <td>Investments in private companies</td>
+                        <td>Long lock-up periods, leveraged buyouts, illiquid</td>
+                    </tr>
+                    <tr>
+                        <td><strong>REITs</strong></td>
+                        <td>Real Estate Investment Trusts</td>
+                        <td>Must distribute 90% of income, publicly traded</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Venture Capital</strong></td>
+                        <td>Early-stage company investments</td>
+                        <td>High risk/high return, active management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Infrastructure</strong></td>
+                        <td>Roads, utilities, airports</td>
+                        <td>Stable cash flows, inflation protection</td>
+                    </tr>
+                </table>
+
+                <h3>Hedge Fund Strategies</h3>
+                <ul>
+                    <li><strong>Long/Short Equity</strong>: Buy undervalued, short overvalued stocks</li>
+                    <li><strong>Market Neutral</strong>: Equal long and short positions to eliminate market risk</li>
+                    <li><strong>Global Macro</strong>: Bet on macroeconomic trends across countries</li>
+                    <li><strong>Event-Driven</strong>: Exploit corporate events (mergers, bankruptcies)</li>
+                    <li><strong>Arbitrage</strong>: Exploit price differences in related securities</li>
+                </ul>
+
+                <div class="key-point">
+                    <strong>Illiquidity Premium:</strong> Alternative assets offer higher returns to compensate for lack of liquidity. Pension funds with long-term horizons can capture this premium.
+                </div>
+
+                <div class="warning">
+                    <strong>Hidden Risks:</strong> Stale pricing (quarterly valuations), return smoothing (artificially low volatility), denominator effect during market crashes.
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEK 2: Interest Rates -->
+        <section class="week-section" id="w2">
+            <div class="week-header">
+                <span class="week-num">Week 2</span>
+                <h2>Interest Rates</h2>
+            </div>
+            <div class="week-content">
+                <h3>Types of Interest Rates</h3>
+                <table>
+                    <tr>
+                        <th>Rate Type</th>
+                        <th>Definition</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Nominal Rate</strong></td>
+                        <td>Stated rate before adjusting for inflation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Real Rate</strong></td>
+                        <td>Nominal rate minus inflation rate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Risk-Free Rate</strong></td>
+                        <td>Return on government securities (no default risk)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Base Rate</strong></td>
+                        <td>Central bank's policy rate (Bank Rate in UK)</td>
+                    </tr>
+                </table>
+
+                <div class="formula-box">
+                    <div class="formula-name">Fisher Equation</div>
+                    Real Interest Rate = Nominal Rate - Inflation Rate<br>
+                    <em>r = i - π</em>
+                </div>
+
+                <h3>Term Structure of Interest Rates</h3>
+                <p>The relationship between interest rates and time to maturity.</p>
+
+                <h3>Yield Curve Shapes</h3>
+                <table>
+                    <tr>
+                        <th>Shape</th>
+                        <th>Meaning</th>
+                        <th>Economic Signal</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Normal (Upward)</strong></td>
+                        <td>Long-term rates > Short-term rates</td>
+                        <td>Economic expansion expected</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inverted (Downward)</strong></td>
+                        <td>Short-term rates > Long-term rates</td>
+                        <td>Recession indicator</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flat</strong></td>
+                        <td>Rates similar across maturities</td>
+                        <td>Economic uncertainty</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Humped</strong></td>
+                        <td>Medium-term rates highest</td>
+                        <td>Transition period</td>
+                    </tr>
+                </table>
+
+                <h3>Theories of Term Structure</h3>
+                <ol>
+                    <li><strong>Expectations Theory</strong>: Long-term rates = average of expected future short-term rates</li>
+                    <li><strong>Liquidity Premium Theory</strong>: Investors demand premium for holding longer maturities</li>
+                    <li><strong>Market Segmentation Theory</strong>: Different investors prefer different maturities</li>
+                </ol>
+
+                <div class="key-point">
+                    <strong>Yield Curve Inversion:</strong> When short-term rates exceed long-term rates, historically predicts recession within 12-18 months. Evidence is strong but not perfect.
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEK 3: Central Banks -->
+        <section class="week-section" id="w3">
+            <div class="week-header">
+                <span class="week-num">Week 3</span>
+                <h2>Central Banks</h2>
+            </div>
+            <div class="week-content">
+                <h3>Functions of Central Banks</h3>
+                <ul>
+                    <li><strong>Monetary Policy</strong>: Control money supply and interest rates</li>
+                    <li><strong>Lender of Last Resort</strong>: Provide emergency liquidity to banks</li>
+                    <li><strong>Financial Stability</strong>: Monitor systemic risks</li>
+                    <li><strong>Bank Supervision</strong>: Regulate banking sector</li>
+                    <li><strong>Currency Issuance</strong>: Sole authority to issue banknotes</li>
+                    <li><strong>Government's Bank</strong>: Manage government accounts and debt</li>
+                </ul>
+
+                <h3>Bank of England Structure</h3>
+                <table>
+                    <tr>
+                        <th>Committee</th>
+                        <th>Responsibility</th>
+                    </tr>
+                    <tr>
+                        <td><strong>MPC</strong> (Monetary Policy Committee)</td>
+                        <td>Sets Bank Rate to meet 2% inflation target</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FPC</strong> (Financial Policy Committee)</td>
+                        <td>Macroprudential regulation, systemic risk</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PRA</strong> (Prudential Regulation Authority)</td>
+                        <td>Microprudential supervision of banks</td>
+                    </tr>
+                </table>
+
+                <h3>Monetary Policy Tools</h3>
+                <table>
+                    <tr>
+                        <th>Tool</th>
+                        <th>How It Works</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Bank Rate</strong></td>
+                        <td>Interest rate BoE pays on reserves; influences all other rates</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Open Market Operations</strong></td>
+                        <td>Buy/sell government securities to adjust money supply</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quantitative Easing (QE)</strong></td>
+                        <td>Large-scale asset purchases when rates near zero</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reserve Requirements</strong></td>
+                        <td>Minimum reserves banks must hold (0% in US since 2020)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Forward Guidance</strong></td>
+                        <td>Communication about future policy intentions</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Central Bank Independence:</strong> Insulates monetary policy from political pressure. Leads to lower, more stable inflation.
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEK 4: Risk Management -->
+        <section class="week-section" id="w4">
+            <div class="week-header">
+                <span class="week-num">Week 4</span>
+                <h2>Risk Management</h2>
+            </div>
+            <div class="week-content">
+                <h3>Types of Financial Risk</h3>
+                <table>
+                    <tr>
+                        <th>Risk Type</th>
+                        <th>Definition</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Credit Risk</strong></td>
+                        <td>Borrower fails to repay</td>
+                        <td>Loan default</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Market Risk</strong></td>
+                        <td>Losses from market price changes</td>
+                        <td>Stock price decline, interest rate changes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Liquidity Risk</strong></td>
+                        <td>Unable to sell assets or meet obligations</td>
+                        <td>Bank run, fire sale</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operational Risk</strong></td>
+                        <td>Failures in processes, systems, people</td>
+                        <td>Fraud, IT failure, human error</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Systemic Risk</strong></td>
+                        <td>Failure spreads across financial system</td>
+                        <td>2008 financial crisis</td>
+                    </tr>
+                </table>
+
+                <h3>Risk Measurement</h3>
+                <div class="formula-box">
+                    <div class="formula-name">Value at Risk (VaR)</div>
+                    Maximum expected loss over a given time period at a given confidence level<br><br>
+                    Example: "1-day 95% VaR of £1 million" means:<br>
+                    95% confident losses won't exceed £1 million in one day
+                </div>
+
+                <h3>Basel III Capital Requirements</h3>
+                <table>
+                    <tr>
+                        <th>Requirement</th>
+                        <th>Minimum</th>
+                    </tr>
+                    <tr>
+                        <td>Common Equity Tier 1 (CET1)</td>
+                        <td>4.5% of RWA</td>
+                    </tr>
+                    <tr>
+                        <td>Tier 1 Capital</td>
+                        <td>6% of RWA</td>
+                    </tr>
+                    <tr>
+                        <td>Total Capital</td>
+                        <td>8% of RWA</td>
+                    </tr>
+                    <tr>
+                        <td>Capital Conservation Buffer</td>
+                        <td>+2.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Countercyclical Buffer</td>
+                        <td>0-2.5%</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Risk-Weighted Assets (RWA):</strong> Assets weighted by riskiness. Cash = 0%, Government bonds = 0-20%, Mortgages = 35-50%, Corporate loans = 100%+
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEK 5: Money Markets -->
+        <section class="week-section" id="w5">
+            <div class="week-header">
+                <span class="week-num">Week 5</span>
+                <h2>Money Markets</h2>
+            </div>
+            <div class="week-content">
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Short-term instruments (maturity &lt; 1 year)</li>
+                    <li>High liquidity</li>
+                    <li>Low default risk</li>
+                    <li>Large denominations (wholesale market)</li>
+                </ul>
+
+                <h3>Money Market Instruments</h3>
+                <table>
+                    <tr>
+                        <th>Instrument</th>
+                        <th>Issuer</th>
+                        <th>Maturity</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Treasury Bills (T-Bills)</strong></td>
+                        <td>Government</td>
+                        <td>4, 13, 26, 52 weeks</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Commercial Paper</strong></td>
+                        <td>Corporations</td>
+                        <td>1-270 days</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Certificates of Deposit (CDs)</strong></td>
+                        <td>Banks</td>
+                        <td>1-12 months</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Repurchase Agreements (Repos)</strong></td>
+                        <td>Various</td>
+                        <td>Overnight to weeks</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Banker's Acceptances</strong></td>
+                        <td>Banks (for trade)</td>
+                        <td>30-180 days</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LIBOR/SONIA</strong></td>
+                        <td>Interbank rate</td>
+                        <td>Overnight to 12 months</td>
+                    </tr>
+                </table>
+
+                <h3>Repurchase Agreements (Repos)</h3>
+                <p>Short-term collateralized loan:</p>
+                <ol>
+                    <li>Seller sells securities to buyer</li>
+                    <li>Seller agrees to repurchase at higher price</li>
+                    <li>Difference = interest (repo rate)</li>
+                </ol>
+
+                <div class="formula-box">
+                    <div class="formula-name">T-Bill Discount Yield</div>
+                    Discount Yield = [(Face Value - Price) / Face Value] × (360 / Days to Maturity)
+                </div>
+
+                <div class="key-point">
+                    <strong>SONIA (Sterling Overnight Index Average):</strong> Replaced LIBOR as UK benchmark rate. Based on actual overnight transactions.
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEK 6: Bond Markets -->
+        <section class="week-section" id="w6">
+            <div class="week-header">
+                <span class="week-num">Week 6</span>
+                <h2>Bond Markets</h2>
+            </div>
+            <div class="week-content">
+                <h3>Bond Basics</h3>
+                <table>
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Face Value (Par)</strong></td>
+                        <td>Amount repaid at maturity (typically £100 or £1,000)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coupon Rate</strong></td>
+                        <td>Annual interest payment as % of face value</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Yield to Maturity (YTM)</strong></td>
+                        <td>Total return if held to maturity</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Current Yield</strong></td>
+                        <td>Annual coupon / Current price</td>
+                    </tr>
+                </table>
+
+                <h3>Types of Bonds</h3>
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Characteristics</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Government Bonds (Gilts)</strong></td>
+                        <td>Low risk, benchmark rate, highly liquid</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Corporate Bonds</strong></td>
+                        <td>Higher yield, credit risk, various ratings</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Municipal Bonds</strong></td>
+                        <td>Local government, often tax-exempt</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zero-Coupon Bonds</strong></td>
+                        <td>No coupons, sold at discount, single payment at maturity</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Index-Linked Bonds</strong></td>
+                        <td>Payments adjusted for inflation</td>
+                    </tr>
+                </table>
+
+                <div class="formula-box">
+                    <div class="formula-name">Bond Price</div>
+                    Price = Σ [Coupon / (1+r)^t] + [Face Value / (1+r)^n]<br><br>
+                    Where: r = yield, t = period, n = total periods
+                </div>
+
+                <h3>Bond Price and Yield Relationship</h3>
+                <div class="warning">
+                    <strong>Inverse Relationship:</strong> When interest rates rise, bond prices fall (and vice versa). This is because existing bonds with lower coupons become less attractive.
+                </div>
+
+                <h3>Credit Ratings</h3>
+                <table>
+                    <tr>
+                        <th>Grade</th>
+                        <th>S&P/Fitch</th>
+                        <th>Moody's</th>
+                        <th>Meaning</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">Investment Grade</td>
+                        <td>AAA</td>
+                        <td>Aaa</td>
+                        <td>Highest quality</td>
+                    </tr>
+                    <tr>
+                        <td>AA</td>
+                        <td>Aa</td>
+                        <td>High quality</td>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>A</td>
+                        <td>Upper medium</td>
+                    </tr>
+                    <tr>
+                        <td>BBB</td>
+                        <td>Baa</td>
+                        <td>Medium grade</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Speculative (Junk)</td>
+                        <td>BB, B</td>
+                        <td>Ba, B</td>
+                        <td>Speculative</td>
+                    </tr>
+                    <tr>
+                        <td>CCC-D</td>
+                        <td>Caa-C</td>
+                        <td>High risk/Default</td>
+                    </tr>
+                </table>
+
+                <div class="formula-box">
+                    <div class="formula-name">Duration</div>
+                    Measures bond price sensitivity to interest rate changes<br><br>
+                    Higher duration = Greater price volatility<br>
+                    Longer maturity & lower coupon = Higher duration
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEK 7: Forex Markets Part 1 -->
+        <section class="week-section" id="w7">
+            <div class="week-header">
+                <span class="week-num">Week 7</span>
+                <h2>Foreign Exchange Markets - Part 1</h2>
+            </div>
+            <div class="week-content">
+                <h3>Forex Market Overview</h3>
+                <ul>
+                    <li>Largest financial market (~$7.5 trillion daily volume)</li>
+                    <li>24-hour trading (follows the sun: Asia → Europe → Americas)</li>
+                    <li>Over-the-counter (OTC) decentralized market</li>
+                    <li>No physical location - electronic network of banks and dealers</li>
+                </ul>
+
+                <h3>Market Participants</h3>
+                <table>
+                    <tr>
+                        <th>Participant</th>
+                        <th>Role</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Commercial Banks</strong></td>
+                        <td>Primary dealers, provide liquidity, trade for clients</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Central Banks</strong></td>
+                        <td>Manage reserves, intervene to stabilize currency</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Corporations</strong></td>
+                        <td>Trade for business needs (imports/exports, hedging)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hedge Funds</strong></td>
+                        <td>Speculative trading for profit</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Retail Traders</strong></td>
+                        <td>Individual speculators (small % of market)</td>
+                    </tr>
+                </table>
+
+                <h3>Exchange Rate Basics</h3>
+                <p><strong>Definition:</strong> The price of one currency in terms of another.</p>
+
+                <table>
+                    <tr>
+                        <th>Term</th>
+                        <th>Meaning</th>
+                        <th>Example (UK perspective)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Base Currency</strong></td>
+                        <td>First currency in pair</td>
+                        <td>GBP in GBP/USD</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quote Currency</strong></td>
+                        <td>Second currency in pair</td>
+                        <td>USD in GBP/USD</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Direct Quote</strong></td>
+                        <td>Domestic per unit of foreign</td>
+                        <td>£0.80 per $1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Indirect Quote</strong></td>
+                        <td>Foreign per unit of domestic</td>
+                        <td>$1.25 per £1</td>
+                    </tr>
+                </table>
+
+                <h3>Bid-Ask Spread</h3>
+                <table>
+                    <tr>
+                        <th>Rate</th>
+                        <th>Definition</th>
+                        <th>Who Uses</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Bid Price</strong></td>
+                        <td>Price dealer BUYS base currency</td>
+                        <td>You sell at bid (lower price)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ask Price</strong></td>
+                        <td>Price dealer SELLS base currency</td>
+                        <td>You buy at ask (higher price)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Spread</strong></td>
+                        <td>Ask - Bid = Dealer's profit</td>
+                        <td>Narrower = more liquid market</td>
+                    </tr>
+                </table>
+
+                <div class="formula-box">
+                    <div class="formula-name">Bid-Ask Spread Percentage</div>
+                    Spread % = [(Ask - Bid) / Ask] × 100
+                </div>
+
+                <h3>Exchange Rate Regimes</h3>
+                <table>
+                    <tr>
+                        <th>Regime</th>
+                        <th>Description</th>
+                        <th>Examples</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Free Float</strong></td>
+                        <td>Market determines rate, no intervention</td>
+                        <td>GBP, USD, EUR, JPY</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Managed Float</strong></td>
+                        <td>Market-based with occasional CB intervention</td>
+                        <td>Many emerging markets</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fixed/Pegged</strong></td>
+                        <td>Tied to another currency or basket</td>
+                        <td>Hong Kong Dollar (to USD)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Currency Board</strong></td>
+                        <td>Fixed rate backed by foreign reserves</td>
+                        <td>Bulgaria</td>
+                    </tr>
+                </table>
+
+                <h3>Factors Affecting Exchange Rates</h3>
+                <ul>
+                    <li><strong>Interest Rate Differentials</strong>: Higher rates attract capital → currency appreciates</li>
+                    <li><strong>Inflation Differentials</strong>: Higher inflation → currency depreciates (PPP)</li>
+                    <li><strong>Current Account Balance</strong>: Surplus → demand for currency → appreciates</li>
+                    <li><strong>Economic Growth</strong>: Strong growth attracts investment → appreciates</li>
+                    <li><strong>Political Stability</strong>: Uncertainty causes capital flight → depreciates</li>
+                    <li><strong>Speculation</strong>: Market expectations and sentiment</li>
+                </ul>
+
+                <div class="key-point">
+                    <strong>Appreciation vs Depreciation:</strong><br>
+                    If GBP/USD rises from 1.25 to 1.30 → GBP appreciated (buys more USD)<br>
+                    If GBP/USD falls from 1.25 to 1.20 → GBP depreciated (buys less USD)
+                </div>
+
+                <h3>Cross Rates</h3>
+                <p>Exchange rate between two currencies calculated via a third currency.</p>
+                <div class="formula-box">
+                    <div class="formula-name">Cross Rate Calculation</div>
+                    EUR/GBP = EUR/USD ÷ GBP/USD<br><br>
+                    Example: If EUR/USD = 1.10 and GBP/USD = 1.25<br>
+                    EUR/GBP = 1.10 ÷ 1.25 = 0.88
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEK 8: Forex Markets Part 2 -->
+        <section class="week-section" id="w8">
+            <div class="week-header">
+                <span class="week-num">Week 8</span>
+                <h2>Foreign Exchange Markets - Part 2</h2>
+            </div>
+            <div class="week-content">
+                <h3>Forex Instruments</h3>
+                <table>
+                    <tr>
+                        <th>Instrument</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Spot</strong></td>
+                        <td>Immediate exchange (T+2 settlement)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Forward</strong></td>
+                        <td>Agreement to exchange at future date at set rate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Swap</strong></td>
+                        <td>Spot + forward combined</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Options</strong></td>
+                        <td>Right (not obligation) to exchange at set rate</td>
+                    </tr>
+                </table>
+
+                <div class="formula-box">
+                    <div class="formula-name">Interest Rate Parity</div>
+                    Forward Rate / Spot Rate = (1 + r_domestic) / (1 + r_foreign)<br><br>
+                    If domestic rates > foreign rates → forward rate at premium
+                </div>
+
+                <h3>Purchasing Power Parity (PPP)</h3>
+                <p>Theory that exchange rates should adjust so that identical goods cost the same in different countries when expressed in a common currency.</p>
+
+                <h4>Law of One Price</h4>
+                <p>Foundation of PPP: In efficient markets, identical goods must sell for the same price in different locations (when expressed in same currency), otherwise arbitrage would occur.</p>
+
+                <div class="formula-box">
+                    <div class="formula-name">Law of One Price</div>
+                    P_domestic = S × P_foreign<br><br>
+                    Where: S = Spot exchange rate (domestic per foreign)
+                </div>
+
+                <h4>Absolute PPP vs Relative PPP</h4>
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Definition</th>
+                        <th>Formula</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Absolute PPP</strong></td>
+                        <td>Exchange rate equals ratio of price levels</td>
+                        <td>S = P_domestic / P_foreign</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Relative PPP</strong></td>
+                        <td>Exchange rate change equals inflation differential</td>
+                        <td>%ΔS ≈ π_domestic - π_foreign</td>
+                    </tr>
+                </table>
+
+                <div class="formula-box">
+                    <div class="formula-name">Relative PPP Formula</div>
+                    (S₁ - S₀) / S₀ = (π_domestic - π_foreign)<br><br>
+                    Where:<br>
+                    S₀ = Current spot rate<br>
+                    S₁ = Expected future spot rate<br>
+                    π = Inflation rate<br><br>
+                    <strong>Interpretation:</strong> If UK inflation is 3% and US inflation is 1%, GBP should depreciate by approximately 2% against USD.
+                </div>
+
+                <h4>Big Mac Index (Real-World PPP Example)</h4>
+                <p>The Economist's informal measure of PPP using McDonald's Big Mac prices worldwide.</p>
+
+                <table>
+                    <tr>
+                        <th>Country</th>
+                        <th>Big Mac Price</th>
+                        <th>Implied PPP Rate</th>
+                        <th>Actual Rate</th>
+                        <th>Valuation</th>
+                    </tr>
+                    <tr>
+                        <td>USA</td>
+                        <td>$5.69</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Baseline</td>
+                    </tr>
+                    <tr>
+                        <td>UK</td>
+                        <td>£4.19</td>
+                        <td>$1.36/£</td>
+                        <td>$1.25/£</td>
+                        <td>GBP undervalued ~8%</td>
+                    </tr>
+                    <tr>
+                        <td>Switzerland</td>
+                        <td>CHF 6.90</td>
+                        <td>$0.82/CHF</td>
+                        <td>$1.10/CHF</td>
+                        <td>CHF overvalued ~34%</td>
+                    </tr>
+                </table>
+
+                <div class="formula-box">
+                    <div class="formula-name">Big Mac PPP Calculation</div>
+                    Implied PPP Rate = Big Mac Price (local) / Big Mac Price (US)<br><br>
+                    Example: £4.19 / $5.69 = 0.736 → Implied rate: $1.36 per £1<br>
+                    If actual rate is $1.25/£, GBP is undervalued by (1.36-1.25)/1.36 = 8%
+                </div>
+
+                <h4>PPP in Practice: Short-Run vs Long-Run</h4>
+                <table>
+                    <tr>
+                        <th>Time Horizon</th>
+                        <th>PPP Validity</th>
+                        <th>Reason</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Short-run</strong></td>
+                        <td>Poor predictor</td>
+                        <td>Interest rates, speculation, capital flows dominate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Long-run (5+ years)</strong></td>
+                        <td>Better predictor</td>
+                        <td>Prices eventually adjust, arbitrage works over time</td>
+                    </tr>
+                </table>
+
+                <h4>Limitations of PPP</h4>
+                <ul>
+                    <li><strong>Transportation costs</strong>: Goods aren't costless to move across borders</li>
+                    <li><strong>Trade barriers</strong>: Tariffs, quotas, and regulations prevent arbitrage</li>
+                    <li><strong>Non-traded goods</strong>: Services (haircuts, rent) can't be arbitraged internationally</li>
+                    <li><strong>Product differentiation</strong>: A Big Mac in London isn't identical to one in New York (quality, taste preferences)</li>
+                    <li><strong>Price stickiness</strong>: Prices adjust slowly due to contracts, menu costs</li>
+                    <li><strong>Capital flows</strong>: Exchange rates often driven by investment, not goods trade</li>
+                </ul>
+
+                <div class="key-point">
+                    <strong>Exam Tip:</strong> PPP works better for:<br>
+                    • Long time horizons (years, not days)<br>
+                    • Countries with high inflation differentials<br>
+                    • Tradeable goods (commodities) rather than services
+                </div>
+
+                <div class="warning">
+                    <strong>Common Misconception:</strong> PPP does NOT predict short-term exchange rate movements. Daily/monthly rates are driven by interest rate differentials, capital flows, and speculation - not inflation differences.
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEKS 9-10: Equity Markets -->
+        <section class="week-section" id="w9">
+            <div class="week-header">
+                <span class="week-num">Weeks 9-10</span>
+                <h2>Equity Markets</h2>
+            </div>
+            <div class="week-content">
+                <h3>Why Stock Markets Exist</h3>
+                <ul>
+                    <li>Raise capital for companies</li>
+                    <li>Diversify risk for investors</li>
+                    <li>Provide liquidity</li>
+                    <li>Enable profit through investment</li>
+                    <li><strong>NOT:</strong> Provide loans (that's debt markets)</li>
+                </ul>
+
+                <h3>Primary vs Secondary Markets</h3>
+                <table>
+                    <tr>
+                        <th>Primary Market</th>
+                        <th>Secondary Market</th>
+                    </tr>
+                    <tr>
+                        <td>New securities issued (IPO)</td>
+                        <td>Existing securities traded</td>
+                    </tr>
+                    <tr>
+                        <td>Company receives funds</td>
+                        <td>Investors trade with each other</td>
+                    </tr>
+                    <tr>
+                        <td>Also called "new issue market"</td>
+                        <td>Also called "stock market"</td>
+                    </tr>
+                </table>
+
+                <h3>Common vs Preferred Shares</h3>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Common Shares</th>
+                        <th>Preferred Shares</th>
+                    </tr>
+                    <tr>
+                        <td>Voting Rights</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Dividend Priority</td>
+                        <td>Lower (residual)</td>
+                        <td>Higher (fixed)</td>
+                    </tr>
+                    <tr>
+                        <td>Claim on Assets</td>
+                        <td>Last (after all others)</td>
+                        <td>Before common</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Residual Claimants:</strong> Common shareholders receive remaining cash flow AFTER all other claims (debt, preferred dividends) are paid.
+                </div>
+
+                <h3>Stock Valuation</h3>
+                <div class="formula-box">
+                    <div class="formula-name">One-Period Valuation Model</div>
+                    P₀ = (D₁ + P₁) / (1 + r)<br><br>
+                    Value = Present value of expected dividend + Present value of expected selling price
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-name">Price-Earnings (P/E) Ratio</div>
+                    P/E = Market Price per Share / Earnings per Share<br><br>
+                    High P/E → Investors optimistic about future earnings<br>
+                    Low P/E → Company may be undervalued or in trouble
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-name">Equity Risk Premium</div>
+                    Equity Risk Premium = Expected Return on Stocks - Risk-Free Rate
+                </div>
+
+                <h3>Efficient Market Hypothesis (EMH)</h3>
+                <p><strong>Definition:</strong> Current price fully reflects all available relevant information.</p>
+
+                <table>
+                    <tr>
+                        <th>Form</th>
+                        <th>Information Reflected</th>
+                        <th>Implication</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Weak</strong></td>
+                        <td>All past prices</td>
+                        <td>Technical analysis useless</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Semi-Strong</strong></td>
+                        <td>All public information</td>
+                        <td>Fundamental analysis useless</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Strong</strong></td>
+                        <td>All information (public + private)</td>
+                        <td>No one can beat market</td>
+                    </tr>
+                </table>
+
+                <div class="warning">
+                    <strong>EMH Implications:</strong>
+                    <ul>
+                        <li>Future price changes are unpredictable</li>
+                        <li>Unexploited profit opportunities quickly eliminated</li>
+                        <li>If news is public, price already adjusted - no abnormal returns</li>
+                    </ul>
+                </div>
+
+                <h3>Market Indices</h3>
+                <table>
+                    <tr>
+                        <th>Index</th>
+                        <th>Calculation</th>
+                        <th>Coverage</th>
+                    </tr>
+                    <tr>
+                        <td><strong>DJIA</strong></td>
+                        <td>Price-weighted</td>
+                        <td>30 largest US companies</td>
+                    </tr>
+                    <tr>
+                        <td><strong>S&P 500</strong></td>
+                        <td>Market-cap-weighted</td>
+                        <td>500 US companies</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NASDAQ 100</strong></td>
+                        <td>Market-cap-weighted</td>
+                        <td>100 largest NASDAQ (tech-heavy)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FTSE 100</strong></td>
+                        <td>Market-cap-weighted</td>
+                        <td>100 largest UK companies</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>FTSE 100 is NOT a US index</strong> - common exam trap!
+                </div>
+
+                <h3>Stock Exchanges</h3>
+                <table>
+                    <tr>
+                        <th>Exchange</th>
+                        <th>Key Facts</th>
+                    </tr>
+                    <tr>
+                        <td><strong>NYSE</strong></td>
+                        <td>Largest US exchange, auction market, established 1817</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NASDAQ</strong></td>
+                        <td>Electronic exchange, founded 1971, tech-heavy, less stringent listing requirements</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LSE</strong></td>
+                        <td>UK's main exchange, has AIM (Alternative Investment Market) for smaller companies since 1995</td>
+                    </tr>
+                </table>
+
+                <h3>Key Theories</h3>
+                <table>
+                    <tr>
+                        <th>Theory</th>
+                        <th>Explanation</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Speculative Bubble</strong></td>
+                        <td>Prices move away from intrinsic value</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Keynes's "Biggest Fool"</strong></td>
+                        <td>Buy because others will buy (not based on intrinsic value)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Minsky's Financial Instability</strong></td>
+                        <td>Explains boom and bust cycles; stability breeds instability</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- KEY FORMULAS -->
+        <section class="week-section" id="formulas">
+            <div class="week-header">
+                <h2>Key Formulas Summary</h2>
+            </div>
+            <div class="week-content">
+                <div class="formula-box">
+                    <div class="formula-name">Fisher Equation (Interest Rates)</div>
+                    Real Rate = Nominal Rate - Inflation Rate
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-name">T-Bill Discount Yield (Money Markets)</div>
+                    Discount Yield = [(Face Value - Price) / Face Value] × (360 / Days)
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-name">Bond Price (Bond Markets)</div>
+                    Price = Σ [C / (1+r)^t] + [FV / (1+r)^n]
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-name">Current Yield (Bond Markets)</div>
+                    Current Yield = Annual Coupon / Current Price
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-name">Interest Rate Parity (Forex)</div>
+                    F/S = (1 + r_d) / (1 + r_f)
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-name">P/E Ratio (Equity)</div>
+                    P/E = Market Price per Share / Earnings per Share
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-name">One-Period Stock Valuation</div>
+                    P₀ = (D₁ + P₁) / (1 + r)
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-name">Equity Risk Premium</div>
+                    ERP = Expected Stock Return - Risk-Free Rate
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE MCQs -->
+        <section class="week-section" id="mcq">
+            <div class="week-header">
+                <h2>Practice MCQs (Equity Markets)</h2>
+            </div>
+            <div class="week-content">
+                <div class="mcq-section">
+                    <h4>Test Your Knowledge</h4>
+
+                    <div class="mcq-item">
+                        <div class="mcq-q">1. According to the efficient market hypothesis, the current price of a security:</div>
+                        <div class="mcq-options">
+                            A) Is the discounted NPV of future interest payments<br>
+                            B) Is determined by the lowest successful bidder<br>
+                            C) Fully reflects all available relevant information<br>
+                            D) None of the above
+                        </div>
+                        <div class="mcq-answer">Answer: C</div>
+                    </div>
+
+                    <div class="mcq-item">
+                        <div class="mcq-q">2. The efficient markets hypothesis implies future stock price changes should be:</div>
+                        <div class="mcq-options">
+                            A) Unpredictable<br>
+                            B) Set by each country<br>
+                            C) Increasing<br>
+                            D) Pegged to a standard
+                        </div>
+                        <div class="mcq-answer">Answer: A</div>
+                    </div>
+
+                    <div class="mcq-item">
+                        <div class="mcq-q">3. Which is NOT a characteristic of NYSE?</div>
+                        <div class="mcq-options">
+                            A) Largest US stock exchange<br>
+                            B) Primarily trades stocks<br>
+                            C) Formally established in 1917<br>
+                            D) Operates as auction market
+                        </div>
+                        <div class="mcq-answer">Answer: C (NYSE established 1817, not 1917)</div>
+                    </div>
+
+                    <div class="mcq-item">
+                        <div class="mcq-q">4. Which exchange is known for tech companies and less stringent listing requirements?</div>
+                        <div class="mcq-options">
+                            A) NYSE<br>
+                            B) LSE<br>
+                            C) TSE<br>
+                            D) NASDAQ
+                        </div>
+                        <div class="mcq-answer">Answer: D</div>
+                    </div>
+
+                    <div class="mcq-item">
+                        <div class="mcq-q">5. How is the DJIA calculated?</div>
+                        <div class="mcq-options">
+                            A) Price-weighted<br>
+                            B) Market-cap-weighted<br>
+                            C) Equal-weighted<br>
+                            D) Volume-weighted
+                        </div>
+                        <div class="mcq-answer">Answer: A</div>
+                    </div>
+
+                    <div class="mcq-item">
+                        <div class="mcq-q">6. Which is NOT a US index?</div>
+                        <div class="mcq-options">
+                            A) DJIA<br>
+                            B) NASDAQ 100<br>
+                            C) FTSE 100<br>
+                            D) S&P 500
+                        </div>
+                        <div class="mcq-answer">Answer: C (FTSE 100 is UK)</div>
+                    </div>
+
+                    <div class="mcq-item">
+                        <div class="mcq-q">7. A speculative bubble occurs when:</div>
+                        <div class="mcq-options">
+                            A) Prices equal intrinsic value<br>
+                            B) Prices fall due to dividends<br>
+                            C) Prices move away from intrinsic value<br>
+                            D) Companies stop trading
+                        </div>
+                        <div class="mcq-answer">Answer: C</div>
+                    </div>
+
+                    <div class="mcq-item">
+                        <div class="mcq-q">8. A high P/E ratio indicates:</div>
+                        <div class="mcq-options">
+                            A) Irregular dividends<br>
+                            B) Financial instability<br>
+                            C) Investors optimistic about future earnings<br>
+                            D) Declining profits
+                        </div>
+                        <div class="mcq-answer">Answer: C</div>
+                    </div>
+
+                    <div class="mcq-item">
+                        <div class="mcq-q">9. Preferred shareholders do NOT have the right to:</div>
+                        <div class="mcq-options">
+                            A) Vote<br>
+                            B) Receive dividend<br>
+                            C) Claim over assets<br>
+                            D) Claim over company income
+                        </div>
+                        <div class="mcq-answer">Answer: A</div>
+                    </div>
+
+                    <div class="mcq-item">
+                        <div class="mcq-q">10. Equity risk premium means:</div>
+                        <div class="mcq-options">
+                            A) Return on bonds minus stocks<br>
+                            B) Return on stocks minus risk-free rate<br>
+                            C) Risk-free rate minus stocks<br>
+                            D) Dividend minus tax
+                        </div>
+                        <div class="mcq-answer">Answer: B</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+
+    <script>
+        // Toggle sections for easier navigation
+        document.querySelectorAll('.week-header').forEach(header => {
+            header.style.cursor = 'pointer';
+            header.addEventListener('click', () => {
+                header.parentElement.classList.toggle('collapsed');
+            });
+        });
+    </script>
+</body>
+</html>
