@@ -56,12 +56,13 @@ const formulaData = {
             { name: "Net Present Value", formula: "Net Present Value = Total of PVinflows - Initial Investment", description: "PVinflows = PV của các năm theo công thức PV = FV × (1+r)^(-t) / Total PVinflows = Tổng của các năm" },
             { name: "Internal Rate of Return (Interpolation)", formula: "Internal Rate of Return = r₁ + [NPV₁ / (NPV₁ - NPV₂)] × (r₂ - r₁)", description: "Estimate internal rate of return between two discount rates" },
             { name: "Payback Period", formula: "Payback Period = Last Year with negative CCF + (|Last negative CCF| / Following Year's CF)", description: "Time required to recover initial investment" },
-            { name: "Discounted Payback Period", formula: "Discounted Payback = Time when Cumulative Discounted Cash Flows ≥ Initial Investment", description: "Payback period using discounted cash flows" },
+            { name: "Discounted Payback Period", formula: "Làm tương tự như Payback Period nhưng thêm cột Discounted Cashflows để tính (xem mock test 5 bài 1)", description: "lol" },
+            { name: "Accounting Rate of Return", formula: "Accounting Rate of Return = (Average Annual Profit / Average Investment) × 100", description: "Profit-based return measure" },
             { name: "Average Investment", formula: "Average Investment = (Initial Investment + Scrap Value) / 2", description: "Dùng để tính ARR" },
+            { name: "Annual Depreciation", formula: "Annual Depreciation = (Initial Investment - Scrap Value) / Project Life (Number of Years)", description: "lol" },
             { name: "Total Depreciation", formula: "Total Depreciation = Depreciation x Number of Years", description: "lol" },
             { name: "Total Accounting Profit", formula: "Total Accounting Profit = Total CashFlows - Total Depreciation", description: "more specific" },
             { name: "Average Annual Profit", formula: "Average Annual Profit = Total Accounting Profit / Number of years", description: "none" },
-            { name: "Accounting Rate of Return", formula: "Accounting Rate of Return = (Average Annual Accounting Profit / Average Investment) × 100%", description: "Profit-based return measure" },
             { name: "Profitability Index", formula: "Profitability Index = Present Value of Future Cash Flows / Initial Investment", description: "Value created per dollar invested" },
             { name: "Equivalent Annual Annuity", formula: "Equivalent Annual Annuity = Net Present Value × [rate / (1 - (1 + rate)^(-n))]", description: "Compare projects with different useful lives" }
         ]
