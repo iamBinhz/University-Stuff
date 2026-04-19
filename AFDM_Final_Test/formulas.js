@@ -74,6 +74,7 @@ const formulaData = {
             { name: "Cost of Equity (Capital Asset Pricing Model)", formula: "Cost of Equity = Risk-Free Rate + Beta × (Market Return - Risk-Free Rate)", description: "Required return on equity using market risk" },
             { name: "Cost of Equity (Dividend Growth Model)", formula: "Cost of Equity (rE) = (D1 / P0) + g", description: "D1 = D0 x (1 + g)" },
             { name: "Cost of Debt (After-Tax)", formula: "After-Tax Cost of Debt (rD) = Pre-Tax Cost of Debt × (1 - Tax Rate)", description: "Pre-Tax Cost of Debt = (FV/PV)^1/t (FV trên PV tất cả mũ 1 phần t)" },
+            { name: "Cost of Debt (After-Tax)", formula: "After-Tax Cost of Debt (rD) = YTM × (1 - Tax Rate)", description: "YTM = (FV/PV)^1/t - 1(FV trên PV tất cả mũ 1 phần t trừ 1)" },
             { name: "wD", formula: "wD = Debt / (Debt + Equity)", description: "Tính Debt bằng cách lấy số lượng Bonds nhân với giá của Bonds" },
             { name: "wE", formula: "wE = Equity / (Debt + Equity)", description: "Tính Equity bằng cách lấy số lượng Shares nhân với giá của Shares" },
             { name: "Theoretical Ex-Rights Price (TERP)", formula: "TERP = ((Number of old shares x Old price) + (Number of new shares x New price)) / Number of Old Shares + Number of New Shares", description: "Number of Old/New Shares có thể hiểu là cứ mỗi N Old Shares thì sẽ mua được 1 New Share" },
@@ -95,7 +96,8 @@ const formulaData = {
         icon: "🏦",
         formulas: [
             { name: "Bond Valuation", formula: "Bond Price = Sum of [Coupon Payment / (1 + required return)^t] + [Face Value / (1 + required return)^n]", description: "Present value of all coupon payments and principal" },
-            { name: "Yield to Maturity", formula: "Bond Price = Sum of [Coupon / (1 + Yield to Maturity)^t] + [Face Value / (1 + Yield to Maturity)^n]", description: "Discount rate equating bond price to future cash flows" },
+            { name: "Yield to Maturity", formula: "YTM = ((FV/PV)^(1/t)) -1", description: "Discount rate equating bond price to future cash flows" },
+            { name: "Yield to Maturity", formula: "P = C x ((1 - (1 + r)^-n) / r) + FV / (1 + r)^n", description: "Discount rate equating bond price to future cash flows" },
             { name: "Current Yield", formula: "Current Yield = Annual Coupon Payment / Current Bond Price", description: "Annual coupon return based on current market price" },
             { name: "Dividend Yield", formula: "Dividend Yield = (Annual Dividend Per Share / Current Share Price) × 100%", description: "Annual dividend as percentage of share price" },
             { name: "Convertible Bond Conversion Value", formula: "Conversion Value = Conversion Ratio × Current Share Price", description: "Value of bond if converted to ordinary shares" },
