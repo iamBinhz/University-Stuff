@@ -4,238 +4,842 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIM Semester 2 - Study Guide</title>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --bg: #fafbfc;
+            --card-bg: #ffffff;
+            --text: #1f2937;
+            --text-muted: #6b7280;
+            --border: #e5e7eb;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-blue: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'EB Garamond', 'Times New Roman', serif;
-            line-height: 1.6;
-            background: #f5f5f5;
-            color: #333;
+            line-height: 1.7;
+            background: var(--bg);
+            color: var(--text);
             padding: 20px;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #1a365d;
-            margin-bottom: 10px;
-            font-size: 2.2em;
-        }
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-        .toc {
-            background: #f8f9fa;
-            padding: 20px 30px;
-            border-radius: 5px;
-            margin-bottom: 30px;
-        }
-        .toc h2 {
-            color: #1a365d;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-        .toc ul {
-            list-style: none;
-            columns: 2;
-        }
-        .toc li {
-            margin: 8px 0;
-        }
-        .toc a {
-            color: #2c5282;
-            text-decoration: none;
-        }
-        .toc a:hover {
-            text-decoration: underline;
-        }
-        .week-section {
-            margin-bottom: 40px;
-            border-left: 4px solid #2c5282;
-            padding-left: 20px;
-        }
-        .week-header {
-            background: #1a365d;
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            margin-left: -24px;
-        }
-        .week-header h2 {
-            font-size: 1.4em;
-            margin: 0;
-        }
-        .week-header .week-num {
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
-        h3 {
-            color: #2c5282;
-            margin: 20px 0 10px;
-            font-size: 1.2em;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 5px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 0.95em;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px 12px;
-            text-align: left;
-        }
-        th {
-            background: #2c5282;
-            color: #fff;
-            font-weight: 600;
-        }
-        tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-        .formula-box {
-            background: #edf2f7;
-            border: 1px solid #cbd5e0;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-        }
-        .formula-box .formula-name {
-            font-family: 'EB Garamond', serif;
-            font-weight: 600;
-            color: #2c5282;
-            margin-bottom: 5px;
-        }
-        .key-point {
-            background: #fffbeb;
-            border-left: 4px solid #d69e2e;
-            padding: 12px 15px;
-            margin: 15px 0;
-        }
-        .warning {
-            background: #fff5f5;
-            border-left: 4px solid #c53030;
-            padding: 12px 15px;
-            margin: 15px 0;
-        }
-        .mcq-section {
-            background: #f0fff4;
-            border: 1px solid #9ae6b4;
-            border-radius: 5px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .mcq-section h4 {
-            color: #276749;
-            margin-bottom: 15px;
-        }
-        .mcq-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #9ae6b4;
-        }
-        .mcq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        .mcq-q {
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .mcq-options {
-            padding-left: 20px;
-        }
-        .mcq-answer {
-            color: #276749;
-            font-weight: 600;
-            margin-top: 5px;
-        }
-        ul, ol {
-            margin: 10px 0 10px 25px;
-        }
-        li {
-            margin: 5px 0;
-        }
-        .print-btn {
+
+        /* Reading Progress Bar */
+        .progress-bar {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #2c5282;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--gradient-blue);
+            z-index: 1000;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Header */
+        .hero {
+            text-align: center;
+            padding: 30px 20px 40px;
+            background: var(--gradient-blue);
             color: #fff;
-            border: none;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: moveBg 20s linear infinite;
+        }
+
+        @keyframes moveBg {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 2.6em;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.15em;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-badge {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 12px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-badge .num {
+            font-size: 1.8em;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-badge .label {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
+        /* Control Bar */
+        .control-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
             font-family: 'EB Garamond', serif;
             font-size: 1em;
+            background: var(--card-bg);
+            color: var(--text);
+            transition: all 0.2s ease;
         }
-        .print-btn:hover {
-            background: #1a365d;
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
-        @media print {
-            .print-btn { display: none; }
-            body { background: #fff; }
-            .container { box-shadow: none; }
+
+        .search-box::before {
+            content: '🔍';
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1em;
         }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            background: var(--card-bg);
+            color: var(--text);
+            cursor: pointer;
+            font-family: 'EB Garamond', serif;
+            font-size: 0.95em;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn:hover {
+            border-color: var(--primary-light);
+            background: var(--primary-light);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        /* TOC Cards */
+        .toc {
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border);
+        }
+
+        [data-theme="dark"] .toc {
+            background: linear-gradient(135deg, #1e293b 0%, #1e3a8a 100%);
+        }
+
+        .toc h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme="dark"] .toc h2 {
+            color: #60a5fa;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            list-style: none;
+        }
+
+        .toc-grid li {
+            margin: 0;
+        }
+
+        .toc-grid a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 18px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            color: var(--text);
+            text-decoration: none;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .toc-grid a:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .toc-grid .toc-icon {
+            font-size: 1.4em;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-blue);
+            border-radius: 8px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        /* Week Sections */
+        .week-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 20px;
+            animation: fadeInUp 0.5s ease;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .week-header {
+            background: var(--gradient-blue);
+            color: #fff;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            margin-left: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .week-header:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .week-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6em;
+            flex-shrink: 0;
+        }
+
+        .week-header h2 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .week-header .week-num {
+            font-size: 0.9em;
+            opacity: 0.9;
+            display: block;
+            margin-bottom: 2px;
+            font-weight: 500;
+        }
+
+        .week-header .toggle-indicator {
+            margin-left: auto;
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .collapsed .week-header .toggle-indicator {
+            transform: rotate(-90deg);
+        }
+
+        .week-content {
+            padding: 0 10px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .collapsed .week-content {
             display: none;
         }
-        .toggle-btn {
-            background: none;
-            border: none;
+
+        h3 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+            font-size: 1.3em;
+            padding-left: 15px;
+            border-left: 4px solid var(--primary-light);
+        }
+
+        [data-theme="dark"] h3 {
+            color: #60a5fa;
+        }
+
+        h4 {
+            color: var(--primary);
+            margin: 20px 0 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] h4 {
+            color: #60a5fa;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            font-size: 0.98em;
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--gradient-blue);
             color: #fff;
-            cursor: pointer;
-            float: right;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Formula Box - Premium */
+        .formula-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: none;
+            border-left: 5px solid var(--primary-light);
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.05em;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        [data-theme="dark"] .formula-box {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
+        }
+
+        .formula-box:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow);
+        }
+
+        .formula-box::before {
+            content: 'ƒ';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--gradient-blue);
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
             font-size: 1.2em;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .formula-box .formula-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        [data-theme="dark"] .formula-box .formula-name {
+            color: #93c5fd;
+        }
+
+        /* Callout Boxes */
+        .key-point {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: none;
+            border-left: 5px solid var(--accent);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            position: relative;
+            padding-left: 55px;
+        }
+
+        [data-theme="dark"] .key-point {
+            background: linear-gradient(135deg, #78350f 0%, #451a03 100%);
+            color: #fef3c7;
+        }
+
+        .key-point::before {
+            content: '💡';
+            position: absolute;
+            left: 18px;
+            top: 16px;
+            font-size: 1.4em;
+        }
+
+        .warning {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: none;
+            border-left: 5px solid var(--danger);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            padding-left: 55px;
+            position: relative;
+        }
+
+        [data-theme="dark"] .warning {
+            background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
+            color: #fee2e2;
+        }
+
+        .warning::before {
+            content: '⚠️';
+            position: absolute;
+            left: 18px;
+            top: 16px;
+            font-size: 1.4em;
+        }
+
+        /* MCQ Quiz Mode */
+        .mcq-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: none;
+            border-left: 5px solid var(--success);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        [data-theme="dark"] .mcq-section {
+            background: linear-gradient(135deg, #14532d 0%, #052e16 100%);
+        }
+
+        .mcq-section h4 {
+            color: #065f46;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        [data-theme="dark"] .mcq-section h4 {
+            color: #6ee7b7;
+        }
+
+        .mcq-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.2s ease;
+        }
+
+        .mcq-item:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-1px);
+        }
+
+        .mcq-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .mcq-q {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text);
+            font-size: 1.05em;
+        }
+
+        .mcq-options {
+            padding-left: 0;
+            line-height: 1.9;
+            color: var(--text);
+        }
+
+        .mcq-answer {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        [data-theme="dark"] .mcq-answer {
+            background: linear-gradient(135deg, #065f46 0%, #064e3b 100%);
+            color: #6ee7b7;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mcq-item.revealed .mcq-answer {
+            display: block;
+        }
+
+        .reveal-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: var(--success);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'EB Garamond', serif;
+            font-size: 0.95em;
+            transition: all 0.2s ease;
+        }
+
+        .reveal-btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        .mcq-item.revealed .reveal-btn {
+            display: none;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 12px 0 12px 25px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+
+        ul li::marker {
+            color: var(--primary-light);
+        }
+
+        strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] strong {
+            color: #60a5fa;
+        }
+
+        /* Floating Action Buttons */
+        .fab-group {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .fab {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: var(--gradient-blue);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.4em;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fab:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.6);
+        }
+
+        .fab.top-btn {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .fab.top-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Highlighted text from search */
+        .highlight {
+            background: #fef08a;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            .hero h1 {
+                font-size: 1.8em;
+            }
+            .hero-stats {
+                gap: 15px;
+            }
+            .stat-badge {
+                padding: 8px 14px;
+            }
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+            .control-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media print {
+            .fab-group, .control-bar, .progress-bar { display: none !important; }
+            body { background: #fff; padding: 0; }
+            .container { box-shadow: none; padding: 20px; }
+            .mcq-answer { display: block !important; }
+            .reveal-btn { display: none !important; }
+            .week-section { page-break-inside: avoid; }
+            .hero { background: #1e3a8a !important; -webkit-print-color-adjust: exact; }
         }
     </style>
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
+
     <div class="container">
-        <h1>Financial Institutions and Markets</h1>
-        <p class="subtitle">Semester 2 Study Guide - Final Exam Preparation</p>
+        <div class="hero">
+            <h1>Financial Institutions & Markets</h1>
+            <p class="subtitle">Semester 2 Study Guide — Final Exam Preparation</p>
+            <div class="hero-stats">
+                <div class="stat-badge">
+                    <span class="num">9</span>
+                    <span class="label">Weeks Covered</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="num">15+</span>
+                    <span class="label">Key Formulas</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="num">10</span>
+                    <span class="label">Practice MCQs</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-bar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search topics, formulas, concepts...">
+            </div>
+            <div class="controls">
+                <button type="button" class="btn" id="themeToggle">🌙 Dark</button>
+                <button type="button" class="btn" id="expandAll">📖 Expand All</button>
+                <button type="button" class="btn" id="collapseAll">📕 Collapse All</button>
+            </div>
+        </div>
 
         <div class="toc">
-            <h2>Contents</h2>
-            <ul>
-                <li><a href="#w1">W1: Alternative Funds</a></li>
-                <li><a href="#w2">W2: Interest Rates</a></li>
-                <li><a href="#w3">W3: Central Banks</a></li>
-                <li><a href="#w4">W4: Risk Management</a></li>
-                <li><a href="#w5">W5: Money Markets</a></li>
-                <li><a href="#w6">W6: Bond Markets</a></li>
-                <li><a href="#w7">W7: Forex Markets Part 1</a></li>
-                <li><a href="#w8">W8: Forex Markets Part 2</a></li>
-                <li><a href="#w9">W9-10: Equity Markets</a></li>
-                <li><a href="#formulas">Key Formulas</a></li>
-                <li><a href="#mcq">Practice MCQs</a></li>
+            <h2>📚 Study Navigator</h2>
+            <ul class="toc-grid">
+                <li><a href="#w1"><span class="toc-icon">💎</span><span>W1: Alternative Funds</span></a></li>
+                <li><a href="#w2"><span class="toc-icon">📈</span><span>W2: Interest Rates</span></a></li>
+                <li><a href="#w3"><span class="toc-icon">🏦</span><span>W3: Central Banks</span></a></li>
+                <li><a href="#w4"><span class="toc-icon">⚖️</span><span>W4: Risk Management</span></a></li>
+                <li><a href="#w5"><span class="toc-icon">💵</span><span>W5: Money Markets</span></a></li>
+                <li><a href="#w6"><span class="toc-icon">📜</span><span>W6: Bond Markets</span></a></li>
+                <li><a href="#w7"><span class="toc-icon">🌍</span><span>W7: Forex Part 1</span></a></li>
+                <li><a href="#w8"><span class="toc-icon">💱</span><span>W8: Forex Part 2</span></a></li>
+                <li><a href="#w9"><span class="toc-icon">📊</span><span>W9-10: Equity Markets</span></a></li>
+                <li><a href="#formulas"><span class="toc-icon">ƒ</span><span>Key Formulas</span></a></li>
+                <li><a href="#mcq"><span class="toc-icon">✓</span><span>Practice MCQs</span></a></li>
             </ul>
         </div>
 
         <!-- WEEK 1: Alternative Funds -->
         <section class="week-section" id="w1">
             <div class="week-header">
-                <span class="week-num">Week 1</span>
-                <h2>Alternative Funds</h2>
+                <div class="week-icon">💎</div>
+                <div>
+                    <span class="week-num">Week 1</span>
+                    <h2>Alternative Funds</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <h3>Types of Alternative Investments</h3>
@@ -294,8 +898,12 @@
         <!-- WEEK 2: Interest Rates -->
         <section class="week-section" id="w2">
             <div class="week-header">
-                <span class="week-num">Week 2</span>
-                <h2>Interest Rates</h2>
+                <div class="week-icon">📈</div>
+                <div>
+                    <span class="week-num">Week 2</span>
+                    <h2>Interest Rates</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <h3>Types of Interest Rates</h3>
@@ -376,8 +984,12 @@
         <!-- WEEK 3: Central Banks -->
         <section class="week-section" id="w3">
             <div class="week-header">
-                <span class="week-num">Week 3</span>
-                <h2>Central Banks</h2>
+                <div class="week-icon">🏦</div>
+                <div>
+                    <span class="week-num">Week 3</span>
+                    <h2>Central Banks</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <h3>Functions of Central Banks</h3>
@@ -447,8 +1059,12 @@
         <!-- WEEK 4: Risk Management -->
         <section class="week-section" id="w4">
             <div class="week-header">
-                <span class="week-num">Week 4</span>
-                <h2>Risk Management</h2>
+                <div class="week-icon">⚖️</div>
+                <div>
+                    <span class="week-num">Week 4</span>
+                    <h2>Risk Management</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <h3>Types of Financial Risk</h3>
@@ -530,8 +1146,12 @@
         <!-- WEEK 5: Money Markets -->
         <section class="week-section" id="w5">
             <div class="week-header">
-                <span class="week-num">Week 5</span>
-                <h2>Money Markets</h2>
+                <div class="week-icon">💵</div>
+                <div>
+                    <span class="week-num">Week 5</span>
+                    <h2>Money Markets</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <h3>Characteristics</h3>
@@ -603,8 +1223,12 @@
         <!-- WEEK 6: Bond Markets -->
         <section class="week-section" id="w6">
             <div class="week-header">
-                <span class="week-num">Week 6</span>
-                <h2>Bond Markets</h2>
+                <div class="week-icon">📜</div>
+                <div>
+                    <span class="week-num">Week 6</span>
+                    <h2>Bond Markets</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <h3>Bond Basics</h3>
@@ -724,8 +1348,12 @@
         <!-- WEEK 7: Forex Markets Part 1 -->
         <section class="week-section" id="w7">
             <div class="week-header">
-                <span class="week-num">Week 7</span>
-                <h2>Foreign Exchange Markets - Part 1</h2>
+                <div class="week-icon">🌍</div>
+                <div>
+                    <span class="week-num">Week 7</span>
+                    <h2>Foreign Exchange Markets — Part 1</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <h3>Forex Market Overview</h3>
@@ -883,8 +1511,12 @@
         <!-- WEEK 8: Forex Markets Part 2 -->
         <section class="week-section" id="w8">
             <div class="week-header">
-                <span class="week-num">Week 8</span>
-                <h2>Foreign Exchange Markets - Part 2</h2>
+                <div class="week-icon">💱</div>
+                <div>
+                    <span class="week-num">Week 8</span>
+                    <h2>Foreign Exchange Markets — Part 2</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <h3>Forex Instruments</h3>
@@ -1044,8 +1676,12 @@
         <!-- WEEKS 9-10: Equity Markets -->
         <section class="week-section" id="w9">
             <div class="week-header">
-                <span class="week-num">Weeks 9-10</span>
-                <h2>Equity Markets</h2>
+                <div class="week-icon">📊</div>
+                <div>
+                    <span class="week-num">Weeks 9-10</span>
+                    <h2>Equity Markets</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <h3>Why Stock Markets Exist</h3>
@@ -1237,7 +1873,12 @@
         <!-- KEY FORMULAS -->
         <section class="week-section" id="formulas">
             <div class="week-header">
-                <h2>Key Formulas Summary</h2>
+                <div class="week-icon">ƒ</div>
+                <div>
+                    <span class="week-num">Quick Reference</span>
+                    <h2>Key Formulas Summary</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <div class="formula-box">
@@ -1285,11 +1926,16 @@
         <!-- PRACTICE MCQs -->
         <section class="week-section" id="mcq">
             <div class="week-header">
-                <h2>Practice MCQs (Equity Markets)</h2>
+                <div class="week-icon">✓</div>
+                <div>
+                    <span class="week-num">Self-Assessment</span>
+                    <h2>Practice MCQs (Equity Markets)</h2>
+                </div>
+                <span class="toggle-indicator">▼</span>
             </div>
             <div class="week-content">
                 <div class="mcq-section">
-                    <h4>Test Your Knowledge</h4>
+                    <h4>🎯 Test Your Knowledge — Click "Reveal Answer" to check</h4>
 
                     <div class="mcq-item">
                         <div class="mcq-q">1. According to the efficient market hypothesis, the current price of a security:</div>
@@ -1406,16 +2052,181 @@
 
     </div>
 
-    <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+    <div class="fab-group">
+        <button type="button" class="fab top-btn" id="topBtn" title="Back to top">↑</button>
+        <button type="button" class="fab" id="printBtn" title="Print / Save as PDF">🖨️</button>
+    </div>
 
     <script>
-        // Toggle sections for easier navigation
+        // ===== Reading Progress Bar =====
+        const progressBar = document.getElementById('progressBar');
+        const topBtn = document.getElementById('topBtn');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+
+            if (scrollTop > 400) {
+                topBtn.classList.add('visible');
+            } else {
+                topBtn.classList.remove('visible');
+            }
+        });
+
+        // ===== Back to Top =====
+        topBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ===== Print =====
+        document.getElementById('printBtn').addEventListener('click', () => {
+            document.querySelectorAll('.week-section').forEach(s => s.classList.remove('collapsed'));
+            setTimeout(() => window.print(), 100);
+        });
+
+        // ===== Collapsible Week Sections =====
         document.querySelectorAll('.week-header').forEach(header => {
-            header.style.cursor = 'pointer';
-            header.addEventListener('click', () => {
+            header.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A' || e.target.closest('a')) return;
                 header.parentElement.classList.toggle('collapsed');
             });
         });
+
+        // ===== Expand / Collapse All =====
+        document.getElementById('expandAll').addEventListener('click', () => {
+            document.querySelectorAll('.week-section').forEach(s => s.classList.remove('collapsed'));
+        });
+
+        document.getElementById('collapseAll').addEventListener('click', () => {
+            document.querySelectorAll('.week-section').forEach(s => s.classList.add('collapsed'));
+        });
+
+        // ===== Theme Toggle =====
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('fim-theme') || 'light';
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = '☀️ Light';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.textContent = '🌙 Dark';
+                localStorage.setItem('fim-theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '☀️ Light';
+                localStorage.setItem('fim-theme', 'dark');
+            }
+        });
+
+        // ===== MCQ Reveal Buttons =====
+        document.querySelectorAll('.mcq-item').forEach(item => {
+            const answer = item.querySelector('.mcq-answer');
+            if (!answer) return;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'reveal-btn';
+            btn.textContent = 'Reveal Answer';
+            answer.parentNode.insertBefore(btn, answer);
+            btn.addEventListener('click', () => {
+                item.classList.add('revealed');
+            });
+        });
+
+        // ===== Search / Filter =====
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const sections = document.querySelectorAll('.week-section');
+
+            // Clear previous highlights
+            document.querySelectorAll('.highlight').forEach(el => {
+                const parent = el.parentNode;
+                parent.replaceChild(document.createTextNode(el.textContent), el);
+                parent.normalize();
+            });
+
+            if (!query) {
+                sections.forEach(s => s.classList.remove('hidden'));
+                return;
+            }
+
+            sections.forEach(section => {
+                const text = section.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    section.classList.remove('hidden');
+                    section.classList.remove('collapsed');
+                    highlightInElement(section, query);
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        });
+
+        function highlightInElement(element, term) {
+            const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
+                acceptNode: (node) => {
+                    if (node.parentNode.tagName === 'SCRIPT' || node.parentNode.tagName === 'STYLE') {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    return node.nodeValue.toLowerCase().includes(term) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+                }
+            });
+
+            const nodes = [];
+            let node;
+            while (node = walker.nextNode()) nodes.push(node);
+
+            nodes.forEach(textNode => {
+                const text = textNode.nodeValue;
+                const lowerText = text.toLowerCase();
+                const idx = lowerText.indexOf(term);
+                if (idx === -1) return;
+
+                const before = text.substring(0, idx);
+                const match = text.substring(idx, idx + term.length);
+                const after = text.substring(idx + term.length);
+
+                const span = document.createElement('span');
+                span.className = 'highlight';
+                span.textContent = match;
+
+                const fragment = document.createDocumentFragment();
+                if (before) fragment.appendChild(document.createTextNode(before));
+                fragment.appendChild(span);
+                if (after) fragment.appendChild(document.createTextNode(after));
+
+                textNode.parentNode.replaceChild(fragment, textNode);
+            });
+        }
+
+        // ===== Active Section Highlight in TOC =====
+        const tocLinks = document.querySelectorAll('.toc-grid a');
+        const weekSections = document.querySelectorAll('.week-section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    tocLinks.forEach(link => {
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.style.borderColor = 'var(--primary-light)';
+                            link.style.background = 'rgba(59, 130, 246, 0.1)';
+                        } else {
+                            link.style.borderColor = 'transparent';
+                            link.style.background = '';
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+
+        weekSections.forEach(s => observer.observe(s));
     </script>
 </body>
 </html>
