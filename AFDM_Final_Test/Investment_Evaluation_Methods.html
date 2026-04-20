@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Evaluation Methods | Pros, Cons & Comparison</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'EB Garamond', 'Times New Roman', serif;
+            line-height: 1.7;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #212529;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a6c 0%, #2d2d8a 50%, #1a1a6c 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.15em;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .nav-bar {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: #1a1a6c;
+            color: white;
+            border-color: #1a1a6c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26,26,108,0.3);
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .summary-card h2 {
+            color: #1a1a6c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5em;
+        }
+
+        .quick-ref-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+
+        .quick-ref-table th, .quick-ref-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .quick-ref-table th {
+            background: #1a1a6c;
+            color: white;
+            font-weight: 600;
+        }
+
+        .quick-ref-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .quick-ref-table tr:hover {
+            background: #e8f4ff;
+        }
+
+        .method-section {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .method-header {
+            background: linear-gradient(135deg, #1a1a6c 0%, #2d2d8a 100%);
+            color: white;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .method-icon {
+            font-size: 2.5em;
+            background: rgba(255,255,255,0.15);
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .method-title h2 {
+            font-size: 1.6em;
+            margin-bottom: 5px;
+        }
+
+        .method-title p {
+            opacity: 0.85;
+            font-size: 1em;
+        }
+
+        .method-body {
+            padding: 30px;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border-left: 5px solid #1a1a6c;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+            font-size: 1.1em;
+        }
+
+        .formula-box strong {
+            color: #1a1a6c;
+        }
+
+        .decision-rule {
+            background: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .decision-rule h4 {
+            color: #2e7d32;
+            margin-bottom: 8px;
+        }
+
+        .pros-cons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .pros-cons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pros-box, .cons-box {
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .pros-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 2px solid #81c784;
+        }
+
+        .cons-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border: 2px solid #e57373;
+        }
+
+        .pros-box h3, .cons-box h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 1.25em;
+        }
+
+        .pros-box h3 { color: #2e7d32; }
+        .cons-box h3 { color: #c62828; }
+
+        .pros-box ul, .cons-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pros-box li, .cons-box li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .pros-box li:last-child, .cons-box li:last-child {
+            border-bottom: none;
+        }
+
+        .pros-box li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .cons-box li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #c62828;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .exam-tip {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 2px solid #ffb74d;
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-top: 25px;
+        }
+
+        .exam-tip h4 {
+            color: #e65100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comparison-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .comparison-section h2 {
+            color: #1a1a6c;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .conflict-box {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+
+        .conflict-box h4 {
+            color: #f57f17;
+            margin-bottom: 10px;
+        }
+
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .ranking-table th, .ranking-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: center;
+        }
+
+        .ranking-table th {
+            background: #343a40;
+            color: white;
+        }
+
+        .ranking-table .best { background: #c8e6c9; color: #1b5e20; font-weight: 600; }
+        .ranking-table .good { background: #fff9c4; color: #f57f17; }
+        .ranking-table .poor { background: #ffcdd2; color: #b71c1c; }
+
+        footer {
+            background: #1a1a6c;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            opacity: 0.85;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .badge-primary { background: #1a1a6c; color: white; }
+        .badge-success { background: #2e7d32; color: white; }
+        .badge-warning { background: #f57f17; color: white; }
+        .badge-danger { background: #c62828; color: white; }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1a1a6c;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5em;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26,26,108,0.4);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26,26,108,0.5);
+        }
+
+        .when-to-use {
+            background: #e3f2fd;
+            border-left: 5px solid #1976d2;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .when-to-use h4 {
+            color: #1565c0;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Investment Evaluation Methods</h1>
+    <p>Complete Analysis of NPV, IRR, ARR, Payback, PI & More - Pros, Cons, and Decision Rules</p>
+</header>
+
+<div class="container">
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <button class="nav-btn active" onclick="scrollToSection('quick-ref')">Quick Reference</button>
+        <button class="nav-btn" onclick="scrollToSection('npv')">NPV</button>
+        <button class="nav-btn" onclick="scrollToSection('irr')">IRR</button>
+        <button class="nav-btn" onclick="scrollToSection('payback')">Payback Period</button>
+        <button class="nav-btn" onclick="scrollToSection('dpb')">Discounted Payback</button>
+        <button class="nav-btn" onclick="scrollToSection('arr')">ARR</button>
+        <button class="nav-btn" onclick="scrollToSection('pi')">Profitability Index</button>
+        <button class="nav-btn" onclick="scrollToSection('eaa')">EAA</button>
+        <button class="nav-btn" onclick="scrollToSection('conflicts')">NPV vs IRR Conflicts</button>
+    </nav>
+
+    <!-- Quick Reference Summary -->
+    <section id="quick-ref" class="summary-card">
+        <h2>Quick Reference Summary</h2>
+        <table class="quick-ref-table">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Formula / Approach</th>
+                    <th>Decision Rule</th>
+                    <th>Key Strength</th>
+                    <th>Key Weakness</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>NPV</strong></td>
+                    <td>PV of inflows - Initial Investment</td>
+                    <td>Accept if NPV > 0</td>
+                    <td>Measures absolute value creation</td>
+                    <td>Requires accurate cost of capital</td>
+                </tr>
+                <tr>
+                    <td><strong>IRR</strong></td>
+                    <td>Rate where NPV = 0</td>
+                    <td>Accept if IRR > Cost of Capital</td>
+                    <td>Easy to compare (percentage)</td>
+                    <td>Multiple IRRs possible; reinvestment assumption</td>
+                </tr>
+                <tr>
+                    <td><strong>Payback Period</strong></td>
+                    <td>Time to recover initial cost</td>
+                    <td>Accept if PB < Target</td>
+                    <td>Simple; emphasizes liquidity</td>
+                    <td>Ignores time value & cash flows after payback</td>
+                </tr>
+                <tr>
+                    <td><strong>Discounted Payback</strong></td>
+                    <td>Time to recover (using DCF)</td>
+                    <td>Accept if DPB < Target</td>
+                    <td>Considers time value of money</td>
+                    <td>Still ignores cash flows after payback</td>
+                </tr>
+                <tr>
+                    <td><strong>ARR</strong></td>
+                    <td>Avg Profit / Avg Investment</td>
+                    <td>Accept if ARR > Target</td>
+                    <td>Uses accounting figures (familiar)</td>
+                    <td>Ignores time value & cash flow timing</td>
+                </tr>
+                <tr>
+                    <td><strong>Profitability Index</strong></td>
+                    <td>PV of inflows / Initial Investment</td>
+                    <td>Accept if PI > 1.0</td>
+                    <td>Value per pound invested (capital rationing)</td>
+                    <td>Doesn't measure total value created</td>
+                </tr>
+                <tr>
+                    <td><strong>EAA</strong></td>
+                    <td>NPV converted to annual equivalent</td>
+                    <td>Higher EAA preferred</td>
+                    <td>Compares projects with different lives</td>
+                    <td>Assumes projects can be repeated</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- NPV Section -->
+    <section id="npv" class="method-section">
+        <div class="method-header">
+            <div class="method-icon">📊</div>
+            <div class="method-title">
+                <h2>Net Present Value (NPV)</h2>
+                <p>The Gold Standard of Investment Appraisal</p>
+            </div>
+        </div>
+        <div class="method-body">
+            <div class="formula-box">
+                <strong>Formula:</strong><br>
+                NPV = Σ [Cash Flow<sub>t</sub> / (1 + r)<sup>t</sup>] - Initial Investment<br><br>
+                <em>Or simply:</em> NPV = Total PV of Inflows - Initial Investment
+            </div>
+
+            <div class="decision-rule">
+                <h4>Decision Rule</h4>
+                <ul>
+                    <li><strong>Independent projects:</strong> Accept if NPV > 0</li>
+                    <li><strong>Mutually exclusive:</strong> Choose the project with highest positive NPV</li>
+                    <li>NPV = 0 means project earns exactly the required return (indifferent)</li>
+                </ul>
+            </div>
+
+            <div class="pros-cons-grid">
+                <div class="pros-box">
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li><strong>Measures absolute value creation:</strong> Shows the actual pound amount added to shareholder wealth</li>
+                        <li><strong>Considers time value of money:</strong> Properly discounts all future cash flows</li>
+                        <li><strong>Considers all cash flows:</strong> Includes entire project life, not just payback period</li>
+                        <li><strong>Consistent reinvestment assumption:</strong> Assumes reinvestment at cost of capital (realistic)</li>
+                        <li><strong>Additive property:</strong> NPVs of projects can be added together for portfolio analysis</li>
+                        <li><strong>Theoretically correct:</strong> Directly linked to shareholder wealth maximization objective</li>
+                        <li><strong>No multiple solutions:</strong> Always gives a single, unambiguous answer</li>
+                    </ul>
+                </div>
+                <div class="cons-box">
+                    <h3>Disadvantages</h3>
+                    <ul>
+                        <li><strong>Requires accurate cost of capital:</strong> Discount rate must be estimated correctly - errors significantly impact results</li>
+                        <li><strong>Absolute measure:</strong> Doesn't show return rate - harder to compare projects of different scales</li>
+                        <li><strong>Cash flow estimation:</strong> Relies on accurate forecasting of future cash flows</li>
+                        <li><strong>Difficult to explain:</strong> Non-finance managers may find percentage returns more intuitive</li>
+                        <li><strong>Ignores project size:</strong> A £1m NPV from a £100m investment isn't shown as worse than £500k from £1m</li>
+                        <li><strong>Assumes unlimited capital:</strong> May recommend large projects when capital is constrained</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="when-to-use">
+                <h4>When to Use NPV</h4>
+                <ul>
+                    <li>Primary method for all capital budgeting decisions</li>
+                    <li>When you need to maximize total shareholder wealth</li>
+                    <li>When comparing mutually exclusive projects (always choose highest NPV)</li>
+                    <li>When conflicts arise between methods - NPV takes precedence</li>
+                </ul>
+            </div>
+
+            <div class="exam-tip">
+                <h4>Exam Tip</h4>
+                <p>Always state that NPV is theoretically superior because it directly measures shareholder wealth creation. When asked "which method should be used?", NPV is almost always the answer. Remember: "NPV is the gold standard of investment appraisal."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- IRR Section -->
+    <section id="irr" class="method-section">
+        <div class="method-header">
+            <div class="method-icon">📈</div>
+            <div class="method-title">
+                <h2>Internal Rate of Return (IRR)</h2>
+                <p>The Discount Rate That Makes NPV Zero</p>
+            </div>
+        </div>
+        <div class="method-body">
+            <div class="formula-box">
+                <strong>Definition:</strong> IRR is the discount rate where NPV = 0<br><br>
+                <strong>Linear Interpolation Formula:</strong><br>
+                IRR = r<sub>1</sub> + [NPV<sub>1</sub> / (NPV<sub>1</sub> - NPV<sub>2</sub>)] × (r<sub>2</sub> - r<sub>1</sub>)<br><br>
+                <em>Where r<sub>1</sub> gives positive NPV and r<sub>2</sub> gives negative NPV</em>
+            </div>
+
+            <div class="decision-rule">
+                <h4>Decision Rule</h4>
+                <ul>
+                    <li><strong>Independent projects:</strong> Accept if IRR > Cost of Capital (WACC)</li>
+                    <li><strong>Mutually exclusive:</strong> Choose highest IRR, BUT verify with NPV if projects differ in scale/timing</li>
+                    <li>IRR = Cost of Capital means project just breaks even (NPV = 0)</li>
+                </ul>
+            </div>
+
+            <div class="pros-cons-grid">
+                <div class="pros-box">
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li><strong>Percentage return:</strong> Easy to understand and compare - "this project returns 15%"</li>
+                        <li><strong>Intuitive for managers:</strong> Can be compared directly to borrowing costs or required returns</li>
+                        <li><strong>No need to specify discount rate upfront:</strong> Useful when cost of capital is uncertain</li>
+                        <li><strong>Considers time value of money:</strong> All cash flows are properly weighted</li>
+                        <li><strong>Considers all cash flows:</strong> Entire project life is included</li>
+                        <li><strong>Benchmarking:</strong> Easy to compare against hurdle rates or competing investments</li>
+                    </ul>
+                </div>
+                <div class="cons-box">
+                    <h3>Disadvantages</h3>
+                    <ul>
+                        <li><strong>Multiple IRRs:</strong> Non-conventional cash flows (sign changes) can produce multiple IRRs or no real IRR</li>
+                        <li><strong>Unrealistic reinvestment assumption:</strong> Assumes cash flows are reinvested at the IRR itself - often unrealistic for high IRR projects</li>
+                        <li><strong>Scale ignorance:</strong> A 50% IRR on £1,000 looks better than 20% IRR on £1,000,000, but creates less value</li>
+                        <li><strong>Timing conflicts:</strong> May rank projects differently than NPV when timing of cash flows differs</li>
+                        <li><strong>Can mislead for mutually exclusive projects:</strong> Higher IRR doesn't always mean higher value</li>
+                        <li><strong>Cannot handle changing discount rates:</strong> Assumes flat yield curve over project life</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="conflict-box">
+                <h4>The Multiple IRR Problem</h4>
+                <p>When cash flows change sign more than once (e.g., initial outflow, then inflows, then another outflow for cleanup costs), there can be multiple IRRs or no real IRR. This makes interpretation impossible.</p>
+                <p><strong>Example:</strong> Year 0: -£100, Year 1: +£230, Year 2: -£132 → Two IRRs: 10% and 20%</p>
+                <p><strong>Solution:</strong> Use NPV or Modified IRR (MIRR) instead.</p>
+            </div>
+
+            <div class="exam-tip">
+                <h4>Exam Tip</h4>
+                <p>When calculating IRR by interpolation: (1) Find two rates - one giving positive NPV, one giving negative; (2) The rates should be close together (5% apart is ideal); (3) Apply the formula. Always state: "Since IRR (X%) > Cost of Capital (Y%), accept the project."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payback Period Section -->
+    <section id="payback" class="method-section">
+        <div class="method-header">
+            <div class="method-icon">⏱️</div>
+            <div class="method-title">
+                <h2>Payback Period</h2>
+                <p>Time to Recover Initial Investment</p>
+            </div>
+        </div>
+        <div class="method-body">
+            <div class="formula-box">
+                <strong>Formula:</strong><br>
+                Payback Period = Last year with negative cumulative CF + (Remaining amount / Next year's CF)<br><br>
+                <strong>Example:</strong> If cumulative CF at Year 2 = -£200k and Year 3 CF = £500k<br>
+                Payback = 2 + (200,000 / 500,000) = 2.4 years
+            </div>
+
+            <div class="decision-rule">
+                <h4>Decision Rule</h4>
+                <ul>
+                    <li><strong>Accept if:</strong> Payback Period < Target/Benchmark Period</li>
+                    <li><strong>Mutually exclusive:</strong> Choose project with shortest payback</li>
+                    <li>Target is typically set by management (e.g., 3 years, 5 years)</li>
+                </ul>
+            </div>
+
+            <div class="pros-cons-grid">
+                <div class="pros-box">
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li><strong>Simple to calculate:</strong> Easy to understand, no complex discounting</li>
+                        <li><strong>Easy to communicate:</strong> "We get our money back in 3 years" - intuitive for all managers</li>
+                        <li><strong>Emphasizes liquidity:</strong> Favours projects that return cash quickly</li>
+                        <li><strong>Risk screening:</strong> Shorter payback = less time for things to go wrong</li>
+                        <li><strong>Useful for uncertain environments:</strong> When long-term forecasting is unreliable</li>
+                        <li><strong>Quick initial filter:</strong> Eliminates obviously poor projects before detailed analysis</li>
+                    </ul>
+                </div>
+                <div class="cons-box">
+                    <h3>Disadvantages</h3>
+                    <ul>
+                        <li><strong>Ignores time value of money:</strong> £1 today treated same as £1 in 5 years</li>
+                        <li><strong>Ignores cash flows after payback:</strong> A project might have huge returns after payback that are ignored</li>
+                        <li><strong>Arbitrary target:</strong> No theoretical basis for choosing 3 years vs 4 years</li>
+                        <li><strong>Doesn't measure profitability:</strong> A project can payback quickly but have low total returns</li>
+                        <li><strong>Ignores project scale:</strong> £10k project and £10m project with same payback treated equally</li>
+                        <li><strong>Bias against long-term projects:</strong> R&D, infrastructure projects unfairly penalized</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="when-to-use">
+                <h4>When to Use Payback</h4>
+                <ul>
+                    <li>As a preliminary screening tool, not primary decision criterion</li>
+                    <li>In highly uncertain environments where long-term forecasts are unreliable</li>
+                    <li>When liquidity/cash flow is a critical constraint</li>
+                    <li>For small projects where detailed NPV analysis isn't cost-effective</li>
+                </ul>
+            </div>
+
+            <div class="exam-tip">
+                <h4>Exam Tip</h4>
+                <p>Always mention that payback is a "supplementary" method, not a replacement for NPV. Key criticisms: (1) ignores TVM, (2) ignores cash flows after payback. If asked about limitations, these two are essential.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discounted Payback Period Section -->
+    <section id="dpb" class="method-section">
+        <div class="method-header">
+            <div class="method-icon">⏳</div>
+            <div class="method-title">
+                <h2>Discounted Payback Period</h2>
+                <p>Payback Using Present Values</p>
+            </div>
+        </div>
+        <div class="method-body">
+            <div class="formula-box">
+                <strong>Process:</strong><br>
+                1. Discount each year's cash flow to present value<br>
+                2. Calculate cumulative discounted cash flows<br>
+                3. Find when cumulative DCF becomes positive<br><br>
+                <strong>Formula:</strong><br>
+                DPB = Last year with negative cumulative DCF + (Remaining / Next year's Discounted CF)
+            </div>
+
+            <div class="decision-rule">
+                <h4>Decision Rule</h4>
+                <ul>
+                    <li><strong>Accept if:</strong> Discounted Payback < Target Period</li>
+                    <li>DPB will always be longer than simple payback (or equal if r = 0)</li>
+                    <li>Some projects may never achieve discounted payback (negative NPV projects)</li>
+                </ul>
+            </div>
+
+            <div class="pros-cons-grid">
+                <div class="pros-box">
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li><strong>Considers time value of money:</strong> Cash flows are properly discounted</li>
+                        <li><strong>More realistic than simple payback:</strong> Accounts for opportunity cost of capital</li>
+                        <li><strong>Still emphasizes liquidity:</strong> Maintains focus on quick cash recovery</li>
+                        <li><strong>Identifies break-even in real terms:</strong> When do we recover in today's money?</li>
+                        <li><strong>Simple interpretation:</strong> Still intuitive for managers</li>
+                    </ul>
+                </div>
+                <div class="cons-box">
+                    <h3>Disadvantages</h3>
+                    <ul>
+                        <li><strong>Still ignores cash flows after payback:</strong> Same fundamental flaw as simple payback</li>
+                        <li><strong>Arbitrary target:</strong> No theoretical basis for the benchmark period</li>
+                        <li><strong>May never be achieved:</strong> Negative NPV projects have infinite discounted payback</li>
+                        <li><strong>Doesn't measure total profitability:</strong> Ignores value created beyond payback</li>
+                        <li><strong>More complex than simple payback:</strong> Loses simplicity advantage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-tip">
+                <h4>Exam Tip</h4>
+                <p>In calculations, show the cumulative discounted cash flow column clearly. Common scenario: DPB exceeds target BUT NPV is positive - state that NPV should take precedence as it measures total value creation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARR Section -->
+    <section id="arr" class="method-section">
+        <div class="method-header">
+            <div class="method-icon">📑</div>
+            <div class="method-title">
+                <h2>Accounting Rate of Return (ARR)</h2>
+                <p>Return on Investment Using Accounting Profits</p>
+            </div>
+        </div>
+        <div class="method-body">
+            <div class="formula-box">
+                <strong>Formula:</strong><br>
+                ARR = (Average Annual Accounting Profit / Average Investment) × 100%<br><br>
+                <strong>Where:</strong><br>
+                Average Investment = (Initial Investment + Scrap Value) / 2<br>
+                Average Annual Profit = (Total Cash Flows - Total Depreciation) / Number of Years<br>
+                Total Depreciation = (Initial Investment - Scrap Value)
+            </div>
+
+            <div class="decision-rule">
+                <h4>Decision Rule</h4>
+                <ul>
+                    <li><strong>Accept if:</strong> ARR > Target/Required ARR</li>
+                    <li><strong>Mutually exclusive:</strong> Choose project with highest ARR (above target)</li>
+                    <li>Target ARR often linked to company's existing ROCE or ROI</li>
+                </ul>
+            </div>
+
+            <div class="pros-cons-grid">
+                <div class="pros-box">
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li><strong>Uses familiar accounting data:</strong> Based on profit figures managers understand</li>
+                        <li><strong>Consistent with performance measures:</strong> Links to ROI, ROCE used in performance evaluation</li>
+                        <li><strong>Considers entire project life:</strong> All years' profits included</li>
+                        <li><strong>Percentage return:</strong> Easy to compare across projects and companies</li>
+                        <li><strong>Simple calculation:</strong> No discounting required</li>
+                        <li><strong>Aligns with financial reporting:</strong> Helps predict impact on reported profits</li>
+                    </ul>
+                </div>
+                <div class="cons-box">
+                    <h3>Disadvantages</h3>
+                    <ul>
+                        <li><strong>Ignores time value of money:</strong> Treats £1 profit in Year 1 same as Year 10</li>
+                        <li><strong>Uses profits not cash flows:</strong> Profits can be manipulated; depreciation methods affect result</li>
+                        <li><strong>Ignores timing of profits:</strong> Averaging loses timing information</li>
+                        <li><strong>Arbitrary definitions:</strong> "Average investment" calculated differently by different companies</li>
+                        <li><strong>Not theoretically linked to value:</strong> Higher ARR doesn't necessarily mean more shareholder value</li>
+                        <li><strong>Ignores working capital:</strong> Changes in receivables/inventory not captured</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="when-to-use">
+                <h4>When to Use ARR</h4>
+                <ul>
+                    <li>When managers' bonuses are tied to accounting returns (practical reality)</li>
+                    <li>To assess impact on reported financial performance</li>
+                    <li>As a supplementary measure alongside NPV</li>
+                    <li>When cash flow data is not available</li>
+                </ul>
+            </div>
+
+            <div class="exam-tip">
+                <h4>Exam Tip</h4>
+                <p>Be careful with the "Average Investment" calculation - exam questions often specify whether to include scrap value. If in doubt, use (Initial + Scrap) / 2. Key criticism: "uses accounting profits which are subject to accounting policies and ignore cash flow timing."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profitability Index Section -->
+    <section id="pi" class="method-section">
+        <div class="method-header">
+            <div class="method-icon">💎</div>
+            <div class="method-title">
+                <h2>Profitability Index (PI)</h2>
+                <p>Value Created Per Pound Invested</p>
+            </div>
+        </div>
+        <div class="method-body">
+            <div class="formula-box">
+                <strong>Formula:</strong><br>
+                PI = Present Value of Future Cash Flows / Initial Investment<br><br>
+                <strong>Alternative:</strong> PI = 1 + (NPV / Initial Investment)<br><br>
+                <em>If NPV = £100,000 and Investment = £500,000: PI = 1 + (100,000/500,000) = 1.20</em>
+            </div>
+
+            <div class="decision-rule">
+                <h4>Decision Rule</h4>
+                <ul>
+                    <li><strong>Accept if:</strong> PI > 1.0 (equivalent to NPV > 0)</li>
+                    <li><strong>Capital rationing:</strong> Rank by PI and select highest until capital exhausted</li>
+                    <li>PI = 1.0 means project breaks even (NPV = 0)</li>
+                </ul>
+            </div>
+
+            <div class="pros-cons-grid">
+                <div class="pros-box">
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li><strong>Capital rationing:</strong> Perfect for selecting projects when capital is limited</li>
+                        <li><strong>Relative measure:</strong> Shows value per unit of investment</li>
+                        <li><strong>Considers time value:</strong> Based on discounted cash flows</li>
+                        <li><strong>Considers all cash flows:</strong> Entire project life included</li>
+                        <li><strong>Consistent with NPV:</strong> PI > 1 always means NPV > 0</li>
+                        <li><strong>Easy comparison:</strong> Useful when projects have different scales</li>
+                    </ul>
+                </div>
+                <div class="cons-box">
+                    <h3>Disadvantages</h3>
+                    <ul>
+                        <li><strong>Doesn't measure absolute value:</strong> A PI of 2.0 on £100 beats PI of 1.5 on £1m by this measure, but creates less value</li>
+                        <li><strong>May conflict with NPV:</strong> For mutually exclusive projects, highest PI may not have highest NPV</li>
+                        <li><strong>Divisibility assumption:</strong> Assumes projects can be partially accepted (often not true)</li>
+                        <li><strong>Requires cost of capital:</strong> Same estimation challenge as NPV</li>
+                        <li><strong>Less intuitive than IRR:</strong> "PI of 1.2" less meaningful than "IRR of 20%"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="when-to-use">
+                <h4>When to Use PI</h4>
+                <ul>
+                    <li><strong>Capital rationing situations:</strong> When you have limited funds and must choose among projects</li>
+                    <li>To rank independent projects when not all can be undertaken</li>
+                    <li>As a supplement to NPV analysis</li>
+                </ul>
+            </div>
+
+            <div class="exam-tip">
+                <h4>Exam Tip</h4>
+                <p>PI is especially relevant in capital rationing questions. Rank projects by PI, then select from highest to lowest until budget exhausted. Remember: for mutually exclusive projects, still use NPV as the primary criterion.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EAA Section -->
+    <section id="eaa" class="method-section">
+        <div class="method-header">
+            <div class="method-icon">🔄</div>
+            <div class="method-title">
+                <h2>Equivalent Annual Annuity (EAA)</h2>
+                <p>Comparing Projects with Different Lifespans</p>
+            </div>
+        </div>
+        <div class="method-body">
+            <div class="formula-box">
+                <strong>Formula:</strong><br>
+                EAA = NPV × [r / (1 - (1 + r)<sup>-n</sup>)]<br><br>
+                <strong>Or:</strong> EAA = NPV / PVIFA(r, n)<br><br>
+                <em>This converts a lump-sum NPV into an equivalent annual amount</em>
+            </div>
+
+            <div class="decision-rule">
+                <h4>Decision Rule</h4>
+                <ul>
+                    <li><strong>For mutually exclusive projects:</strong> Choose project with highest EAA</li>
+                    <li>Only use when projects have different useful lives and are repeatable</li>
+                    <li>Higher EAA = more annual value creation</li>
+                </ul>
+            </div>
+
+            <div class="pros-cons-grid">
+                <div class="pros-box">
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li><strong>Handles different project lives:</strong> Makes fair comparison between 3-year and 5-year projects</li>
+                        <li><strong>Based on NPV:</strong> Retains theoretical soundness of NPV approach</li>
+                        <li><strong>Annual measure:</strong> Easy to understand as "annual value created"</li>
+                        <li><strong>Avoids replacement chain analysis:</strong> Simpler than extending projects to common life</li>
+                    </ul>
+                </div>
+                <div class="cons-box">
+                    <h3>Disadvantages</h3>
+                    <ul>
+                        <li><strong>Assumes repeatability:</strong> Projects must be repeatable indefinitely at same NPV</li>
+                        <li><strong>Ignores technological change:</strong> Future replacement projects may be different</li>
+                        <li><strong>Cash flow timing:</strong> Converts to annuity, losing specific timing information</li>
+                        <li><strong>Limited applicability:</strong> Only useful for specific scenario (different lives + repeatability)</li>
+                        <li><strong>Assumes constant conditions:</strong> Same cost of capital, inflation, etc. forever</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-tip">
+                <h4>Exam Tip</h4>
+                <p>EAA is specifically for comparing mutually exclusive projects with different useful lives. Calculate NPV for each project first, then convert to EAA. Always state the assumption that projects can be repeated.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NPV vs IRR Conflicts Section -->
+    <section id="conflicts" class="comparison-section">
+        <h2>NPV vs IRR: When They Conflict</h2>
+
+        <p>For independent projects, NPV and IRR always give the same accept/reject decision. However, for <strong>mutually exclusive projects</strong>, they may rank differently.</p>
+
+        <div class="conflict-box">
+            <h4>Why Conflicts Occur</h4>
+            <ol>
+                <li><strong>Scale Difference:</strong> A smaller project may have higher IRR but lower NPV
+                    <br><em>Example: Project A (£10k investment, IRR 50%, NPV £3k) vs Project B (£1m investment, IRR 20%, NPV £150k)</em></li>
+                <li><strong>Timing Difference:</strong> Projects with earlier cash flows are favoured by IRR
+                    <br><em>IRR's reinvestment assumption inflates the value of early returns</em></li>
+                <li><strong>Reinvestment Rate Assumption:</strong> NPV assumes reinvestment at cost of capital; IRR assumes reinvestment at IRR itself</li>
+            </ol>
+        </div>
+
+        <h3>Resolution: NPV Wins</h3>
+        <p>When NPV and IRR give conflicting rankings, <strong>always follow NPV</strong> because:</p>
+        <ul>
+            <li>NPV directly measures shareholder wealth creation (the primary corporate objective)</li>
+            <li>NPV's reinvestment assumption (at cost of capital) is more realistic</li>
+            <li>NPV considers project scale and absolute value creation</li>
+        </ul>
+
+        <h3>Method Ranking by Situation</h3>
+        <table class="ranking-table">
+            <thead>
+                <tr>
+                    <th>Criterion</th>
+                    <th>NPV</th>
+                    <th>IRR</th>
+                    <th>Payback</th>
+                    <th>ARR</th>
+                    <th>PI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Wealth maximization</td>
+                    <td class="best">Best</td>
+                    <td class="good">Good</td>
+                    <td class="poor">Poor</td>
+                    <td class="poor">Poor</td>
+                    <td class="good">Good</td>
+                </tr>
+                <tr>
+                    <td>Time value of money</td>
+                    <td class="best">Yes</td>
+                    <td class="best">Yes</td>
+                    <td class="poor">No</td>
+                    <td class="poor">No</td>
+                    <td class="best">Yes</td>
+                </tr>
+                <tr>
+                    <td>All cash flows considered</td>
+                    <td class="best">Yes</td>
+                    <td class="best">Yes</td>
+                    <td class="poor">No</td>
+                    <td class="good">Yes*</td>
+                    <td class="best">Yes</td>
+                </tr>
+                <tr>
+                    <td>Capital rationing</td>
+                    <td class="good">Good</td>
+                    <td class="good">Good</td>
+                    <td class="poor">Poor</td>
+                    <td class="poor">Poor</td>
+                    <td class="best">Best</td>
+                </tr>
+                <tr>
+                    <td>Easy to understand</td>
+                    <td class="good">Medium</td>
+                    <td class="best">High</td>
+                    <td class="best">Very High</td>
+                    <td class="best">High</td>
+                    <td class="good">Medium</td>
+                </tr>
+                <tr>
+                    <td>Mutually exclusive projects</td>
+                    <td class="best">Best</td>
+                    <td class="poor">May mislead</td>
+                    <td class="poor">May mislead</td>
+                    <td class="poor">May mislead</td>
+                    <td class="poor">May mislead</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><em>*ARR considers all years but uses accounting profits, not cash flows</em></p>
+
+        <div class="exam-tip">
+            <h4>Key Exam Answer Pattern</h4>
+            <p>When asked to discuss NPV vs IRR conflicts, always structure your answer:</p>
+            <ol>
+                <li>State that for independent projects, both methods give same accept/reject decision</li>
+                <li>Explain that conflicts arise for mutually exclusive projects</li>
+                <li>Give reasons: scale differences, timing differences, reinvestment assumptions</li>
+                <li>Conclude: NPV should be preferred as it directly measures shareholder wealth</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Final Summary -->
+    <section class="summary-card">
+        <h2>Final Decision Framework</h2>
+        <table class="quick-ref-table">
+            <thead>
+                <tr>
+                    <th>Situation</th>
+                    <th>Primary Method</th>
+                    <th>Supporting Methods</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>General investment decision</td>
+                    <td><span class="badge badge-primary">NPV</span></td>
+                    <td>IRR, Payback (for risk assessment)</td>
+                </tr>
+                <tr>
+                    <td>Mutually exclusive projects</td>
+                    <td><span class="badge badge-primary">NPV</span></td>
+                    <td>IRR (verify consistency)</td>
+                </tr>
+                <tr>
+                    <td>Capital rationing</td>
+                    <td><span class="badge badge-success">PI</span></td>
+                    <td>NPV (verify total value)</td>
+                </tr>
+                <tr>
+                    <td>Different project lives</td>
+                    <td><span class="badge badge-warning">EAA</span></td>
+                    <td>NPV of repeated projects</td>
+                </tr>
+                <tr>
+                    <td>Quick screening</td>
+                    <td><span class="badge badge-danger">Payback</span></td>
+                    <td>Follow up with NPV for selected projects</td>
+                </tr>
+                <tr>
+                    <td>Performance reporting focus</td>
+                    <td><span class="badge badge-primary">NPV</span></td>
+                    <td>ARR (to assess accounting impact)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</div>
+
+<footer>
+    <p>AFDM Investment Evaluation Methods | Complete Pros & Cons Analysis</p>
+    <p>IBD-NEU | Generated for exam preparation</p>
+</footer>
+
+<button id="scroll-top" class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<script>
+    function scrollToSection(id) {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Update active button
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+
+    // Scroll-to-top button visibility
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('scroll-top');
+        btn.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    // Update nav on scroll
+    const sections = ['quick-ref', 'npv', 'irr', 'payback', 'dpb', 'arr', 'pi', 'eaa', 'conflicts'];
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(id => {
+            const section = document.getElementById(id);
+            if (section && window.scrollY >= section.offsetTop - 150) {
+                current = id;
+            }
+        });
+
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('onclick')?.includes(current)) {
+                btn.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
