@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFDM Mock Test 6</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'EB Garamond', 'Times New Roman', serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #fafafa;
+            color: #222;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 { margin: 5px 0; font-size: 1.4em; }
+        .header p { margin: 3px 0; }
+        .exam-info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exam-info ul { margin: 10px 0; padding-left: 20px; }
+        .instructions {
+            background: #e8f4e8;
+            padding: 15px;
+            border-left: 4px solid #2a7a2a;
+            margin-bottom: 30px;
+        }
+        .section-header {
+            background: #333;
+            color: white;
+            padding: 10px 15px;
+            margin: 30px 0 20px 0;
+            font-weight: bold;
+        }
+        .question {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .question h3 { margin-top: 0; color: #1a1a6c; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #999; padding: 8px 12px; text-align: center; }
+        th { background: #e0e0e0; }
+        .marks { color: #666; font-style: italic; text-align: right; margin-top: 10px; }
+        .total-marks {
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: right;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+        }
+        .answer {
+            background: #fff8dc;
+            border: 2px solid #daa520;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .answer h4 { margin-top: 0; color: #8b4513; }
+        .answer.show { display: block; }
+        .formula {
+            background: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: 'Cambria Math', 'Times New Roman', serif;
+            border-left: 3px solid #666;
+        }
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .controls button {
+            background: #1a1a6c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        .controls button:hover { background: #2a2a8c; }
+        .pv-table { font-size: 0.85em; }
+        .pv-table th, .pv-table td { padding: 4px 6px; }
+        .formula-sheet {
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 30px;
+        }
+        .formula-sheet h3 { margin-top: 0; }
+        .key-point {
+            background: #e8f4e8;
+            border-left: 4px solid #2a7a2a;
+            padding: 10px 15px;
+            margin: 10px 0;
+        }
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .pros { background: #e8f4e8; padding: 10px; border-radius: 5px; }
+        .cons { background: #fde8e8; padding: 10px; border-radius: 5px; }
+        .pros h5, .cons h5 { margin: 0 0 10px 0; }
+        @media print {
+            .controls { display: none; }
+            .answer { display: block !important; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    <button onclick="toggleAnswers()">Show/Hide All Answers</button>
+</div>
+
+<div class="header">
+    <p>College of Business and Law</p>
+    <p>Bristol Business School</p>
+    <p>Academic year: 2025/26</p>
+    <h1>ACCOUNTING AND FINANCE FOR DECISION MAKING</h1>
+    <p>Module Code: UMET9G-30-1</p>
+    <p><strong>MOCK EXAMINATION 6</strong></p>
+    <p><em>Focus: Investment Appraisal Methods (NPV, IRR, ARR, WACC, YTM)</em></p>
+</div>
+
+<div class="exam-info">
+    <p><strong>Duration:</strong> 2 Hours</p>
+    <p><strong>Total Marks:</strong> 60</p>
+    <ul>
+        <li>Section A: Answer Question 1 (Compulsory) - 30 marks</li>
+        <li>Section B: Answer ANY TWO questions - 15 marks each</li>
+    </ul>
+    <p><strong>Materials Provided:</strong> Formula Sheet, Present Value Tables</p>
+    <p><strong>Materials Required:</strong> Non-programmable calculator</p>
+</div>
+
+<div class="instructions">
+    <strong>Instructions to Students:</strong>
+    <ul>
+        <li>Include module name, number, and your student number on your answer sheet</li>
+        <li>Indicate clearly which questions you are answering</li>
+        <li>Avoid bullet points - write short essay-like answers</li>
+        <li>Present all workings where applicable</li>
+    </ul>
+</div>
+
+<!-- SECTION A -->
+<div class="section-header">SECTION A - COMPULSORY QUESTION (30 Marks)</div>
+
+<div class="question">
+    <h3>Question 1 - Capital Budgeting: NPV, IRR, and WACC</h3>
+
+    <p>Zenith Manufacturing Ltd is considering a new production line. The finance director has gathered the following information:</p>
+
+    <p><strong>Initial Investment:</strong> £3,000,000 (Year 0)</p>
+    <p><strong>Expected Net Cash Flows:</strong></p>
+
+    <table>
+        <tr><th>Year</th><th>Cash Flow (£)</th></tr>
+        <tr><td>1</td><td>700,000</td></tr>
+        <tr><td>2</td><td>900,000</td></tr>
+        <tr><td>3</td><td>1,100,000</td></tr>
+        <tr><td>4</td><td>1,000,000</td></tr>
+        <tr><td>5</td><td>600,000</td></tr>
+    </table>
+
+    <p><strong>Capital Structure:</strong></p>
+    <ul>
+        <li>Equity: £8 million (market value), cost of equity 14%</li>
+        <li>Debt: £4 million (market value), pre-tax cost of debt 8%</li>
+        <li>Corporation tax rate: 25%</li>
+    </ul>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the company's <strong>Weighted Average Cost of Capital (WACC)</strong>. <span class="marks">(5 Marks)</span></li>
+        <li>Using the WACC calculated, determine the <strong>Net Present Value (NPV)</strong> of the project. Should the project be accepted? <span class="marks">(8 Marks)</span></li>
+        <li>Calculate the <strong>Internal Rate of Return (IRR)</strong> using linear interpolation with trial rates of 10% and 15%. <span class="marks">(8 Marks)</span></li>
+        <li>Discuss TWO <strong>advantages</strong> and TWO <strong>disadvantages</strong> of using NPV as an investment appraisal method. <span class="marks">(5 Marks)</span></li>
+        <li>Discuss TWO <strong>advantages</strong> and TWO <strong>disadvantages</strong> of using IRR as an investment appraisal method. <span class="marks">(4 Marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 30 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 1</h4>
+
+        <h4>Part (a) - WACC Calculation (5 marks)</h4>
+        <div class="formula">
+            <strong>WACC Formula:</strong><br>
+            WACC = (E/V × Ke) + (D/V × Kd × (1-T))<br><br>
+
+            <strong>Given:</strong><br>
+            E (Equity) = £8 million<br>
+            D (Debt) = £4 million<br>
+            V (Total) = £8m + £4m = £12 million<br>
+            Ke (Cost of equity) = 14%<br>
+            Kd (Pre-tax cost of debt) = 8%<br>
+            T (Tax rate) = 25%<br><br>
+
+            <strong>Calculation:</strong><br>
+            Weight of Equity (E/V) = 8/12 = 0.667 (66.7%)<br>
+            Weight of Debt (D/V) = 4/12 = 0.333 (33.3%)<br>
+            After-tax cost of debt = 8% × (1 - 0.25) = 6%<br><br>
+
+            WACC = (0.667 × 14%) + (0.333 × 6%)<br>
+            WACC = 9.33% + 2.00%<br>
+            <strong>WACC = 11.33% (or approximately 11%)</strong>
+        </div>
+
+        <h4>Part (b) - NPV at WACC (8 marks)</h4>
+        <p><em>Using 11% as the discount rate:</em></p>
+        <table>
+            <tr><th>Year</th><th>Cash Flow (£)</th><th>PV Factor @11%</th><th>Present Value (£)</th></tr>
+            <tr><td>1</td><td>700,000</td><td>0.901</td><td>630,700</td></tr>
+            <tr><td>2</td><td>900,000</td><td>0.812</td><td>730,800</td></tr>
+            <tr><td>3</td><td>1,100,000</td><td>0.731</td><td>804,100</td></tr>
+            <tr><td>4</td><td>1,000,000</td><td>0.659</td><td>659,000</td></tr>
+            <tr><td>5</td><td>600,000</td><td>0.593</td><td>355,800</td></tr>
+            <tr><td colspan="3"><strong>NPV</strong></td><td><strong>£180,203</strong></td></tr>
+        </table>
+        <div class="key-point">
+            <strong>Decision:</strong> The NPV is positive (£180,203), therefore the project should be <strong>ACCEPTED</strong>. It adds value to shareholders.
+        </div>
+
+        <h4>Part (c) - IRR Calculation (8 marks)</h4>
+        <div class="formula">
+            <strong>NPV at 10%:</strong>
+        </div>
+        <table>
+            <tr><th>Year</th><th>Cash Flow (£)</th><th>PV Factor @10%</th><th>Present Value (£)</th></tr>
+            <tr><td>1</td><td>700,000</td><td>0.909</td><td>636,300</td></tr>
+            <tr><td>2</td><td>900,000</td><td>0.826</td><td>743,400</td></tr>
+            <tr><td>3</td><td>1,100,000</td><td>0.751</td><td>826,100</td></tr>
+            <tr><td>4</td><td>1,000,000</td><td>0.683</td><td>683,000</td></tr>
+            <tr><td>5</td><td>600,000</td><td>0.621</td><td>372,600</td></tr>
+            <tr><td colspan="3"><strong>NPV at 10%</strong></td><td><strong>+£262,178</strong></td></tr>
+        </table>
+
+        <div class="formula">
+            <strong>NPV at 15%:</strong>
+        </div>
+        <table>
+            <tr><th>Year</th><th>Cash Flow (£)</th><th>PV Factor @15%</th><th>Present Value (£)</th></tr>
+            <tr><td>1</td><td>700,000</td><td>0.870</td><td>609,000</td></tr>
+            <tr><td>2</td><td>900,000</td><td>0.756</td><td>680,400</td></tr>
+            <tr><td>3</td><td>1,100,000</td><td>0.658</td><td>723,800</td></tr>
+            <tr><td>4</td><td>1,000,000</td><td>0.572</td><td>572,000</td></tr>
+            <tr><td>5</td><td>600,000</td><td>0.497</td><td>298,200</td></tr>
+            <tr><td colspan="3"><strong>NPV at 15%</strong></td><td><strong>-£-117,448</strong></td></tr>
+        </table>
+
+        <div class="formula">
+            <strong>Linear Interpolation:</strong><br>
+            IRR = Lower Rate + [NPV at Lower / (NPV at Lower - NPV at Higher)] × (Higher - Lower)<br><br>
+
+            IRR = 10% + [262,178 / (262,178 - (-117,448))] × (15% - 10%)<br>
+            <strong>IRR = 13.45%</strong>
+        </div>
+        <div class="key-point">
+            Since IRR (13.45%) > WACC (11.33%), the project is acceptable.
+        </div>
+
+        <h4>Part (d) - NPV Advantages and Disadvantages (5 marks)</h4>
+        <div class="pros-cons">
+            <div class="pros">
+                <h5>Advantages</h5>
+                <p><strong>1. Time Value of Money:</strong> NPV considers that £1 today is worth more than £1 in the future by discounting all cash flows to present value. This provides a more accurate assessment of a project's true worth.</p>
+                <p><strong>2. Direct Measure of Value Creation:</strong> NPV directly shows the absolute amount of wealth added to shareholders. A positive NPV means the project will increase firm value by exactly that amount, making it easy to prioritize projects.</p>
+            </div>
+            <div class="cons">
+                <h5>Disadvantages</h5>
+                <p><strong>1. Difficult to Estimate Discount Rate:</strong> NPV requires an accurate cost of capital. If WACC is mis-estimated, the NPV will be incorrect. Small changes in the discount rate can significantly affect the result.</p>
+                <p><strong>2. Ignores Project Size:</strong> NPV does not show return relative to investment size. A £10 million project with NPV of £100,000 may appear better than a £500,000 project with NPV of £80,000, but the smaller project may be more efficient.</p>
+            </div>
+        </div>
+
+        <h4>Part (e) - IRR Advantages and Disadvantages (4 marks)</h4>
+        <div class="pros-cons">
+            <div class="pros">
+                <h5>Advantages</h5>
+                <p><strong>1. Intuitive Percentage Return:</strong> IRR expresses return as a percentage, which managers find easier to understand and communicate than absolute figures. It can be directly compared to required returns.</p>
+                <p><strong>2. No Discount Rate Required Initially:</strong> IRR is calculated from cash flows alone and then compared to hurdle rates. This avoids debates about the "correct" discount rate during analysis.</p>
+            </div>
+            <div class="cons">
+                <h5>Disadvantages</h5>
+                <p><strong>1. Multiple IRRs:</strong> Projects with non-conventional cash flows (signs change more than once) can have multiple IRRs or no real IRR, making the decision rule impossible to apply.</p>
+                <p><strong>2. Reinvestment Assumption:</strong> IRR assumes intermediate cash flows are reinvested at the IRR itself, which is often unrealistic for high-IRR projects. NPV's assumption (reinvestment at cost of capital) is more reasonable.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION B -->
+<div class="section-header">SECTION B - ANSWER ANY TWO QUESTIONS (15 Marks Each)</div>
+
+<div class="question">
+    <h3>Question 2 - Accounting Rate of Return (ARR)</h3>
+
+    <p>TechStart Ltd is evaluating two mutually exclusive projects. The company requires an ARR of at least 15%. The following information is available:</p>
+
+    <p><strong>Project Alpha:</strong></p>
+    <ul>
+        <li>Initial investment: £500,000</li>
+        <li>Expected life: 4 years</li>
+        <li>Scrap value: £60,000</li>
+        <li>Average annual profit (after depreciation): £85,000</li>
+    </ul>
+
+    <p><strong>Project Beta:</strong></p>
+    <ul>
+        <li>Initial investment: £400,000</li>
+        <li>Expected life: 5 years</li>
+        <li>Scrap value: £0</li>
+        <li>Average annual profit (after depreciation): £74,000</li>
+    </ul>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the <strong>ARR</strong> for Project Alpha using the average investment method. <span class="marks">(3 marks)</span></li>
+        <li>Calculate the <strong>ARR</strong> for Project Beta using the average investment method. <span class="marks">(4 marks)</span></li>
+        <li>Based on ARR, which project should be selected? Explain your reasoning. <span class="marks">(2 marks)</span></li>
+        <li>Discuss TWO <strong>advantages</strong> and TWO <strong>disadvantages</strong> of using ARR as an investment appraisal method. <span class="marks">(6 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 2</h4>
+
+        <h4>Part (a) - ARR for Project Alpha (3 marks)</h4>
+        <div class="formula">
+            <strong>ARR Formula (Average Investment Method):</strong><br>
+            ARR = (Average Annual Profit / Average Investment) × 100%<br><br>
+
+            <strong>Average Investment:</strong><br>
+            = (Initial Investment + Scrap Value) / 2<br>
+            = (£500,000 + £60,000) / 2<br>
+            = <strong>£280,000</strong><br><br>
+
+            <strong>ARR for Alpha:</strong><br>
+            = (£85,000 / £280,000) × 100%<br>
+            <strong>ARR = 30.36%</strong>
+        </div>
+
+        <h4>Part (b) - ARR for Project Beta (4 marks)</h4>
+        <div class="formula">
+            <strong>ARR Formula (Average Investment Method):</strong><br>
+            ARR = (Average Annual Profit / Average Investment) × 100%<br><br>
+
+            <strong>Average Investment:</strong><br>
+            = (Initial Investment + Scrap Value) / 2<br>
+            = (£400,000 + £0) / 2<br>
+            = <strong>£200,000</strong><br><br>
+
+            <strong>ARR for Beta:</strong><br>
+            = (£74,000 / £200,000) × 100%<br>
+            <strong>ARR = 37.00%</strong>
+        </div>
+
+        <h4>Part (c) - Project Selection (2 marks)</h4>
+        <div class="key-point">
+            <strong>Recommendation: Select Project Beta</strong><br><br>
+            Both projects exceed the 15% hurdle rate. Project Beta has a higher ARR (37.00%) compared to Project Alpha (30.36%). Based on the ARR criterion, Project Beta should be selected as it provides a higher accounting return on the average investment.
+        </div>
+
+        <h4>Part (d) - ARR Advantages and Disadvantages (6 marks)</h4>
+        <div class="pros-cons">
+            <div class="pros">
+                <h5>Advantages</h5>
+                <p><strong>1. Simple to Calculate and Understand:</strong> ARR uses accounting profits that are readily available from financial statements and projections. The percentage format is intuitive and familiar to managers who regularly use accounting-based performance metrics like Return on Assets (ROA) or Return on Equity (ROE).</p>
+                <p><strong>2. Considers Entire Project Life:</strong> Unlike Payback Period, ARR considers profits over the entire life of the project, not just until the initial investment is recovered. This provides a more complete picture of the project's profitability.</p>
+            </div>
+            <div class="cons">
+                <h5>Disadvantages</h5>
+                <p><strong>1. Ignores Time Value of Money:</strong> ARR treats profits earned in Year 1 the same as profits earned in Year 5. It does not discount future profits to present value, which is a fundamental flaw in financial decision-making. A project that generates most profits early is actually more valuable than one with profits spread evenly.</p>
+                <p><strong>2. Based on Accounting Profits, Not Cash Flows:</strong> Accounting profit includes non-cash items (depreciation, accruals) and can be manipulated through accounting policies. Cash flow is what ultimately matters for business survival and shareholder wealth. Two projects with the same ARR may have very different cash flow profiles and risk characteristics.</p>
+            </div>
+        </div>
+        <p><em>Other valid points: Different depreciation methods give different ARRs; no universally accepted definition (initial vs. average investment); does not indicate wealth creation in absolute terms.</em></p>
+    </div>
+</div>
+
+<div class="question">
+    <h3>Question 3 - Yield to Maturity (YTM) and Bond Valuation</h3>
+
+    <p>Meridian Finance Plc is considering investing in corporate bonds. The following bonds are available:</p>
+
+    <p><strong>Bond X:</strong> 10% annual coupon, face value £1,000, 4 years to maturity, currently priced at £1,064.</p>
+
+    <p><strong>Bond Y:</strong> 6% annual coupon, face value £1,000, 6 years to maturity, YTM is 8%.</p>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the <strong>Yield to Maturity (YTM)</strong> of Bond X using linear interpolation. Use 8% and 10% as trial rates. <span class="marks">(6 marks)</span></li>
+        <li>Calculate the <strong>current price</strong> of Bond Y. <span class="marks">(4 marks)</span></li>
+        <li>Discuss TWO <strong>advantages</strong> and TWO <strong>disadvantages</strong> of using YTM as a measure of bond returns. <span class="marks">(5 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 3</h4>
+
+        <h4>Part (a) - YTM of Bond X (6 marks)</h4>
+        <div class="formula">
+            <strong>Bond X Details:</strong><br>
+            Annual coupon = 10% × £1,000 = £100<br>
+            Face value = £1,000<br>
+            Current price = £1,064<br>
+            Years to maturity = 4<br><br>
+
+            <strong>Calculate Price at 8%:</strong>
+        </div>
+        <table>
+            <tr><th>Year</th><th>Cash Flow</th><th>PV Factor @8%</th><th>Present Value</th></tr>
+            <tr><td>1</td><td>£100</td><td>0.926</td><td>£92.60</td></tr>
+            <tr><td>2</td><td>£100</td><td>0.857</td><td>£85.70</td></tr>
+            <tr><td>3</td><td>£100</td><td>0.794</td><td>£79.40</td></tr>
+            <tr><td>4</td><td>£100</td><td>0.735</td><td>£73.50</td></tr>
+            <tr><td>4</td><td>£1,000</td><td>0.735</td><td>£735.00</td></tr>
+            <tr><td colspan="3"><strong>Price at 8%</strong></td><td><strong>£1,066.20</strong></td></tr>
+        </table>
+
+        <div class="formula">
+            <strong>Calculate Price at 10%:</strong>
+        </div>
+        <table>
+            <tr><th>Year</th><th>Cash Flow</th><th>PV Factor @10%</th><th>Present Value</th></tr>
+            <tr><td>1</td><td>£100</td><td>0.909</td><td>£90.90</td></tr>
+            <tr><td>2</td><td>£100</td><td>0.826</td><td>£82.60</td></tr>
+            <tr><td>3</td><td>£100</td><td>0.751</td><td>£75.10</td></tr>
+            <tr><td>4</td><td>£100</td><td>0.683</td><td>£68.30</td></tr>
+            <tr><td>4</td><td>£1,000</td><td>0.683</td><td>£683.00</td></tr>
+            <tr><td colspan="3"><strong>Price at 10%</strong></td><td><strong>£999.90 ≈ £1,000</strong></td></tr>
+        </table>
+
+        <div class="formula">
+            <strong>Linear Interpolation:</strong><br>
+            YTM is where calculated price = market price (£1,064)<br><br>
+
+            At 8%: Price = £1,066.20 (too high by £2.20)<br>
+            At 10%: Price = £1,000.00 (too low by £64.00)<br><br>
+
+            YTM = 8% + [(1,066.20 - 1,064) / (1,066.20 - 1,000)] × (10% - 8%)<br>
+            YTM = 8% + [2.20 / 66.20] × 2%<br>
+            YTM = 8% + 0.033 × 2%<br>
+            YTM = 8% + 0.07%<br>
+            <strong>YTM ≈ 8.07%</strong>
+        </div>
+        <div class="key-point">
+            The bond is trading at a premium (£1,064 > £1,000) because the coupon rate (10%) exceeds the YTM (8.07%).
+        </div>
+
+        <h4>Part (b) - Price of Bond Y (4 marks)</h4>
+        <div class="formula">
+            <strong>Bond Y Details:</strong><br>
+            Annual coupon = 6% × £1,000 = £60<br>
+            Face value = £1,000<br>
+            YTM = 8%<br>
+            Years = 6<br><br>
+
+            <strong>Using annuity formula:</strong><br>
+            P = C × PVIFA(r,n) + FV × PVIF(r,n)<br><br>
+
+            PVIFA(8%, 6) = [1 - (1.08)^-6] / 0.08 = [1 - 0.6302] / 0.08 = 4.623<br>
+            PVIF(8%, 6) = 1 / (1.08)^6 = 0.6302<br><br>
+
+            P = £60 × 4.623 + £1,000 × 0.6302<br>
+            P = £277.38 + £630.20<br>
+            <strong>P = £907.58</strong>
+        </div>
+        <div class="key-point">
+            Bond Y trades at a discount (£907.58 < £1,000) because the coupon rate (6%) is below the YTM (8%).
+        </div>
+
+        <h4>Part (c) - YTM Advantages and Disadvantages (5 marks)</h4>
+        <div class="pros-cons">
+            <div class="pros">
+                <h5>Advantages</h5>
+                <p><strong>1. Comprehensive Return Measure:</strong> YTM considers all sources of bond return: coupon payments, any capital gain or loss (premium/discount), and the timing of cash flows. It provides a single percentage that represents the total expected return if held to maturity.</p>
+                <p><strong>2. Comparable Across Bonds:</strong> YTM allows investors to compare bonds with different coupon rates, maturities, and prices on a level playing field. A 5-year 10% coupon bond and a 10-year zero-coupon bond can be directly compared using their YTMs.</p>
+            </div>
+            <div class="cons">
+                <h5>Disadvantages</h5>
+                <p><strong>1. Reinvestment Assumption:</strong> YTM assumes all coupon payments can be reinvested at the same YTM rate until maturity. In reality, reinvestment rates fluctuate, and the actual return may differ significantly, especially for long-maturity bonds in volatile rate environments.</p>
+                <p><strong>2. Assumes Holding to Maturity:</strong> If the investor sells before maturity, the actual return will differ from YTM due to price changes. YTM does not account for interest rate risk (price volatility) that affects investors who may need to sell early.</p>
+            </div>
+        </div>
+        <p><em>Other valid points: Does not account for default risk (assumes all payments received); different compounding conventions complicate comparison; ignores liquidity differences between bonds.</em></p>
+    </div>
+</div>
+
+<div class="question">
+    <h3>Question 4 - Weighted Average Cost of Capital (WACC)</h3>
+
+    <p>Pacific Energy Corp is planning a major expansion and needs to calculate its cost of capital. The company has the following capital structure:</p>
+
+    <table>
+        <tr><th>Source</th><th>Book Value (£m)</th><th>Market Value (£m)</th></tr>
+        <tr><td>Ordinary Shares</td><td>50</td><td>80</td></tr>
+        <tr><td>Preference Shares</td><td>10</td><td>8</td></tr>
+        <tr><td>Bonds (10% coupon)</td><td>40</td><td>36</td></tr>
+    </table>
+
+    <p><strong>Additional Information:</strong></p>
+    <ul>
+        <li>Ordinary shares: Current price £4.00, next year's dividend expected £0.30, dividend growth rate 5%</li>
+        <li>Preference shares: 8% dividend, par value £1, current price £0.80</li>
+        <li>Bonds: Currently trading at 90% of face value, 8 years to maturity</li>
+        <li>Corporation tax rate: 30%</li>
+    </ul>
+
+    <p><strong>Required:</strong></p>
+    <ol type="a">
+        <li>Calculate the <strong>cost of ordinary equity</strong> using the Dividend Growth Model. <span class="marks">(3 marks)</span></li>
+        <li>Calculate the <strong>cost of preference shares</strong>. <span class="marks">(2 marks)</span></li>
+        <li>Calculate the <strong>WACC</strong> using market values. <span class="marks">(5 marks)</span></li>
+        <li>Discuss TWO <strong>advantages</strong> and TWO <strong>disadvantages</strong> of using WACC as the discount rate for investment appraisal. <span class="marks">(5 marks)</span></li>
+    </ol>
+
+    <p class="total-marks">Total: 15 Marks</p>
+
+    <div class="answer">
+        <h4>Model Answer - Question 4</h4>
+
+        <h4>Part (a) - Cost of Ordinary Equity (3 marks)</h4>
+        <div class="formula">
+            <strong>Dividend Growth Model:</strong><br>
+            Ke = (D1 / P0) + g<br><br>
+
+            Where:<br>
+            D1 = Next year's dividend = £0.30<br>
+            P0 = Current share price = £4.00<br>
+            g = Dividend growth rate = 5%<br><br>
+
+            Ke = (£0.30 / £4.00) + 0.05<br>
+            Ke = 0.075 + 0.05<br>
+            <strong>Ke = 12.5%</strong>
+        </div>
+
+        <h4>Part (b) - Cost of Preference Shares (2 marks)</h4>
+        <div class="formula">
+            <strong>Cost of Preference Shares:</strong><br>
+            Kp = Dp / P0<br><br>
+
+            Annual dividend = 8% × £1 = £0.08<br>
+            Current price = £0.80<br><br>
+
+            Kp = £0.08 / £0.80<br>
+            <strong>Kp = 10%</strong>
+        </div>
+
+        <h4>Part (c) - WACC Calculation (5 marks)</h4>
+        <div class="formula">
+            <strong>Cost of Debt (using approximation):</strong><br>
+            Bonds trade at 90% = £900 per £1,000 face<br>
+            Annual coupon = 10% × £1,000 = £100<br>
+            Approximate YTM = [Coupon + (FV - P)/n] / [(FV + P)/2]<br>
+            = [100 + (1000-900)/8] / [(1000+900)/2]<br>
+            = [100 + 12.5] / 950<br>
+            = 112.5 / 950<br>
+            <strong>Pre-tax Kd ≈ 11.84%</strong><br>
+            After-tax Kd = 11.84% × (1 - 0.30) = <strong>8.29%</strong><br><br>
+
+            <strong>Market Value Weights:</strong><br>
+            Total market value = £80m + £8m + £36m = £124m<br>
+            Weight of equity = 80/124 = 0.645 (64.5%)<br>
+            Weight of preference = 8/124 = 0.065 (6.5%)<br>
+            Weight of debt = 36/124 = 0.290 (29.0%)<br><br>
+
+            <strong>WACC:</strong><br>
+            WACC = (We × Ke) + (Wp × Kp) + (Wd × Kd(1-T))<br>
+            = (0.645 × 12.5%) + (0.065 × 10%) + (0.290 × 8.29%)<br>
+            = 8.06% + 0.65% + 2.40%<br>
+            <strong>WACC = 11.11%</strong>
+        </div>
+
+        <h4>Part (d) - WACC Advantages and Disadvantages (5 marks)</h4>
+        <div class="pros-cons">
+            <div class="pros">
+                <h5>Advantages</h5>
+                <p><strong>1. Reflects True Cost of Financing:</strong> WACC represents the minimum return a company must earn on its existing assets to satisfy all capital providers (debt holders, preference shareholders, and ordinary shareholders). Using WACC ensures projects create value above the blended cost of all funding sources.</p>
+                <p><strong>2. Accounts for Capital Structure:</strong> WACC explicitly incorporates the proportion of debt and equity financing and the tax benefit of debt (interest tax shield). This makes it more accurate than using a single cost of equity or debt alone, and reflects how most companies are actually financed.</p>
+            </div>
+            <div class="cons">
+                <h5>Disadvantages</h5>
+                <p><strong>1. Assumes Constant Capital Structure:</strong> WACC assumes the company maintains the same debt-to-equity ratio throughout the project's life. In reality, capital structure changes over time, and individual projects may be financed differently. Using current WACC for projects with different risk profiles can lead to poor decisions.</p>
+                <p><strong>2. Difficult to Estimate Components:</strong> Each component of WACC requires estimation: cost of equity (depends on beta, risk-free rate, market premium), cost of debt (requires YTM calculation), and market values (can fluctuate daily). Errors in any component affect the entire WACC and subsequent project decisions.</p>
+            </div>
+        </div>
+        <p><em>Other valid points: WACC is a company-wide rate that may not suit high-risk or low-risk projects individually; book values vs. market values give different results; assumes projects don't change company's overall risk profile.</em></p>
+    </div>
+</div>
+
+<!-- FORMULA SHEET -->
+<div class="formula-sheet">
+    <h3>FORMULA SHEET</h3>
+
+    <h4>Investment Appraisal</h4>
+    <p><strong>NPV:</strong> NPV = Σ [CFt / (1+r)^t] - Initial Investment</p>
+    <p><strong>IRR (Interpolation):</strong> IRR = r₁ + [NPV₁ / (NPV₁ - NPV₂)] × (r₂ - r₁)</p>
+    <p><strong>ARR:</strong> ARR = Average Annual Profit / Average Investment × 100%</p>
+    <p><strong>Average Investment:</strong> = (Initial Investment + Scrap Value) / 2</p>
+    <p><strong>Payback Period:</strong> = Years before recovery + (Unrecovered cost / Cash flow in recovery year)</p>
+
+    <h4>Cost of Capital</h4>
+    <p><strong>WACC:</strong> WACC = (E/V × Ke) + (D/V × Kd(1-T))</p>
+    <p><strong>Cost of Equity (DGM):</strong> Ke = (D1 / P0) + g</p>
+    <p><strong>Cost of Preference:</strong> Kp = Dp / P0</p>
+    <p><strong>CAPM:</strong> Ke = Rf + β(Rm - Rf)</p>
+    <p><strong>After-tax Cost of Debt:</strong> Kd(1-T)</p>
+
+    <h4>Bond Valuation</h4>
+    <p><strong>Bond Price:</strong> P = C × PVIFA(r,n) + FV × PVIF(r,n)</p>
+    <p><strong>Current Yield:</strong> = Annual Coupon / Bond Price</p>
+    <p><strong>YTM Approximation:</strong> = [C + (FV-P)/n] / [(FV+P)/2]</p>
+
+    <h4>Present Value Formulas</h4>
+    <p><strong>Present Value:</strong> PV = FV / (1 + r)^n</p>
+    <p><strong>PV of Annuity (PVIFA):</strong> = [1 - (1 + r)^-n] / r</p>
+    <p><strong>PV Factor (PVIF):</strong> = 1 / (1 + r)^n</p>
+    <p><strong>Growing Perpetuity:</strong> PV = D1 / (r - g)</p>
+
+    <h4>Present Value Factors Table</h4>
+    <table class="pv-table">
+        <tr>
+            <th>Year</th><th>5%</th><th>7%</th><th>8%</th><th>10%</th><th>11%</th><th>12%</th><th>15%</th>
+        </tr>
+        <tr><td>1</td><td>0.952</td><td>0.935</td><td>0.926</td><td>0.909</td><td>0.901</td><td>0.893</td><td>0.870</td></tr>
+        <tr><td>2</td><td>0.907</td><td>0.873</td><td>0.857</td><td>0.826</td><td>0.812</td><td>0.797</td><td>0.756</td></tr>
+        <tr><td>3</td><td>0.864</td><td>0.816</td><td>0.794</td><td>0.751</td><td>0.731</td><td>0.712</td><td>0.658</td></tr>
+        <tr><td>4</td><td>0.823</td><td>0.763</td><td>0.735</td><td>0.683</td><td>0.659</td><td>0.636</td><td>0.572</td></tr>
+        <tr><td>5</td><td>0.784</td><td>0.713</td><td>0.681</td><td>0.621</td><td>0.593</td><td>0.567</td><td>0.497</td></tr>
+        <tr><td>6</td><td>0.746</td><td>0.666</td><td>0.630</td><td>0.564</td><td>0.535</td><td>0.507</td><td>0.432</td></tr>
+        <tr><td>7</td><td>0.711</td><td>0.623</td><td>0.583</td><td>0.513</td><td>0.482</td><td>0.452</td><td>0.376</td></tr>
+        <tr><td>8</td><td>0.677</td><td>0.582</td><td>0.540</td><td>0.467</td><td>0.434</td><td>0.404</td><td>0.327</td></tr>
+        <tr><td>9</td><td>0.645</td><td>0.544</td><td>0.500</td><td>0.424</td><td>0.391</td><td>0.361</td><td>0.284</td></tr>
+        <tr><td>10</td><td>0.614</td><td>0.508</td><td>0.463</td><td>0.386</td><td>0.352</td><td>0.322</td><td>0.247</td></tr>
+    </table>
+
+    <h4>PVIFA Table (Present Value Interest Factor of Annuity)</h4>
+    <table class="pv-table">
+        <tr>
+            <th>Years</th><th>5%</th><th>6%</th><th>7%</th><th>8%</th><th>10%</th><th>12%</th>
+        </tr>
+        <tr><td>4</td><td>3.546</td><td>3.465</td><td>3.387</td><td>3.312</td><td>3.170</td><td>3.037</td></tr>
+        <tr><td>5</td><td>4.329</td><td>4.212</td><td>4.100</td><td>3.993</td><td>3.791</td><td>3.605</td></tr>
+        <tr><td>6</td><td>5.076</td><td>4.917</td><td>4.767</td><td>4.623</td><td>4.355</td><td>4.111</td></tr>
+        <tr><td>8</td><td>6.463</td><td>6.210</td><td>5.971</td><td>5.747</td><td>5.335</td><td>4.968</td></tr>
+        <tr><td>10</td><td>7.722</td><td>7.360</td><td>7.024</td><td>6.710</td><td>6.145</td><td>5.650</td></tr>
+    </table>
+</div>
+
+<div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #333;">
+    <strong>END OF EXAMINATION</strong><br>
+    <em>Total Marks: 60</em>
+</div>
+
+<script>
+    let answersVisible = false;
+
+    function toggleAnswers() {
+        answersVisible = !answersVisible;
+        const answers = document.querySelectorAll('.answer');
+        answers.forEach(answer => {
+            if (answersVisible) {
+                answer.classList.add('show');
+            } else {
+                answer.classList.remove('show');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
