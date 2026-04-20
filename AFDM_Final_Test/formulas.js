@@ -87,8 +87,7 @@ const formulaData = {
             { name: "Levered Beta (Equity Beta)", formula: "Levered Beta = Unlevered Beta × [1 + (1 - Tax Rate) × (Debt/Equity)]", description: "Beta including leverage effect" },
             { name: "Modigliani-Miller Proposition I (No Tax)", formula: "Value of Levered Firm = Value of Unlevered Firm", description: "Firm value is independent of capital structure without taxes" },
             { name: "Modigliani-Miller Proposition II (No Tax)", formula: "Cost of Equity = Cost of Assets + (Cost of Assets - Cost of Debt) × (Debt/Equity)", description: "Cost of equity rises linearly with leverage" },
-            { name: "Modigliani-Miller Proposition I (With Tax)", formula: "Value of Levered Firm = Value of Unlevered Firm + (Tax Rate × Debt)", description: "Firm value increases by present value of tax shield" },
-            { name: "Market Value of Equity", formula: "Market Value of Equity = Total Firm Value - Market Value of Debt", description: "Residual value belonging to shareholders" }
+            { name: "Modigliani-Miller Proposition I (With Tax)", formula: "Value of Levered Firm = Value of Unlevered Firm + (Tax Rate × Debt)", description: "Firm value increases by present value of tax shield" }
     
         ]
     },
